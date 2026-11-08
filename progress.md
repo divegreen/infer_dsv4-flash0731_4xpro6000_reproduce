@@ -11,7 +11,7 @@
 | 纯源码发布规则 | COMPLETED | Git/package 排除环境、缓存、结果、历史报告和 prepare 自动视图；拒绝意外生成 JSON、已执行 Notebook 和软链接。 |
 | 干净副本与 CPU 验证 | COMPLETED | 851 项源码发布检查、83 实验 dry-run、12 项迁移、38 项启动守护、70 项 profile 控制检查通过。 |
 | 文档闭包与最终审查 | COMPLETED | 顶层文档 93 项检查通过；7 份研究方法文档原文已外存，去除旧状态/路径/断链后 71 项检查通过。 |
-| 原生 Git 起点与提交 | IN PROGRESS | main 已初始化，375 原生文件已暂存；保留 CRLF 的空白检查通过，尚未提交。 |
+| 原生 Git 起点与提交 | COMPLETED | main 原生初始提交 `c9ef9d6` 已建立，提交后工作区干净；375 原生文件与暂存字节一致，保留 CRLF 的空白检查通过。 |
 | 完整 GPU 复现 | NOT VERIFIED | 本轮无 GPU 推理、NCCL、真实 profile 或性能测量。 |
 
 ## 原始文件保护与证据位置
@@ -21,7 +21,7 @@
 - `source-before-publication.tar.gz` 与 JSON 清单保存本轮实现修改前的 401 个非环境文件。
 - `preserved/` 按原相对路径保留迁出的环境、缓存、初始 archive、历史报告、orders_history 和旧进度。
 - `moves.json` 保存 44 项迁移前后位置及 inode 核对。未删除旧数据；移出的虚拟环境仅作保留，新环境按指南重建。
-- `validation/` 保存下列完整报告和相关日志；它们不进入 Git 或源码包。
+- `validation/` 保存下列完整报告和相关日志；它们不进入 Git 或源码包。最终维护提交、项目外源码包与 Git 字节核对记录位置为 `validation/git-final-publication.json`，随交付检查更新。
 
 ## 实现与必要决策
 
@@ -45,6 +45,7 @@
 | 固定输入字节、Python AST、Shell 语法、Notebook 未执行、无生成 JSON | PASS，189 固定文件不变，173 Python 文件，375 总文件 | frozen-inputs.json、native-tree.json |
 | 独立复核打包输出路径边界与拒绝行为 | 初次发现问题，修正后独立复测 5 项 PASS | independent-review-initial.json、independent-review-final.json |
 | 研究方法文档链接、catalog ID、当前预算、冻结判据和改动范围 | PASS，71 项；最终收尾仅改文档，已验 CPU 代码保持不变 | final-research-docs-review.json |
+| 最终工作树 / 原生选择 / Git index 集合及全部文件字节核对 | PASS，375 个文件完全一致，源码提交后工作区干净 | git-final-staged-manifest.json、git-source-commit.json |
 | 原始 CSV、工作树、Git index 三方字节比对，识别 CRLF 后检查空白 | PASS，两文件各 25 CRLF 行，未规范化数据 | git-crlf-review.json |
 
 执行入口为 `python3 -B tools/check_source_release.py --output <外部报告>`、`check_portability.py --output <外部报告>`、`check_launch_guard.py --output <外部报告>`，以及 `python3 -B research/dsv4-flash0731/scheduler/scripts/check_profiles.py --output <外部报告>`。各命令的 stdout/报告保存在上述 validation 目录。具体复现命令、每阶段目的和输出见 [复现指南](doc/reproduction.md)。
@@ -56,4 +57,6 @@
 - `git diff --cached --check` 首次将两份原始 CRLF CSV 的每行判断为尾随空白，日志保留为 `git-prepare-3.log`。数据与归档、index 字节一致；仅在本次命令用 `git -c core.whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol diff --cached --check` 识别 CRLF，检查通过，不改数据或全局 Git 设置。
 - 本轮新建 main，不能视为恢复此前不存在的 Git 历史。未设置或推送远端。源码/CPU 验证不等于 GPU 性能复现，未来需按协议实测并由用户接受新结果。
 
-下一步：核对最终暂存内容，建立本地源码提交，完成 Git 干净状态与项目外源码包的一致性验收。
+源码提交已执行：`git init -b main`、`git add -- .`、CRLF 兼容的 `git diff --cached --check`、`git commit -m "Prepare native-only reproducible research source"`。初始源码提交为 `c9ef9d6bc7809bd1d313a6ca2dd921fd3ee6b8a1`；本进度和路线图的收尾维护单独提交，最新提交可用 `git log -1 --oneline` 查询。全部审查日志写在项目外，未配置远端、未推送。
+
+本轮源码整理已完成。后续可将 main 发布到用户选择的 GitHub 仓库；需要运行时按 [复现指南](doc/reproduction.md) 重建依赖、准备模型并按阶段生成新结果。完整 GPU 复现继续标记 NOT VERIFIED，不能把源码验收作为性能证据。
