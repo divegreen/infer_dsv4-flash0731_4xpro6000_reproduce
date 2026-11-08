@@ -1,0 +1,21 @@
+{
+  "name": "tp4-marlin-eager",
+  "port": 8260,
+  "startup_timeout": 1200,
+  "args": [
+    "--tensor-parallel-size", "4",
+    "--distributed-executor-backend", "mp",
+    "--max-model-len", "8192",
+    "--max-num-seqs", "64",
+    "--max-num-batched-tokens", "4096",
+    "--gpu-memory-utilization", "0.90",
+    "--kv-cache-dtype", "fp8_ds_mla",
+    "--block-size", "256",
+    "--attention-backend", "FLASHINFER_MLA_SPARSE_DSV4",
+    "--moe-backend", "marlin",
+    "--no-enable-prefix-caching",
+    "--enforce-eager",
+    "--seed", "20261105"
+  ],
+  "env": {"NCCL_DEBUG": "WARN"}
+}

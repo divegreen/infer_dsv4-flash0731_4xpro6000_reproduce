@@ -1,0 +1,95 @@
+{
+  "jobs": [
+    {
+      "id": "session-dspark3-agent-confirm-tail",
+      "config": "session-dspark3-agent-confirm-tail.json",
+      "session_plan": "sessions/session-dspark3-agent-confirm-tail.json",
+      "timeout": 2400,
+      "reference": "decision agent-confirm-continuation-r1 sha256 1002f20dd8ea4c631bc8eff2970e2b624ab8872b1e92403e70a0cd8b8e48e0c5; sessions/decisions/agent-confirm-r1.json, sessions/logs/c15-failure-checkpoint-r1.json, scenarios/results/session-dspark3-agent-confirm/status.json, scenarios/results/session-dspark3-agent-confirm/session-plan.json, sessions/finite-session-v1.md",
+      "hypothesis": "Complete only the originally preregistered but unexecuted DSpark Agent .60 Session/s seed202611643 window. c15 failed at .60 seed202611642 session138 reservation_book turn2: full HTTP/DONE usage4096 output tokens but finish_reason length and unfinished tool deltas, so the frozen client returned request_error and skipped the final planned phase. Preserve c15 FAILED and all started .30/.60 windows, including complete .30 windows; do not retry any started seed, discard failures, increase output/tool budgets, alter client/grader/finite-session-v1 or reinterpret whole-run health. New c16 uses the same config, task assignments, arrival offsets, session cache isolation, six-task C1 warmup, service protocol and original seed643. Phase IDs may differ but normalized workload/arrivals must match the unexecuted original phase. This is explicit continuation for coverage/reliability, not a way to obtain a passing capacity point: c15 still blocks matching confirmations and the frozen global unresolved-audit behavior remains. Run only after failed c15 has stopped and GPU0-3/port8260 are verified idle. No Stage D or extra parameter sweep."
+    }
+  ],
+  "decision_provenance": {
+    "decision_id": "agent-confirm-continuation-r1",
+    "decision_source": "sessions/decisions/agent-confirm-continuation-r1.json",
+    "decision_sha256": "1002f20dd8ea4c631bc8eff2970e2b624ab8872b1e92403e70a0cd8b8e48e0c5",
+    "rationale": "Complete only the originally preregistered but unexecuted DSpark Agent .60 Session/s seed202611643 window. c15 failed at .60 seed202611642 session138 reservation_book turn2: full HTTP/DONE usage4096 output tokens but finish_reason length and unfinished tool deltas, so the frozen client returned request_error and skipped the final planned phase. Preserve c15 FAILED and all started .30/.60 windows, including complete .30 windows; do not retry any started seed, discard failures, increase output/tool budgets, alter client/grader/finite-session-v1 or reinterpret whole-run health. New c16 uses the same config, task assignments, arrival offsets, session cache isolation, six-task C1 warmup, service protocol and original seed643. Phase IDs may differ but normalized workload/arrivals must match the unexecuted original phase. This is explicit continuation for coverage/reliability, not a way to obtain a passing capacity point: c15 still blocks matching confirmations and the frozen global unresolved-audit behavior remains. Run only after failed c15 has stopped and GPU0-3/port8260 are verified idle. No Stage D or extra parameter sweep.",
+    "evidence_references": [
+      {
+        "path": "sessions/decisions/agent-confirm-r1.json",
+        "sha256": "fdb27f4d03360e240db387d9905ace25413f0ab5d0feb5c93d5d671926628925",
+        "bytes": 3216
+      },
+      {
+        "path": "sessions/logs/c15-failure-checkpoint-r1.json",
+        "sha256": "691fe3a7ed20fca513e11a1a8d0e967295788241689d69fd97f3869b7c6ae15d",
+        "bytes": 2705
+      },
+      {
+        "path": "scenarios/results/session-dspark3-agent-confirm/status.json",
+        "sha256": "92130ec4b0e61a1635b3f48d0302fb5f31bd75922fc8991e9477d2d9886f033e",
+        "bytes": 42054
+      },
+      {
+        "path": "scenarios/results/session-dspark3-agent-confirm/session-plan.json",
+        "sha256": "d319937195f29d67247cb13a1edc31bd425b901721e82f72bb42217b8ba8f431",
+        "bytes": 17847
+      },
+      {
+        "path": "sessions/finite-session-v1.md",
+        "sha256": "9f48277f1e0cbfa75a0abb742f1a3bdbf6e7224d9b39324f0056881986faf68e",
+        "bytes": 6559
+      }
+    ],
+    "generator_source_sha256": "4e8a80cf2410f54b79f5d977d7a4238e13a7b95c91cd2151e1cd0fc78d49ea83",
+    "runtime_source_sha256": {
+      "sessions/finite-session-v1.md": "9f48277f1e0cbfa75a0abb742f1a3bdbf6e7224d9b39324f0056881986faf68e",
+      "sessions/scripts/build_open_session_plans.py": "4e8a80cf2410f54b79f5d977d7a4238e13a7b95c91cd2151e1cd0fc78d49ea83",
+      "scenarios/scripts/agent_session_client.py": "9b7889dade2b7b2499b898f887b6e33720bca630068f35759a106b8bf98b3183",
+      "scenarios/scripts/agent_session_tasks.py": "4dbbb7ad921bfb4e3c84b943b66bdfebe30d3af5099045df78f20a119a297594",
+      "scenarios/scripts/capacity_client.py": "2a563a68cf660472b5c4b6ff8451949391af999ebcc43c2cb67fcdfcc01753bf",
+      "scenarios/scripts/run_agent_series.py": "516c8092c88564ecae431415717db598a05eaadcd0a802cf522e0e8bd9477bed",
+      "scenarios/scripts/run_logged.py": "470d1ddfce935e2cd41a9bf249280c00b35d5be374b14dc8aab4ab246ad6064b",
+      "scenarios/scripts/serve_agent_sessions.py": "e8ce69e7c2039d89fe7c537105e6d5580c9fe327e12cdec9ed85888d4da7c528",
+      "scenarios/workloads/sessions/tasks/catalog.json": "da8089737e2064bc352fbeffa4fdb343192ba75e9e4984d688c86fd2e4c5f0ca",
+      "scenarios/workloads/sessions/tasks/failover_policy/private/answers.json": "2a296acdf6c3b626e24fe661cd0d5a8b125090c116c6858fb232534bdf627a41",
+      "scenarios/workloads/sessions/tasks/failover_policy/public/README.md": "390508a6e43a23f608b57b20b691cbb9cd6ffe5353eb903d7e531b8a9162af33",
+      "scenarios/workloads/sessions/tasks/failover_policy/public/docs/incident-notes.md": "422d32e5a0b58dc574450c7042f7dcacd50cef89cc2f3d86781bf3a2aae1551c",
+      "scenarios/workloads/sessions/tasks/failover_policy/public/docs/override-draft.md": "2ec5364a10db92a511f043da32e0dce9135b2f4b74517b500609a77f16fc12fd",
+      "scenarios/workloads/sessions/tasks/failover_policy/public/docs/override-signed.md": "d961acb2eaed67e0ed8ce502fae66457c54bf6b75b44b0c73681e0761d4490d8",
+      "scenarios/workloads/sessions/tasks/failover_policy/public/docs/residency.md": "5f2e1a344fcfc33816ec65aba76ed7394d6447690ee0f2325fd84286b7d57269",
+      "scenarios/workloads/sessions/tasks/failover_policy/public/docs/routing-v3.md": "a307a278d683383a1cc6cac4109aab18e924f0d5fbdb3398808af8701c6768c6",
+      "scenarios/workloads/sessions/tasks/failover_policy/public/docs/routing-v4.md": "d0e61bf47285659078823851e0111e683e7ad983479292cef9e240e558406786",
+      "scenarios/workloads/sessions/tasks/invoice_adjustments/private/grading_cases.json": "6650d652828b180fc9675659d8f7347284ee0ac7d8f79be41a9abf091c7dfb82",
+      "scenarios/workloads/sessions/tasks/invoice_adjustments/private/reference.json": "0b2473067c5eaad1061da15c80f1e4e735adb2e5edd289c2b25698005d884399",
+      "scenarios/workloads/sessions/tasks/invoice_adjustments/public/README.md": "8e2010a12fa62d928047e9070bea4f9fa6563de1a84aed4130daeca99a98c20d",
+      "scenarios/workloads/sessions/tasks/invoice_adjustments/public/billing/adjustments.py": "f5758289bced8f4d7fa3578cfd05f158f78a8e43e119a9e517343b13e53fbdf0",
+      "scenarios/workloads/sessions/tasks/invoice_adjustments/public/billing/invoice.py": "6a6012db5af413e565687157261aba1e21aeebe4542dd2d528d8ec1ee902ff15",
+      "scenarios/workloads/sessions/tasks/invoice_adjustments/public/billing/money.py": "d64a00ede999327697d82c64857f0a19f6dff0128059879e0fd3e0d486d607f4",
+      "scenarios/workloads/sessions/tasks/invoice_adjustments/public/tests/public_cases.json": "96b5ff86c6587a2293c47d8786dbb608c25aeef4922355caedd825a68eaadc83",
+      "scenarios/workloads/sessions/tasks/release_gate/private/answers.json": "6549b664878ca397a8c3ba037b947cb6eb4b07e13f35e3c5f1690412bd12ddc2",
+      "scenarios/workloads/sessions/tasks/release_gate/public/README.md": "c62b0d360c853f8574faf54d8d3a8dd5039abc0660ac77bfa3f7d152d20d14b2",
+      "scenarios/workloads/sessions/tasks/release_gate/public/docs/candidate-summary.md": "13283350b5062e0e85ecb53842a25fb9b31ffbfab80af41740018196c06d75d8",
+      "scenarios/workloads/sessions/tasks/release_gate/public/docs/exception-draft.md": "436651e48454dfed606fd4aae0189894010a1bcd056eebe605359ee8c53fbf71",
+      "scenarios/workloads/sessions/tasks/release_gate/public/docs/exception-signed.md": "4d383062fe0ad52165f8ea55f6f8a8d2359e23210c634fafc130d6f40ddb30b7",
+      "scenarios/workloads/sessions/tasks/release_gate/public/docs/late-note.md": "0151ea36ef1fb415b080ef1b3c92b76dc6cdf73eef842de9ea6d06fa21e5a857",
+      "scenarios/workloads/sessions/tasks/release_gate/public/docs/policy-current.md": "ac974e99572151bf45ee9d0252c981fa0ea28a589492fcf938a6f600f617c2ca",
+      "scenarios/workloads/sessions/tasks/release_gate/public/docs/policy-obsolete.md": "0b14230f83d869bc8d6160636bca02c6def5a291eca2cb510d05f6cdc4ae2712",
+      "scenarios/workloads/sessions/tasks/reservation_book/private/grading_cases.json": "1db863a1d3391a911a8588f49bbb5a6d92bd027a00c262893385170bc9cf0ad1",
+      "scenarios/workloads/sessions/tasks/reservation_book/private/reference.json": "f64dd9d6ca0d50475381f68e7b355d336c2c81d39f1668c67549854f34262ba8",
+      "scenarios/workloads/sessions/tasks/reservation_book/public/README.md": "f4b24a23f3e3e10cff7b5eb842ba88d86b5e03851f67174d7e3d51312d5964a0",
+      "scenarios/workloads/sessions/tasks/reservation_book/public/stockflow/engine.py": "0f03715b734ab6d1b0cb9c2870b63baf77162fbfd10958b86b82b7e2ed4af6f7",
+      "scenarios/workloads/sessions/tasks/reservation_book/public/stockflow/ledger.py": "ab4ca659d2b5399cd43e251a1078734b338a063f94b3fc878b53abd3bbc5113a",
+      "scenarios/workloads/sessions/tasks/reservation_book/public/stockflow/normalize.py": "2ddb9007489b26468c9b67755f656a4a82d9cf6d6f6c9165343509cb2785b526",
+      "scenarios/workloads/sessions/tasks/reservation_book/public/tests/public_cases.json": "4a6d9d5d18220d0ab3a008e7ada4017d919e37845892f768c794c6302c71df28",
+      "scenarios/workloads/sessions/tasks/sales_net/private/answers.json": "64b11ca7befa0d6c8f6428f442b5eebf408b0d1a79c7d84dce92577f2e20c69a",
+      "scenarios/workloads/sessions/tasks/sales_net/public/README.md": "d36302015bcd50cbba3e75012cae7c6345b61da9d3e8189d69844519e9fe3aef",
+      "scenarios/workloads/sessions/tasks/sales_net/public/tables/ledger.csv": "57189a1d81cd80fea484467d8f134a2556f4465720f7cf33a90ba3863f9d17f6",
+      "scenarios/workloads/sessions/tasks/service_latency/private/answers.json": "fd7822dee720110138676830378ed04c80efde4b5e3473f81698875cd6706f92",
+      "scenarios/workloads/sessions/tasks/service_latency/public/README.md": "09506fbd7bc240a7d0afb8fa9eb68ffd538d6ea04c5c539b935104658b7f6723",
+      "scenarios/workloads/sessions/tasks/service_latency/public/tables/requests.csv": "6220963a618620b3b58da0c4b6377f694c813e7d5578c6dd9593c07d78d1e162",
+      "scripts/benchmark_client.py": "0ab6e173dd9cbbad85611fb408feceff81e1846cd94edb811894ca24e79abfa1"
+    },
+    "status": "GENERATED_NOT_EXECUTED"
+  }
+}

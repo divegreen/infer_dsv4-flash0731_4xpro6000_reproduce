@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "decision_id": "agent-confirm-continuation-r1",
+  "rationale": "Complete only the originally preregistered but unexecuted DSpark Agent .60 Session/s seed202611643 window. c15 failed at .60 seed202611642 session138 reservation_book turn2: full HTTP/DONE usage4096 output tokens but finish_reason length and unfinished tool deltas, so the frozen client returned request_error and skipped the final planned phase. Preserve c15 FAILED and all started .30/.60 windows, including complete .30 windows; do not retry any started seed, discard failures, increase output/tool budgets, alter client/grader/finite-session-v1 or reinterpret whole-run health. New c16 uses the same config, task assignments, arrival offsets, session cache isolation, six-task C1 warmup, service protocol and original seed643. Phase IDs may differ but normalized workload/arrivals must match the unexecuted original phase. This is explicit continuation for coverage/reliability, not a way to obtain a passing capacity point: c15 still blocks matching confirmations and the frozen global unresolved-audit behavior remains. Run only after failed c15 has stopped and GPU0-3/port8260 are verified idle. No Stage D or extra parameter sweep.",
+  "evidence_references": [
+    "sessions/decisions/agent-confirm-r1.json",
+    "sessions/logs/c15-failure-checkpoint-r1.json",
+    "scenarios/results/session-dspark3-agent-confirm/status.json",
+    "scenarios/results/session-dspark3-agent-confirm/session-plan.json",
+    "sessions/finite-session-v1.md"
+  ],
+  "service_protocol": {
+    "timeout_s": 180,
+    "session_timeout_s": 600,
+    "max_active_sessions": 64
+  },
+  "warmup_seed": 202611609,
+  "supervisor_timeout_s": 2400,
+  "selections": [
+    {
+      "selection_id": "dspark-unexecuted-tail",
+      "kind": "agent",
+      "rates": [
+        0.6
+      ],
+      "duration_s": 300,
+      "seeds": [
+        202611643
+      ],
+      "role": "confirm",
+      "cache_scope": "session",
+      "candidates": [
+        {
+          "experiment_id": "session-dspark3-agent-confirm-tail",
+          "candidate": "dspark3-apc",
+          "config_ref": "session-dspark3-agent-confirm.json",
+          "dp_routing": "none"
+        }
+      ]
+    }
+  ]
+}

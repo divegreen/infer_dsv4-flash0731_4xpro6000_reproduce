@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "experiment_id": "session-tp4-apc-pilot",
+  "base_url": "http://127.0.0.1:8260",
+  "model": "dsv4",
+  "timeout_s": 180,
+  "session_timeout_s": 600,
+  "max_active_sessions": 64,
+  "phases": [
+    {
+      "id": "warm-replay-shapes",
+      "kind": "replay",
+      "arrival": "closed",
+      "role": "warmup",
+      "sessions": 3,
+      "concurrency": 1,
+      "profiles": [
+        "coding",
+        "research",
+        "data"
+      ],
+      "seed": 202611601,
+      "cache_scope": "session"
+    },
+    {
+      "id": "pilot-replay-c2",
+      "kind": "replay",
+      "arrival": "closed",
+      "role": "pilot",
+      "sessions": 6,
+      "concurrency": 2,
+      "profiles": [
+        "coding",
+        "research",
+        "data"
+      ],
+      "seed": 202611602,
+      "cache_scope": "session"
+    },
+    {
+      "id": "pilot-agent-c1",
+      "kind": "agent",
+      "arrival": "closed",
+      "role": "pilot",
+      "sessions": 6,
+      "concurrency": 1,
+      "tasks": [
+        "reservation_book",
+        "invoice_adjustments",
+        "release_gate",
+        "failover_policy",
+        "sales_net",
+        "service_latency"
+      ],
+      "seed": 202611603,
+      "cache_scope": "session",
+      "max_turns": 12,
+      "max_tools": 32,
+      "max_output_tokens": 1024
+    }
+  ]
+}

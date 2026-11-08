@@ -1,0 +1,3901 @@
+{
+  "schema_version": 1,
+  "description": "Native experiment catalog. Inputs are shared; process directories contain ordered execution definitions. Historical IDs only identify archived provenance.",
+  "experiments": [
+    {
+      "id": "architecture-comm4",
+      "legacy_id": "comm4",
+      "topic": "architecture",
+      "process": "process1",
+      "stage": "smoke",
+      "process_key": "architecture/process1-smoke",
+      "config": null,
+      "plan": null,
+      "timeout": 300,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "original-architecture-comm4",
+      "hypothesis": null,
+      "runner": "research/dsv4-flash0731/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/torchrun",
+        "--standalone",
+        "--nnodes=1",
+        "--nproc-per-node=4",
+        "research/dsv4-flash0731/scripts/collectives.py"
+      ],
+      "environment": {
+        "NCCL_DEBUG": "INFO"
+      },
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": 290,
+          "job_index": null,
+          "archive_member": "WORKSPACE_REPRODUCTION.md",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": []
+    },
+    {
+      "id": "architecture-comm4-p2p-sys",
+      "legacy_id": "comm4-p2p-sys",
+      "topic": "architecture",
+      "process": "process1",
+      "stage": "smoke",
+      "process_key": "architecture/process1-smoke",
+      "config": null,
+      "plan": null,
+      "timeout": 300,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "architecture-comm4",
+      "hypothesis": null,
+      "runner": "research/dsv4-flash0731/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/torchrun",
+        "--standalone",
+        "--nnodes=1",
+        "--nproc-per-node=4",
+        "research/dsv4-flash0731/scripts/collectives.py"
+      ],
+      "environment": {
+        "NCCL_DEBUG": "INFO",
+        "NCCL_P2P_LEVEL": "SYS"
+      },
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": 294,
+          "job_index": null,
+          "archive_member": "WORKSPACE_REPRODUCTION.md",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": []
+    },
+    {
+      "id": "architecture-tp4-marlin-smoke-review",
+      "legacy_id": "tp4-marlin-smoke-review",
+      "topic": "architecture",
+      "process": "process1",
+      "stage": "smoke",
+      "process_key": "architecture/process1-smoke",
+      "config": "research/dsv4-flash0731/experiments/architecture/configs/tp4-marlin-eager.json",
+      "plan": null,
+      "timeout": 1800,
+      "suite": "smoke",
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "original-workspace",
+      "hypothesis": null,
+      "runner": "research/dsv4-flash0731/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scripts/serve_experiment.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/architecture/configs/tp4-marlin-eager.json",
+        "--suite",
+        "smoke"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": 298,
+          "job_index": null,
+          "archive_member": "WORKSPACE_REPRODUCTION.md",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": []
+    },
+    {
+      "id": "architecture-dp2-pp2-ep-marlin-screen",
+      "legacy_id": "dp2-pp2-ep-marlin-screen",
+      "topic": "architecture",
+      "process": "process2",
+      "stage": "screen",
+      "process_key": "architecture/process2-screen",
+      "config": "research/dsv4-flash0731/experiments/architecture/configs/dp2-pp2-ep-marlin.json",
+      "plan": null,
+      "timeout": 1800,
+      "suite": "smoke,screen",
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "original-workspace",
+      "hypothesis": null,
+      "runner": "research/dsv4-flash0731/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scripts/serve_experiment.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/architecture/configs/dp2-pp2-ep-marlin.json",
+        "--suite",
+        "smoke,screen"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": 311,
+          "job_index": null,
+          "archive_member": "WORKSPACE_REPRODUCTION.md",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "architecture/process1-smoke"
+      ]
+    },
+    {
+      "id": "architecture-dp2-pp2-tensor-moe-marlin-screen",
+      "legacy_id": "dp2-pp2-tensor-moe-marlin-screen",
+      "topic": "architecture",
+      "process": "process2",
+      "stage": "screen",
+      "process_key": "architecture/process2-screen",
+      "config": "research/dsv4-flash0731/experiments/architecture/configs/dp2-pp2-tensor-moe-marlin.json",
+      "plan": null,
+      "timeout": 1800,
+      "suite": "smoke,screen",
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "original-workspace",
+      "hypothesis": null,
+      "runner": "research/dsv4-flash0731/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scripts/serve_experiment.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/architecture/configs/dp2-pp2-tensor-moe-marlin.json",
+        "--suite",
+        "smoke,screen"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": 318,
+          "job_index": null,
+          "archive_member": "WORKSPACE_REPRODUCTION.md",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "architecture/process1-smoke"
+      ]
+    },
+    {
+      "id": "architecture-dp4-ep-marlin-screen",
+      "legacy_id": "dp4-ep-marlin-screen",
+      "topic": "architecture",
+      "process": "process2",
+      "stage": "screen",
+      "process_key": "architecture/process2-screen",
+      "config": "research/dsv4-flash0731/experiments/architecture/configs/dp4-ep-marlin.json",
+      "plan": null,
+      "timeout": 1800,
+      "suite": "smoke,screen",
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "original-workspace",
+      "hypothesis": null,
+      "runner": "research/dsv4-flash0731/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scripts/serve_experiment.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/architecture/configs/dp4-ep-marlin.json",
+        "--suite",
+        "smoke,screen"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": 325,
+          "job_index": null,
+          "archive_member": "WORKSPACE_REPRODUCTION.md",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "architecture/process1-smoke"
+      ]
+    },
+    {
+      "id": "architecture-dp4-tensor-moe-marlin-screen",
+      "legacy_id": "dp4-tensor-moe-marlin-screen",
+      "topic": "architecture",
+      "process": "process2",
+      "stage": "screen",
+      "process_key": "architecture/process2-screen",
+      "config": "research/dsv4-flash0731/experiments/architecture/configs/dp4-tensor-moe-marlin.json",
+      "plan": null,
+      "timeout": 1800,
+      "suite": "smoke,screen",
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "original-workspace",
+      "hypothesis": null,
+      "runner": "research/dsv4-flash0731/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scripts/serve_experiment.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/architecture/configs/dp4-tensor-moe-marlin.json",
+        "--suite",
+        "smoke,screen"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": 332,
+          "job_index": null,
+          "archive_member": "WORKSPACE_REPRODUCTION.md",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "architecture/process1-smoke"
+      ]
+    },
+    {
+      "id": "architecture-pp4-marlin-screen",
+      "legacy_id": "pp4-marlin-screen",
+      "topic": "architecture",
+      "process": "process2",
+      "stage": "screen",
+      "process_key": "architecture/process2-screen",
+      "config": "research/dsv4-flash0731/experiments/architecture/configs/pp4-marlin.json",
+      "plan": null,
+      "timeout": 1800,
+      "suite": "smoke,screen",
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "original-workspace",
+      "hypothesis": null,
+      "runner": "research/dsv4-flash0731/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scripts/serve_experiment.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/architecture/configs/pp4-marlin.json",
+        "--suite",
+        "smoke,screen"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": 339,
+          "job_index": null,
+          "archive_member": "WORKSPACE_REPRODUCTION.md",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "architecture/process1-smoke"
+      ]
+    },
+    {
+      "id": "architecture-replicas2-pp2-marlin-screen",
+      "legacy_id": "replicas2-pp2-marlin-screen",
+      "topic": "architecture",
+      "process": "process2",
+      "stage": "screen",
+      "process_key": "architecture/process2-screen",
+      "config": "research/dsv4-flash0731/experiments/architecture/configs/pp2-marlin.json",
+      "plan": null,
+      "timeout": 1800,
+      "suite": "smoke,screen",
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "original-workspace",
+      "hypothesis": null,
+      "runner": "research/dsv4-flash0731/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scripts/serve_replicas.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/architecture/configs/pp2-marlin.json",
+        "--suite",
+        "smoke,screen",
+        "--metrics-snapshots"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": 423,
+          "job_index": null,
+          "archive_member": "WORKSPACE_REPRODUCTION.md",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "architecture/process1-smoke"
+      ]
+    },
+    {
+      "id": "architecture-replicas2-tp2-marlin-screen",
+      "legacy_id": "replicas2-tp2-marlin-screen",
+      "topic": "architecture",
+      "process": "process2",
+      "stage": "screen",
+      "process_key": "architecture/process2-screen",
+      "config": "research/dsv4-flash0731/experiments/architecture/configs/tp2-marlin.json",
+      "plan": null,
+      "timeout": 1800,
+      "suite": "smoke,screen",
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "original-workspace",
+      "hypothesis": null,
+      "runner": "research/dsv4-flash0731/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scripts/serve_replicas.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/architecture/configs/tp2-marlin.json",
+        "--suite",
+        "smoke,screen",
+        "--metrics-snapshots"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": 416,
+          "job_index": null,
+          "archive_member": "WORKSPACE_REPRODUCTION.md",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "architecture/process1-smoke"
+      ]
+    },
+    {
+      "id": "architecture-tp2-dp2-ep-marlin-screen",
+      "legacy_id": "tp2-dp2-ep-marlin-screen",
+      "topic": "architecture",
+      "process": "process2",
+      "stage": "screen",
+      "process_key": "architecture/process2-screen",
+      "config": "research/dsv4-flash0731/experiments/architecture/configs/tp2-dp2-ep-marlin.json",
+      "plan": null,
+      "timeout": 1800,
+      "suite": "smoke,screen",
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "original-workspace",
+      "hypothesis": null,
+      "runner": "research/dsv4-flash0731/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scripts/serve_experiment.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/architecture/configs/tp2-dp2-ep-marlin.json",
+        "--suite",
+        "smoke,screen"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": 346,
+          "job_index": null,
+          "archive_member": "WORKSPACE_REPRODUCTION.md",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "architecture/process1-smoke"
+      ]
+    },
+    {
+      "id": "architecture-tp2-dp2-tensor-moe-marlin-screen",
+      "legacy_id": "tp2-dp2-tensor-moe-marlin-screen",
+      "topic": "architecture",
+      "process": "process2",
+      "stage": "screen",
+      "process_key": "architecture/process2-screen",
+      "config": "research/dsv4-flash0731/experiments/architecture/configs/tp2-dp2-tensor-moe-marlin.json",
+      "plan": null,
+      "timeout": 1800,
+      "suite": "smoke,screen",
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "original-workspace",
+      "hypothesis": null,
+      "runner": "research/dsv4-flash0731/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scripts/serve_experiment.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/architecture/configs/tp2-dp2-tensor-moe-marlin.json",
+        "--suite",
+        "smoke,screen"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": 353,
+          "job_index": null,
+          "archive_member": "WORKSPACE_REPRODUCTION.md",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "architecture/process1-smoke"
+      ]
+    },
+    {
+      "id": "architecture-tp2-pp2-ep-marlin-screen",
+      "legacy_id": "tp2-pp2-ep-marlin-screen",
+      "topic": "architecture",
+      "process": "process2",
+      "stage": "screen",
+      "process_key": "architecture/process2-screen",
+      "config": "research/dsv4-flash0731/experiments/architecture/configs/tp2-pp2-ep-marlin.json",
+      "plan": null,
+      "timeout": 1800,
+      "suite": "smoke,screen",
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "original-workspace",
+      "hypothesis": null,
+      "runner": "research/dsv4-flash0731/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scripts/serve_experiment.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/architecture/configs/tp2-pp2-ep-marlin.json",
+        "--suite",
+        "smoke,screen"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": 360,
+          "job_index": null,
+          "archive_member": "WORKSPACE_REPRODUCTION.md",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "architecture/process1-smoke"
+      ]
+    },
+    {
+      "id": "architecture-tp2-pp2-marlin-screen",
+      "legacy_id": "tp2-pp2-marlin-screen",
+      "topic": "architecture",
+      "process": "process2",
+      "stage": "screen",
+      "process_key": "architecture/process2-screen",
+      "config": "research/dsv4-flash0731/experiments/architecture/configs/tp2-pp2-marlin.json",
+      "plan": null,
+      "timeout": 1800,
+      "suite": "smoke,screen",
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "original-workspace",
+      "hypothesis": null,
+      "runner": "research/dsv4-flash0731/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scripts/serve_experiment.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/architecture/configs/tp2-pp2-marlin.json",
+        "--suite",
+        "smoke,screen"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": 367,
+          "job_index": null,
+          "archive_member": "WORKSPACE_REPRODUCTION.md",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "architecture/process1-smoke"
+      ]
+    },
+    {
+      "id": "architecture-tp4-deepgemm-screen",
+      "legacy_id": "tp4-deepgemm-screen",
+      "topic": "architecture",
+      "process": "process2",
+      "stage": "screen",
+      "process_key": "architecture/process2-screen",
+      "config": "research/dsv4-flash0731/experiments/architecture/configs/tp4-deepgemm.json",
+      "plan": null,
+      "timeout": 1800,
+      "suite": "smoke,screen",
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "original-workspace",
+      "hypothesis": null,
+      "runner": "research/dsv4-flash0731/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scripts/serve_experiment.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/architecture/configs/tp4-deepgemm.json",
+        "--suite",
+        "smoke,screen"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": 374,
+          "job_index": null,
+          "archive_member": "WORKSPACE_REPRODUCTION.md",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "architecture/process1-smoke"
+      ]
+    },
+    {
+      "id": "architecture-tp4-ep-marlin-screen",
+      "legacy_id": "tp4-ep-marlin-screen",
+      "topic": "architecture",
+      "process": "process2",
+      "stage": "screen",
+      "process_key": "architecture/process2-screen",
+      "config": "research/dsv4-flash0731/experiments/architecture/configs/tp4-ep-marlin.json",
+      "plan": null,
+      "timeout": 1800,
+      "suite": "smoke,screen",
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "original-workspace",
+      "hypothesis": null,
+      "runner": "research/dsv4-flash0731/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scripts/serve_experiment.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/architecture/configs/tp4-ep-marlin.json",
+        "--suite",
+        "smoke,screen"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": 381,
+          "job_index": null,
+          "archive_member": "WORKSPACE_REPRODUCTION.md",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "architecture/process1-smoke"
+      ]
+    },
+    {
+      "id": "architecture-tp4-marlin-dspark3-screen",
+      "legacy_id": "tp4-marlin-dspark3-screen",
+      "topic": "architecture",
+      "process": "process2",
+      "stage": "screen",
+      "process_key": "architecture/process2-screen",
+      "config": "research/dsv4-flash0731/experiments/architecture/configs/tp4-marlin-dspark3.json",
+      "plan": null,
+      "timeout": 1800,
+      "suite": "smoke,screen",
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "original-workspace",
+      "hypothesis": null,
+      "runner": "research/dsv4-flash0731/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scripts/serve_experiment.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/architecture/configs/tp4-marlin-dspark3.json",
+        "--suite",
+        "smoke,screen"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": 388,
+          "job_index": null,
+          "archive_member": "WORKSPACE_REPRODUCTION.md",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "architecture/process1-smoke"
+      ]
+    },
+    {
+      "id": "architecture-tp4-marlin-dspark5-screen",
+      "legacy_id": "tp4-marlin-dspark5-screen",
+      "topic": "architecture",
+      "process": "process2",
+      "stage": "screen",
+      "process_key": "architecture/process2-screen",
+      "config": "research/dsv4-flash0731/experiments/architecture/configs/tp4-marlin-dspark5.json",
+      "plan": null,
+      "timeout": 1800,
+      "suite": "smoke,screen",
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "original-workspace",
+      "hypothesis": null,
+      "runner": "research/dsv4-flash0731/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scripts/serve_experiment.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/architecture/configs/tp4-marlin-dspark5.json",
+        "--suite",
+        "smoke,screen",
+        "--chat-probe"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": 395,
+          "job_index": null,
+          "archive_member": "WORKSPACE_REPRODUCTION.md",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "architecture/process1-smoke"
+      ]
+    },
+    {
+      "id": "architecture-tp4-marlin-dspark7-screen",
+      "legacy_id": "tp4-marlin-dspark7-screen",
+      "topic": "architecture",
+      "process": "process2",
+      "stage": "screen",
+      "process_key": "architecture/process2-screen",
+      "config": "research/dsv4-flash0731/experiments/architecture/configs/tp4-marlin-dspark7.json",
+      "plan": null,
+      "timeout": 1800,
+      "suite": "smoke,screen",
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "original-workspace",
+      "hypothesis": null,
+      "runner": "research/dsv4-flash0731/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scripts/serve_experiment.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/architecture/configs/tp4-marlin-dspark7.json",
+        "--suite",
+        "smoke,screen"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": 402,
+          "job_index": null,
+          "archive_member": "WORKSPACE_REPRODUCTION.md",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "architecture/process1-smoke"
+      ]
+    },
+    {
+      "id": "architecture-tp4-marlin-graph-screen",
+      "legacy_id": "tp4-marlin-graph-screen",
+      "topic": "architecture",
+      "process": "process2",
+      "stage": "screen",
+      "process_key": "architecture/process2-screen",
+      "config": "research/dsv4-flash0731/experiments/architecture/configs/tp4-marlin.json",
+      "plan": null,
+      "timeout": 1800,
+      "suite": "smoke,screen",
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "original-workspace",
+      "hypothesis": null,
+      "runner": "research/dsv4-flash0731/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scripts/serve_experiment.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/architecture/configs/tp4-marlin.json",
+        "--suite",
+        "smoke,screen"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": 409,
+          "job_index": null,
+          "archive_member": "WORKSPACE_REPRODUCTION.md",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "architecture/process1-smoke"
+      ]
+    },
+    {
+      "id": "architecture-dp4-ep-marlin-full-fresh",
+      "legacy_id": "dp4-ep-marlin-full-fresh",
+      "topic": "architecture",
+      "process": "process3",
+      "stage": "full",
+      "process_key": "architecture/process3-full",
+      "config": "research/dsv4-flash0731/experiments/architecture/configs/dp4-ep-marlin-chat.json",
+      "plan": null,
+      "timeout": 2400,
+      "suite": "full",
+      "rounds": 2,
+      "gpus": "0,1,2,3",
+      "reference": "original-workspace",
+      "hypothesis": null,
+      "runner": "research/dsv4-flash0731/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scripts/serve_experiment.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/architecture/configs/dp4-ep-marlin-chat.json",
+        "--suite",
+        "full",
+        "--rounds",
+        "2",
+        "--fresh-connections",
+        "--chat-probe"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": 444,
+          "job_index": null,
+          "archive_member": "WORKSPACE_REPRODUCTION.md",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [
+        "architecture-dp4-ep-marlin-screen"
+      ],
+      "depends_on": [
+        "architecture/process2-screen"
+      ]
+    },
+    {
+      "id": "architecture-dp4-tensor-moe-marlin-full-fresh",
+      "legacy_id": "dp4-tensor-moe-marlin-full-fresh",
+      "topic": "architecture",
+      "process": "process3",
+      "stage": "full",
+      "process_key": "architecture/process3-full",
+      "config": "research/dsv4-flash0731/experiments/architecture/configs/dp4-tensor-moe-marlin.json",
+      "plan": null,
+      "timeout": 2400,
+      "suite": "full",
+      "rounds": 2,
+      "gpus": "0,1,2,3",
+      "reference": "original-workspace",
+      "hypothesis": null,
+      "runner": "research/dsv4-flash0731/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scripts/serve_experiment.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/architecture/configs/dp4-tensor-moe-marlin.json",
+        "--suite",
+        "full",
+        "--rounds",
+        "2",
+        "--fresh-connections"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": 465,
+          "job_index": null,
+          "archive_member": "WORKSPACE_REPRODUCTION.md",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [
+        "architecture-dp4-tensor-moe-marlin-screen"
+      ],
+      "depends_on": [
+        "architecture/process2-screen"
+      ]
+    },
+    {
+      "id": "architecture-replicas2-tp2-marlin-full-fresh",
+      "legacy_id": "replicas2-tp2-marlin-full-fresh",
+      "topic": "architecture",
+      "process": "process3",
+      "stage": "full",
+      "process_key": "architecture/process3-full",
+      "config": "research/dsv4-flash0731/experiments/architecture/configs/tp2-marlin.json",
+      "plan": null,
+      "timeout": 2400,
+      "suite": "full",
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "original-workspace",
+      "hypothesis": null,
+      "runner": "research/dsv4-flash0731/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scripts/serve_replicas.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/architecture/configs/tp2-marlin.json",
+        "--suite",
+        "full",
+        "--fresh-connections",
+        "--metrics-snapshots"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": 472,
+          "job_index": null,
+          "archive_member": "WORKSPACE_REPRODUCTION.md",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [
+        "architecture-replicas2-tp2-marlin-screen"
+      ],
+      "depends_on": [
+        "architecture/process2-screen"
+      ]
+    },
+    {
+      "id": "architecture-tp2-pp2-marlin-full-fresh",
+      "legacy_id": "tp2-pp2-marlin-full-fresh",
+      "topic": "architecture",
+      "process": "process3",
+      "stage": "full",
+      "process_key": "architecture/process3-full",
+      "config": "research/dsv4-flash0731/experiments/architecture/configs/tp2-pp2-marlin.json",
+      "plan": null,
+      "timeout": 2400,
+      "suite": "full",
+      "rounds": 2,
+      "gpus": "0,1,2,3",
+      "reference": "original-workspace",
+      "hypothesis": null,
+      "runner": "research/dsv4-flash0731/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scripts/serve_experiment.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/architecture/configs/tp2-pp2-marlin.json",
+        "--suite",
+        "full",
+        "--rounds",
+        "2",
+        "--fresh-connections"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": 458,
+          "job_index": null,
+          "archive_member": "WORKSPACE_REPRODUCTION.md",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [
+        "architecture-tp2-pp2-marlin-screen"
+      ],
+      "depends_on": [
+        "architecture/process2-screen"
+      ]
+    },
+    {
+      "id": "architecture-tp4-marlin-dspark3-full-fresh",
+      "legacy_id": "tp4-marlin-dspark3-full-fresh",
+      "topic": "architecture",
+      "process": "process3",
+      "stage": "full",
+      "process_key": "architecture/process3-full",
+      "config": "research/dsv4-flash0731/experiments/architecture/configs/tp4-marlin-dspark3.json",
+      "plan": null,
+      "timeout": 2400,
+      "suite": "full",
+      "rounds": 2,
+      "gpus": "0,1,2,3",
+      "reference": "original-workspace",
+      "hypothesis": null,
+      "runner": "research/dsv4-flash0731/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scripts/serve_experiment.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/architecture/configs/tp4-marlin-dspark3.json",
+        "--suite",
+        "full",
+        "--rounds",
+        "2",
+        "--fresh-connections",
+        "--chat-probe"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": 451,
+          "job_index": null,
+          "archive_member": "WORKSPACE_REPRODUCTION.md",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [
+        "architecture-tp4-marlin-dspark3-screen"
+      ],
+      "depends_on": [
+        "architecture/process2-screen"
+      ]
+    },
+    {
+      "id": "architecture-tp4-marlin-full-fresh",
+      "legacy_id": "tp4-marlin-full-fresh",
+      "topic": "architecture",
+      "process": "process3",
+      "stage": "full",
+      "process_key": "architecture/process3-full",
+      "config": "research/dsv4-flash0731/experiments/architecture/configs/tp4-marlin-chat.json",
+      "plan": null,
+      "timeout": 2400,
+      "suite": "full",
+      "rounds": 2,
+      "gpus": "0,1,2,3",
+      "reference": "original-workspace",
+      "hypothesis": null,
+      "runner": "research/dsv4-flash0731/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scripts/serve_experiment.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/architecture/configs/tp4-marlin-chat.json",
+        "--suite",
+        "full",
+        "--rounds",
+        "2",
+        "--fresh-connections",
+        "--chat-probe"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": 437,
+          "job_index": null,
+          "archive_member": "WORKSPACE_REPRODUCTION.md",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [
+        "architecture-tp4-marlin-graph-screen"
+      ],
+      "depends_on": [
+        "architecture/process2-screen"
+      ]
+    },
+    {
+      "id": "architecture-dp4-ep-marlin-long-fresh",
+      "legacy_id": "dp4-ep-marlin-long-fresh",
+      "topic": "architecture",
+      "process": "process4",
+      "stage": "long",
+      "process_key": "architecture/process4-long",
+      "config": "research/dsv4-flash0731/experiments/architecture/configs/dp4-ep-marlin-64k.json",
+      "plan": null,
+      "timeout": 2400,
+      "suite": "long",
+      "rounds": 2,
+      "gpus": "0,1,2,3",
+      "reference": "original-workspace",
+      "hypothesis": null,
+      "runner": "research/dsv4-flash0731/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scripts/serve_experiment.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/architecture/configs/dp4-ep-marlin-64k.json",
+        "--suite",
+        "long",
+        "--rounds",
+        "2",
+        "--fresh-connections"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": 493,
+          "job_index": null,
+          "archive_member": "WORKSPACE_REPRODUCTION.md",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [
+        "architecture-dp4-ep-marlin-full-fresh"
+      ],
+      "depends_on": [
+        "architecture/process3-full"
+      ]
+    },
+    {
+      "id": "architecture-tp2-pp2-marlin-long-fresh",
+      "legacy_id": "tp2-pp2-marlin-long-fresh",
+      "topic": "architecture",
+      "process": "process4",
+      "stage": "long",
+      "process_key": "architecture/process4-long",
+      "config": "research/dsv4-flash0731/experiments/architecture/configs/tp2-pp2-marlin-64k.json",
+      "plan": null,
+      "timeout": 2400,
+      "suite": "long",
+      "rounds": 2,
+      "gpus": "0,1,2,3",
+      "reference": "original-workspace",
+      "hypothesis": null,
+      "runner": "research/dsv4-flash0731/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scripts/serve_experiment.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/architecture/configs/tp2-pp2-marlin-64k.json",
+        "--suite",
+        "long",
+        "--rounds",
+        "2",
+        "--fresh-connections"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": 500,
+          "job_index": null,
+          "archive_member": "WORKSPACE_REPRODUCTION.md",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [
+        "architecture-tp2-pp2-marlin-full-fresh"
+      ],
+      "depends_on": [
+        "architecture/process3-full"
+      ]
+    },
+    {
+      "id": "architecture-tp4-marlin-dspark3-long-fresh",
+      "legacy_id": "tp4-marlin-dspark3-long-fresh",
+      "topic": "architecture",
+      "process": "process4",
+      "stage": "long",
+      "process_key": "architecture/process4-long",
+      "config": "research/dsv4-flash0731/experiments/architecture/configs/tp4-marlin-dspark3-64k.json",
+      "plan": null,
+      "timeout": 2400,
+      "suite": "long",
+      "rounds": 2,
+      "gpus": "0,1,2,3",
+      "reference": "original-workspace",
+      "hypothesis": null,
+      "runner": "research/dsv4-flash0731/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scripts/serve_experiment.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/architecture/configs/tp4-marlin-dspark3-64k.json",
+        "--suite",
+        "long",
+        "--rounds",
+        "2",
+        "--fresh-connections"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": 507,
+          "job_index": null,
+          "archive_member": "WORKSPACE_REPRODUCTION.md",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [
+        "architecture-tp4-marlin-dspark3-full-fresh"
+      ],
+      "depends_on": [
+        "architecture/process3-full"
+      ]
+    },
+    {
+      "id": "architecture-tp4-marlin-long-fresh",
+      "legacy_id": "tp4-marlin-long-fresh",
+      "topic": "architecture",
+      "process": "process4",
+      "stage": "long",
+      "process_key": "architecture/process4-long",
+      "config": "research/dsv4-flash0731/experiments/architecture/configs/tp4-marlin-64k.json",
+      "plan": null,
+      "timeout": 2400,
+      "suite": "long",
+      "rounds": 2,
+      "gpus": "0,1,2,3",
+      "reference": "original-workspace",
+      "hypothesis": null,
+      "runner": "research/dsv4-flash0731/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scripts/serve_experiment.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/architecture/configs/tp4-marlin-64k.json",
+        "--suite",
+        "long",
+        "--rounds",
+        "2",
+        "--fresh-connections"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": 486,
+          "job_index": null,
+          "archive_member": "WORKSPACE_REPRODUCTION.md",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [
+        "architecture-tp4-marlin-full-fresh"
+      ],
+      "depends_on": [
+        "architecture/process3-full"
+      ]
+    },
+    {
+      "id": "scenarios-tp4-nocache",
+      "legacy_id": "s01-tp4-nocache",
+      "topic": "scenarios",
+      "process": "process1",
+      "stage": "scenarios",
+      "process_key": "scenarios/process1-scenarios",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/tp4-marlin-nocache-128k.json",
+      "plan": null,
+      "timeout": 2400,
+      "suite": "decode,context,arrival,cache",
+      "rounds": 2,
+      "gpus": "0,1,2,3",
+      "reference": "original-s01",
+      "hypothesis": null,
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_scenarios.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/tp4-marlin-nocache-128k.json",
+        "--suites",
+        "decode,context,arrival,cache",
+        "--rounds",
+        "2"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": 548,
+          "job_index": null,
+          "archive_member": "WORKSPACE_REPRODUCTION.md",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "architecture/process4-long"
+      ]
+    },
+    {
+      "id": "scenarios-tp4-apc",
+      "legacy_id": "s02-tp4-apc",
+      "topic": "scenarios",
+      "process": "process1",
+      "stage": "scenarios",
+      "process_key": "scenarios/process1-scenarios",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/tp4-marlin-apc-128k.json",
+      "plan": null,
+      "timeout": 2400,
+      "suite": "cache",
+      "rounds": 2,
+      "gpus": "0,1,2,3",
+      "reference": "scenarios-tp4-nocache",
+      "hypothesis": null,
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_scenarios.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/tp4-marlin-apc-128k.json",
+        "--suites",
+        "cache",
+        "--rounds",
+        "2",
+        "--agent-modes",
+        "replay,closed-loop,quality"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": 553,
+          "job_index": null,
+          "archive_member": "WORKSPACE_REPRODUCTION.md",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "architecture/process4-long"
+      ]
+    },
+    {
+      "id": "scenarios-tp4-dspark3-retry2",
+      "legacy_id": "s03r2-tp4-dspark3",
+      "topic": "scenarios",
+      "process": "process1",
+      "stage": "scenarios",
+      "process_key": "scenarios/process1-scenarios",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/tp4-marlin-dspark3-nocache-128k.json",
+      "plan": null,
+      "timeout": 2400,
+      "suite": "decode,arrival",
+      "rounds": 2,
+      "gpus": "0,1,2,3",
+      "reference": "scenarios-tp4-nocache;scenarios-tp4-agent-nocache",
+      "hypothesis": "DSpark3 may improve long-output low-concurrency latency but lose on contention; natural-EOS quality is separate",
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_scenarios.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/tp4-marlin-dspark3-nocache-128k.json",
+        "--suites",
+        "decode,arrival",
+        "--rounds",
+        "2",
+        "--agent-modes",
+        "replay,closed-loop,quality"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 0,
+          "archive_member": "research/dsv4-flash0731/scenarios-20261105/series-core-resume.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "architecture/process4-long"
+      ]
+    },
+    {
+      "id": "scenarios-tp2pp2",
+      "legacy_id": "s04-tp2pp2",
+      "topic": "scenarios",
+      "process": "process1",
+      "stage": "scenarios",
+      "process_key": "scenarios/process1-scenarios",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/tp2-pp2-marlin-nocache-128k.json",
+      "plan": null,
+      "timeout": 2400,
+      "suite": "context,arrival",
+      "rounds": 2,
+      "gpus": "0,1,2,3",
+      "reference": "scenarios-tp4-nocache",
+      "hypothesis": "Pipeline partitioning may improve long-prefill efficiency on PCIe; assess actual64K and mixed arrivals",
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_scenarios.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/tp2-pp2-marlin-nocache-128k.json",
+        "--suites",
+        "context,arrival",
+        "--rounds",
+        "2"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 1,
+          "archive_member": "research/dsv4-flash0731/scenarios-20261105/series-core-resume.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "architecture/process4-long"
+      ]
+    },
+    {
+      "id": "scenarios-tp4-agent-nocache",
+      "legacy_id": "s05-tp4-agent-nocache",
+      "topic": "scenarios",
+      "process": "process1",
+      "stage": "scenarios",
+      "process_key": "scenarios/process1-scenarios",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/tp4-marlin-nocache-128k.json",
+      "plan": null,
+      "timeout": 2400,
+      "suite": "",
+      "rounds": 2,
+      "gpus": "0,1,2,3",
+      "reference": "scenarios-tp4-apc;scenarios-tp4-dspark3-retry2",
+      "hypothesis": "Matched no-APC no-speculative natural-EOS fixed replay, true tool loop and quality reference",
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_scenarios.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/tp4-marlin-nocache-128k.json",
+        "--suites",
+        "",
+        "--rounds",
+        "2",
+        "--agent-modes",
+        "replay,closed-loop,quality"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 2,
+          "archive_member": "research/dsv4-flash0731/scenarios-20261105/series-core-resume.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "architecture/process4-long"
+      ]
+    },
+    {
+      "id": "scenarios-tp4-profile",
+      "legacy_id": "s06-tp4-profile",
+      "topic": "scenarios",
+      "process": "process2",
+      "stage": "profile",
+      "process_key": "scenarios/process2-profile",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/tp4-marlin-nocache-128k.json",
+      "plan": null,
+      "timeout": 1800,
+      "suite": "profile",
+      "rounds": 1,
+      "gpus": "0,1,2,3",
+      "reference": "scenarios-tp4-nocache",
+      "hypothesis": "Bounded independent CUDA traces of prefill, decode and 64K mixed requests to identify actionable bottlenecks",
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_scenarios.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/tp4-marlin-nocache-128k.json",
+        "--suites",
+        "profile",
+        "--rounds",
+        "1",
+        "--profile"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 3,
+          "archive_member": "research/dsv4-flash0731/scenarios-20261105/series-core-resume.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "scenarios/process1-scenarios"
+      ]
+    },
+    {
+      "id": "scenarios-tp4-b1024",
+      "legacy_id": "s07-tp4-b1024",
+      "topic": "scenarios",
+      "process": "process3",
+      "stage": "optimization",
+      "process_key": "scenarios/process3-optimization",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/tp4-marlin-b1024-nocache-128k.json",
+      "plan": null,
+      "timeout": 2400,
+      "suite": "context,arrival",
+      "rounds": 2,
+      "gpus": "0,1,2,3",
+      "reference": "scenarios-tp4-nocache",
+      "hypothesis": "Single factor smaller prefill budget after CUDA evidence: trade iteration latency against extra steps/communication",
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_scenarios.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/tp4-marlin-b1024-nocache-128k.json",
+        "--suites",
+        "context,arrival",
+        "--rounds",
+        "2"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 0,
+          "archive_member": "research/dsv4-flash0731/scenarios-20261105/series-optimization.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "scenarios/process2-profile"
+      ]
+    },
+    {
+      "id": "scenarios-dp4ep",
+      "legacy_id": "s08-dp4ep",
+      "topic": "scenarios",
+      "process": "process3",
+      "stage": "optimization",
+      "process_key": "scenarios/process3-optimization",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/dp4-ep-marlin-nocache-128k.json",
+      "plan": null,
+      "timeout": 2400,
+      "suite": "context,arrival",
+      "rounds": 2,
+      "gpus": "0,1,2,3",
+      "reference": "scenarios-tp4-nocache;scenarios-tp2pp2",
+      "hypothesis": "Attention DP with EP replaces TP collectives under mixed and actual64K load; native per-engine token budgets explicitly differ in aggregate",
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_scenarios.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/dp4-ep-marlin-nocache-128k.json",
+        "--suites",
+        "context,arrival",
+        "--rounds",
+        "2"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 1,
+          "archive_member": "research/dsv4-flash0731/scenarios-20261105/series-optimization.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "scenarios/process2-profile"
+      ]
+    },
+    {
+      "id": "scenarios-tp4-b8192",
+      "legacy_id": "s09-tp4-b8192",
+      "topic": "scenarios",
+      "process": "process3",
+      "stage": "optimization",
+      "process_key": "scenarios/process3-optimization",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/tp4-marlin-b8192-nocache-128k.json",
+      "plan": null,
+      "timeout": 2400,
+      "suite": "context,arrival",
+      "rounds": 2,
+      "gpus": "0,1,2,3",
+      "reference": "scenarios-tp4-nocache;scenarios-tp4-b1024",
+      "hypothesis": "Single factor larger prefill budget may amortize observed communication and kernel costs, with possible latency tradeoff",
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_scenarios.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/tp4-marlin-b8192-nocache-128k.json",
+        "--suites",
+        "context,arrival",
+        "--rounds",
+        "2"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 2,
+          "archive_member": "research/dsv4-flash0731/scenarios-20261105/series-optimization.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "scenarios/process2-profile"
+      ]
+    },
+    {
+      "id": "scenarios-tp4-dspark-apc",
+      "legacy_id": "s10-tp4-dspark-apc",
+      "topic": "scenarios",
+      "process": "process3",
+      "stage": "optimization",
+      "process_key": "scenarios/process3-optimization",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/tp4-marlin-dspark3-apc-128k.json",
+      "plan": null,
+      "timeout": 2400,
+      "suite": "cache",
+      "rounds": 2,
+      "gpus": "0,1,2,3",
+      "reference": "scenarios-tp4-apc;scenarios-tp4-dspark3-retry2;scenarios-tp4-agent-nocache",
+      "hypothesis": "Validate combined APC and DSpark3 for cached history and natural-EOS agents; do not multiply individual speedups",
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_scenarios.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/tp4-marlin-dspark3-apc-128k.json",
+        "--suites",
+        "cache",
+        "--rounds",
+        "2",
+        "--agent-modes",
+        "replay,closed-loop,quality"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 3,
+          "archive_member": "research/dsv4-flash0731/scenarios-20261105/series-optimization.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "scenarios/process2-profile"
+      ]
+    },
+    {
+      "id": "capacity-tp4-screen",
+      "legacy_id": "a01-tp4-screen",
+      "topic": "capacity",
+      "process": "process1",
+      "stage": "screen",
+      "process_key": "capacity/process1-screen",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/tp4-marlin-nocache-128k.json",
+      "plan": "research/dsv4-flash0731/experiments/scenarios/workloads/capacity/capacity-tp4-screen.json",
+      "timeout": 3600,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "scenarios-tp4-nocache; exploratory reference not accepted project baseline",
+      "hypothesis": "Matched finite open-arrival mixed-prefill and mixed-decode capacity screening; independent SLO and stability evidence, not a long-term SLA.",
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_capacity.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/tp4-marlin-nocache-128k.json",
+        "--plan",
+        "research/dsv4-flash0731/experiments/scenarios/workloads/capacity/capacity-tp4-screen.json"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 0,
+          "archive_member": "research/dsv4-flash0731/scenarios-20261105/workloads/capacity/series-screen.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "scenarios/process3-optimization"
+      ]
+    },
+    {
+      "id": "capacity-dspark3-screen",
+      "legacy_id": "a02-dspark3-screen",
+      "topic": "capacity",
+      "process": "process1",
+      "stage": "screen",
+      "process_key": "capacity/process1-screen",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/tp4-marlin-dspark3-nocache-128k.json",
+      "plan": "research/dsv4-flash0731/experiments/scenarios/workloads/capacity/capacity-dspark3-screen.json",
+      "timeout": 3600,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "scenarios-tp4-nocache; exploratory reference not accepted project baseline",
+      "hypothesis": "Matched finite open-arrival mixed-prefill and mixed-decode capacity screening; independent SLO and stability evidence, not a long-term SLA.",
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_capacity.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/tp4-marlin-dspark3-nocache-128k.json",
+        "--plan",
+        "research/dsv4-flash0731/experiments/scenarios/workloads/capacity/capacity-dspark3-screen.json"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 1,
+          "archive_member": "research/dsv4-flash0731/scenarios-20261105/workloads/capacity/series-screen.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "scenarios/process3-optimization"
+      ]
+    },
+    {
+      "id": "capacity-tp2pp2-screen",
+      "legacy_id": "a03-tp2pp2-screen",
+      "topic": "capacity",
+      "process": "process1",
+      "stage": "screen",
+      "process_key": "capacity/process1-screen",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/tp2-pp2-marlin-nocache-128k.json",
+      "plan": "research/dsv4-flash0731/experiments/scenarios/workloads/capacity/capacity-tp2pp2-screen.json",
+      "timeout": 3600,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "scenarios-tp4-nocache; exploratory reference not accepted project baseline",
+      "hypothesis": "Matched finite open-arrival mixed-prefill and mixed-decode capacity screening; independent SLO and stability evidence, not a long-term SLA.",
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_capacity.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/tp2-pp2-marlin-nocache-128k.json",
+        "--plan",
+        "research/dsv4-flash0731/experiments/scenarios/workloads/capacity/capacity-tp2pp2-screen.json"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 2,
+          "archive_member": "research/dsv4-flash0731/scenarios-20261105/workloads/capacity/series-screen.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "scenarios/process3-optimization"
+      ]
+    },
+    {
+      "id": "capacity-dp4ep-screen",
+      "legacy_id": "a04-dp4ep-screen",
+      "topic": "capacity",
+      "process": "process1",
+      "stage": "screen",
+      "process_key": "capacity/process1-screen",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/dp4-ep-marlin-nocache-128k.json",
+      "plan": "research/dsv4-flash0731/experiments/scenarios/workloads/capacity/capacity-dp4ep-screen.json",
+      "timeout": 3600,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "scenarios-tp4-nocache; exploratory reference not accepted project baseline",
+      "hypothesis": "Matched finite open-arrival mixed-prefill and mixed-decode capacity screening; independent SLO and stability evidence, not a long-term SLA.",
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_capacity.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/dp4-ep-marlin-nocache-128k.json",
+        "--plan",
+        "research/dsv4-flash0731/experiments/scenarios/workloads/capacity/capacity-dp4ep-screen.json"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 3,
+          "archive_member": "research/dsv4-flash0731/scenarios-20261105/workloads/capacity/series-screen.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "scenarios/process3-optimization"
+      ]
+    },
+    {
+      "id": "capacity-tp4-boundary",
+      "legacy_id": "a05-tp4-boundary",
+      "topic": "capacity",
+      "process": "process2",
+      "stage": "boundary-confirm",
+      "process_key": "capacity/process2-boundary-confirm",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/tp4-marlin-nocache-128k.json",
+      "plan": "research/dsv4-flash0731/experiments/scenarios/workloads/capacity/capacity-tp4-boundary.json",
+      "timeout": 4200,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "capacity-tp4-screen; exploratory reference not an accepted project baseline",
+      "hypothesis": "Confirm mixed-prefill latency boundary at rate1 and service point at rate3; mixed-generation rate3 between rate2 passing and rate4 growing screen; finite burst64 and post-burst recovery.",
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_capacity.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/tp4-marlin-nocache-128k.json",
+        "--plan",
+        "research/dsv4-flash0731/experiments/scenarios/workloads/capacity/capacity-tp4-boundary.json"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 0,
+          "archive_member": "research/dsv4-flash0731/scenarios-20261105/workloads/capacity/series-boundary-first.json",
+          "archive": "archive/initial-project.tar.gz"
+        },
+        {
+          "line": null,
+          "job_index": 0,
+          "archive_member": "research/dsv4-flash0731/scenarios-20261105/workloads/capacity/series-tp4-boundary.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "capacity/process1-screen"
+      ]
+    },
+    {
+      "id": "capacity-dspark3-boundary",
+      "legacy_id": "a06-dspark3-boundary",
+      "topic": "capacity",
+      "process": "process2",
+      "stage": "boundary-confirm",
+      "process_key": "capacity/process2-boundary-confirm",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/tp4-marlin-dspark3-nocache-128k.json",
+      "plan": "research/dsv4-flash0731/experiments/scenarios/workloads/capacity/capacity-dspark3-boundary.json",
+      "timeout": 4200,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "capacity-dspark3-screen and capacity-tp4-screen; internal references not accepted project baselines",
+      "hypothesis": "Confirm mixed-prefill rate1 SLO and rate4 stable throughput; mixed-generation rate4 passed screen, test two longer windows and bounded rate6 upper probe; compare identical burst/recovery with TP4.",
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_capacity.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/tp4-marlin-dspark3-nocache-128k.json",
+        "--plan",
+        "research/dsv4-flash0731/experiments/scenarios/workloads/capacity/capacity-dspark3-boundary.json"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 1,
+          "archive_member": "research/dsv4-flash0731/scenarios-20261105/workloads/capacity/series-boundary-first.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "capacity/process1-screen"
+      ]
+    },
+    {
+      "id": "capacity-tp2pp2-boundary",
+      "legacy_id": "a07-tp2pp2-boundary",
+      "topic": "capacity",
+      "process": "process2",
+      "stage": "boundary-confirm",
+      "process_key": "capacity/process2-boundary-confirm",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/tp2-pp2-marlin-nocache-128k.json",
+      "plan": "research/dsv4-flash0731/experiments/scenarios/workloads/capacity/capacity-tp2pp2-boundary.json",
+      "timeout": 4200,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "capacity-tp2pp2-screen; internal exploratory reference, not accepted baseline",
+      "hypothesis": "Confirm short-mixed rate1 SLO and rate4 service throughput; generation rate3 between passing2 and failing4.",
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_capacity.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/tp2-pp2-marlin-nocache-128k.json",
+        "--plan",
+        "research/dsv4-flash0731/experiments/scenarios/workloads/capacity/capacity-tp2pp2-boundary.json"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 0,
+          "archive_member": "research/dsv4-flash0731/scenarios-20261105/workloads/capacity/series-boundary-second.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "capacity/process1-screen"
+      ]
+    },
+    {
+      "id": "capacity-dp4ep-boundary",
+      "legacy_id": "a08-dp4ep-boundary",
+      "topic": "capacity",
+      "process": "process2",
+      "stage": "boundary-confirm",
+      "process_key": "capacity/process2-boundary-confirm",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/dp4-ep-marlin-nocache-128k.json",
+      "plan": "research/dsv4-flash0731/experiments/scenarios/workloads/capacity/capacity-dp4ep-boundary.json",
+      "timeout": 4200,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "capacity-dp4ep-screen; internal exploratory reference, not accepted baseline",
+      "hypothesis": "Confirm short-mixed rate1 SLO and rate3 service throughput; generation rate3 between passing2 and failing4.",
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_capacity.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/dp4-ep-marlin-nocache-128k.json",
+        "--plan",
+        "research/dsv4-flash0731/experiments/scenarios/workloads/capacity/capacity-dp4ep-boundary.json"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 1,
+          "archive_member": "research/dsv4-flash0731/scenarios-20261105/workloads/capacity/series-boundary-second.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "capacity/process1-screen"
+      ]
+    },
+    {
+      "id": "capacity-tp4-lower-bound",
+      "legacy_id": "a09-tp4-lower-bound",
+      "topic": "capacity",
+      "process": "process3",
+      "stage": "lower-bound-confirm",
+      "process_key": "capacity/process3-lower-bound-confirm",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/tp4-marlin-nocache-128k.json",
+      "plan": "research/dsv4-flash0731/experiments/scenarios/workloads/capacity/capacity-tp4-lower-bound.json",
+      "timeout": 4200,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "capacity-tp4-boundary; failed and inconclusive points retained",
+      "hypothesis": "Establish conservative short-mixed SLO point0.5 and service point2; generation2 below rate3 inconclusive, without relaxing frozen criteria or discarding prior attempts.",
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_capacity.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/tp4-marlin-nocache-128k.json",
+        "--plan",
+        "research/dsv4-flash0731/experiments/scenarios/workloads/capacity/capacity-tp4-lower-bound.json"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 0,
+          "archive_member": "research/dsv4-flash0731/scenarios-20261105/workloads/capacity/series-boundary-lower.json",
+          "archive": "archive/initial-project.tar.gz"
+        },
+        {
+          "line": null,
+          "job_index": 0,
+          "archive_member": "research/dsv4-flash0731/scenarios-20261105/workloads/capacity/series-tp4-lower.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": true,
+      "requires_success": [],
+      "depends_on": [
+        "capacity/process2-boundary-confirm"
+      ]
+    },
+    {
+      "id": "capacity-dspark3-prefill-bound",
+      "legacy_id": "a10-dspark3-prefill-bound",
+      "topic": "capacity",
+      "process": "process3",
+      "stage": "lower-bound-confirm",
+      "process_key": "capacity/process3-lower-bound-confirm",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/tp4-marlin-dspark3-nocache-128k.json",
+      "plan": "research/dsv4-flash0731/experiments/scenarios/workloads/capacity/capacity-dspark3-prefill-bound.json",
+      "timeout": 4200,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "capacity-dspark3-boundary; incomplete/SLO-failed points retained",
+      "hypothesis": "Confirm mixed-prefill SLO lower point0.5, individual Goodput point2 and stable service boundary3; after independently confirmed generation4 and growing screen6, refine generation midpoint5 with two matched long windows. Prior failures retained.",
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_capacity.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/tp4-marlin-dspark3-nocache-128k.json",
+        "--plan",
+        "research/dsv4-flash0731/experiments/scenarios/workloads/capacity/capacity-dspark3-prefill-bound.json"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 1,
+          "archive_member": "research/dsv4-flash0731/scenarios-20261105/workloads/capacity/series-boundary-lower.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": true,
+      "requires_success": [],
+      "depends_on": [
+        "capacity/process2-boundary-confirm"
+      ]
+    },
+    {
+      "id": "context-tp4-screen",
+      "legacy_id": "b01-tp4-screen",
+      "topic": "long-context",
+      "process": "process1",
+      "stage": "screen",
+      "process_key": "long-context/process1-screen",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/context-tp4-screen.json",
+      "plan": "research/dsv4-flash0731/experiments/scenarios/workloads/long-context/context-tp4-screen.json",
+      "timeout": 2400,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "phase-a-final-7c09c61-and-b01-matched-workload",
+      "hypothesis": "Measure long-short interference and KV residency; matched lengths/arrivals; threshold=0",
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_capacity.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/context-tp4-screen.json",
+        "--plan",
+        "research/dsv4-flash0731/experiments/scenarios/workloads/long-context/context-tp4-screen.json"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 0,
+          "archive_member": "research/dsv4-flash0731/scenarios-20261105/workloads/phase-b/series-screen.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "capacity/process2-boundary-confirm"
+      ]
+    },
+    {
+      "id": "context-tp2pp2-screen",
+      "legacy_id": "b02-tp2pp2-screen",
+      "topic": "long-context",
+      "process": "process1",
+      "stage": "screen",
+      "process_key": "long-context/process1-screen",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/context-tp2pp2-screen.json",
+      "plan": "research/dsv4-flash0731/experiments/scenarios/workloads/long-context/context-tp2pp2-screen.json",
+      "timeout": 2400,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "phase-a-final-7c09c61-and-b01-matched-workload",
+      "hypothesis": "Measure long-short interference and KV residency; matched lengths/arrivals; threshold=0",
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_capacity.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/context-tp2pp2-screen.json",
+        "--plan",
+        "research/dsv4-flash0731/experiments/scenarios/workloads/long-context/context-tp2pp2-screen.json"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 1,
+          "archive_member": "research/dsv4-flash0731/scenarios-20261105/workloads/phase-b/series-screen.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "capacity/process2-boundary-confirm"
+      ]
+    },
+    {
+      "id": "context-dspark3-screen",
+      "legacy_id": "b03-dspark3-screen",
+      "topic": "long-context",
+      "process": "process1",
+      "stage": "screen",
+      "process_key": "long-context/process1-screen",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/context-dspark3-screen.json",
+      "plan": "research/dsv4-flash0731/experiments/scenarios/workloads/long-context/context-dspark3-screen.json",
+      "timeout": 2400,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "phase-a-final-7c09c61-and-b01-matched-workload",
+      "hypothesis": "Measure long-short interference and KV residency; matched lengths/arrivals; threshold=0",
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_capacity.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/context-dspark3-screen.json",
+        "--plan",
+        "research/dsv4-flash0731/experiments/scenarios/workloads/long-context/context-dspark3-screen.json"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 2,
+          "archive_member": "research/dsv4-flash0731/scenarios-20261105/workloads/phase-b/series-screen.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "capacity/process2-boundary-confirm"
+      ]
+    },
+    {
+      "id": "context-dp4ep-screen",
+      "legacy_id": "b04-dp4ep-screen",
+      "topic": "long-context",
+      "process": "process1",
+      "stage": "screen",
+      "process_key": "long-context/process1-screen",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/context-dp4ep-screen.json",
+      "plan": "research/dsv4-flash0731/experiments/scenarios/workloads/long-context/context-dp4ep-screen.json",
+      "timeout": 2400,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "phase-a-final-7c09c61-and-b01-matched-workload",
+      "hypothesis": "Measure long-short interference and KV residency; matched lengths/arrivals; threshold=0",
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_capacity.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/context-dp4ep-screen.json",
+        "--plan",
+        "research/dsv4-flash0731/experiments/scenarios/workloads/long-context/context-dp4ep-screen.json"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 3,
+          "archive_member": "research/dsv4-flash0731/scenarios-20261105/workloads/phase-b/series-screen.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "capacity/process2-boundary-confirm"
+      ]
+    },
+    {
+      "id": "context-tp4-th2048-screen",
+      "legacy_id": "b05-tp4-th2048-screen",
+      "topic": "long-context",
+      "process": "process1",
+      "stage": "screen",
+      "process_key": "long-context/process1-screen",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/context-tp4-th2048-screen.json",
+      "plan": "research/dsv4-flash0731/experiments/scenarios/workloads/long-context/context-tp4-th2048-screen.json",
+      "timeout": 2400,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "phase-a-final-7c09c61-and-b01-matched-workload",
+      "hypothesis": "Measure long-short interference and KV residency; matched lengths/arrivals; threshold=2048",
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_capacity.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/context-tp4-th2048-screen.json",
+        "--plan",
+        "research/dsv4-flash0731/experiments/scenarios/workloads/long-context/context-tp4-th2048-screen.json"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 4,
+          "archive_member": "research/dsv4-flash0731/scenarios-20261105/workloads/phase-b/series-screen.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "capacity/process2-boundary-confirm"
+      ]
+    },
+    {
+      "id": "context-tp4-th2048-cad8-screen",
+      "legacy_id": "b08-tp4-th2048-cad8-screen",
+      "topic": "long-context",
+      "process": "process2",
+      "stage": "cadence-screen",
+      "process_key": "long-context/process2-cadence-screen",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/context-tp4-th2048-cad8-screen.json",
+      "plan": "research/dsv4-flash0731/experiments/scenarios/workloads/long-context/context-tp4-th2048-cad8-screen.json",
+      "timeout": 2400,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "context-tp4-th2048-screen",
+      "hypothesis": "Fixed threshold2048 and total budget4096; cadence8 may reduce observed 69-71ms short TPOT in sparse64K traces, with possible long-prefill latency and heavy-load tradeoffs.",
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_capacity.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/context-tp4-th2048-cad8-screen.json",
+        "--plan",
+        "research/dsv4-flash0731/experiments/scenarios/workloads/long-context/context-tp4-th2048-cad8-screen.json"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 0,
+          "archive_member": "research/dsv4-flash0731/scenarios-20261105/workloads/phase-b/series-cadence.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "long-context/process1-screen"
+      ]
+    },
+    {
+      "id": "context-tp4-profile",
+      "legacy_id": "b06-tp4-profile",
+      "topic": "long-context",
+      "process": "process3",
+      "stage": "profile",
+      "process_key": "long-context/process3-profile",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/context-tp4-profile.json",
+      "plan": "research/dsv4-flash0731/experiments/scenarios/workloads/long-context/context-tp4-profile.json",
+      "timeout": 900,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "context-tp4-screen",
+      "hypothesis": null,
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_long_context_profile.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/context-tp4-profile.json",
+        "--plan",
+        "research/dsv4-flash0731/experiments/scenarios/workloads/long-context/context-tp4-profile.json"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": 663,
+          "job_index": null,
+          "archive_member": "WORKSPACE_REPRODUCTION.md",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "long-context/process2-cadence-screen"
+      ]
+    },
+    {
+      "id": "context-tp4-th2048-profile",
+      "legacy_id": "b07-tp4-th2048-profile",
+      "topic": "long-context",
+      "process": "process3",
+      "stage": "profile",
+      "process_key": "long-context/process3-profile",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/context-tp4-th2048-profile.json",
+      "plan": "research/dsv4-flash0731/experiments/scenarios/workloads/long-context/context-tp4-th2048-profile.json",
+      "timeout": 900,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "context-tp4-screen",
+      "hypothesis": null,
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_long_context_profile.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/context-tp4-th2048-profile.json",
+        "--plan",
+        "research/dsv4-flash0731/experiments/scenarios/workloads/long-context/context-tp4-th2048-profile.json"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": 670,
+          "job_index": null,
+          "archive_member": "WORKSPACE_REPRODUCTION.md",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "long-context/process2-cadence-screen"
+      ]
+    },
+    {
+      "id": "context-tp4-th2048-cad8-profile",
+      "legacy_id": "b09-tp4-th2048-cad8-profile",
+      "topic": "long-context",
+      "process": "process3",
+      "stage": "profile",
+      "process_key": "long-context/process3-profile",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/context-tp4-th2048-cad8-profile.json",
+      "plan": "research/dsv4-flash0731/experiments/scenarios/workloads/long-context/context-tp4-th2048-cad8-profile.json",
+      "timeout": 900,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "context-tp4-screen",
+      "hypothesis": null,
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_long_context_profile.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/context-tp4-th2048-cad8-profile.json",
+        "--plan",
+        "research/dsv4-flash0731/experiments/scenarios/workloads/long-context/context-tp4-th2048-cad8-profile.json"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": 677,
+          "job_index": null,
+          "archive_member": "WORKSPACE_REPRODUCTION.md",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "long-context/process2-cadence-screen"
+      ]
+    },
+    {
+      "id": "context-tp2pp2-confirm",
+      "legacy_id": "b10-tp2pp2-confirm",
+      "topic": "long-context",
+      "process": "process4",
+      "stage": "confirm",
+      "process_key": "long-context/process4-confirm",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/context-tp2pp2-screen.json",
+      "plan": "research/dsv4-flash0731/experiments/scenarios/workloads/long-context/context-tp2pp2-confirm.json",
+      "timeout": 3000,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "b02-and-b08-matched-screen",
+      "hypothesis": "Two predeclared 450-second Poisson windows at .5 req/s; compare default PP prefill candidate and TP4 cap+cadence on mixed16/32/64K service, retaining finite stability and per-shape tails.",
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_capacity.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/context-tp2pp2-screen.json",
+        "--plan",
+        "research/dsv4-flash0731/experiments/scenarios/workloads/long-context/context-tp2pp2-confirm.json"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 0,
+          "archive_member": "research/dsv4-flash0731/scenarios-20261105/workloads/phase-b/series-confirm.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "long-context/process3-profile"
+      ]
+    },
+    {
+      "id": "context-tp4-th2048-cad8-confirm",
+      "legacy_id": "b11-tp4-th2048-cad8-confirm",
+      "topic": "long-context",
+      "process": "process4",
+      "stage": "confirm",
+      "process_key": "long-context/process4-confirm",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/context-tp4-th2048-cad8-screen.json",
+      "plan": "research/dsv4-flash0731/experiments/scenarios/workloads/long-context/context-tp4-th2048-cad8-confirm.json",
+      "timeout": 3000,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "b02-and-b08-matched-screen",
+      "hypothesis": "Two predeclared 450-second Poisson windows at .5 req/s; compare default PP prefill candidate and TP4 cap+cadence on mixed16/32/64K service, retaining finite stability and per-shape tails.",
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_capacity.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/context-tp4-th2048-cad8-screen.json",
+        "--plan",
+        "research/dsv4-flash0731/experiments/scenarios/workloads/long-context/context-tp4-th2048-cad8-confirm.json"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 1,
+          "archive_member": "research/dsv4-flash0731/scenarios-20261105/workloads/phase-b/series-confirm.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "long-context/process3-profile"
+      ]
+    },
+    {
+      "id": "session-tp4-apc-pilot",
+      "legacy_id": "c01-tp4-apc-pilot",
+      "topic": "sessions",
+      "process": "process1",
+      "stage": "pilot",
+      "process_key": "sessions/process1-pilot",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/session-tp4-apc-pilot.json",
+      "plan": "research/dsv4-flash0731/experiments/scenarios/workloads/sessions/session-tp4-apc-pilot.json",
+      "timeout": 2400,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "stage-A-and-B-frozen-evidence",
+      "hypothesis": "Validate exact multi-round replay, streaming tool-only responses, actual APC hits and six independently graded agent tasks before matched capacity study.",
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_agent_sessions.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/session-tp4-apc-pilot.json",
+        "--plan",
+        "research/dsv4-flash0731/experiments/scenarios/workloads/sessions/session-tp4-apc-pilot.json"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 0,
+          "archive_member": "research/dsv4-flash0731/scenarios-20261105/workloads/phase-c/series-pilot.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "long-context/process4-confirm"
+      ]
+    },
+    {
+      "id": "session-tp4-agent-pilot2",
+      "legacy_id": "c02-tp4-agent-pilot2",
+      "topic": "sessions",
+      "process": "process1",
+      "stage": "pilot",
+      "process_key": "sessions/process1-pilot",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/session-tp4-agent-pilot2.json",
+      "plan": "research/dsv4-flash0731/experiments/scenarios/workloads/sessions/session-tp4-agent-pilot2.json",
+      "timeout": 2400,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "stage-A-and-B-frozen-evidence; c01 failed agent pilot",
+      "hypothesis": "Remove pilot harness clipping (5-6 observed tool calls and output length1024); preserve tasks/grading/seed, allow8 tools per round and4096 output tokens, natural EOS. No repeated formal replay.",
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_agent_sessions.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/session-tp4-agent-pilot2.json",
+        "--plan",
+        "research/dsv4-flash0731/experiments/scenarios/workloads/sessions/session-tp4-agent-pilot2.json"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 0,
+          "archive_member": "research/dsv4-flash0731/scenarios-20261105/workloads/phase-c/series-pilot2.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "long-context/process4-confirm"
+      ]
+    },
+    {
+      "id": "session-tp4-cache-screen",
+      "legacy_id": "c03-tp4-cache-screen",
+      "topic": "sessions",
+      "process": "process2",
+      "stage": "matched-screen",
+      "process_key": "sessions/process2-matched-screen",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/session-tp4-cache-screen.json",
+      "plan": "research/dsv4-flash0731/experiments/scenarios/workloads/sessions/session-tp4-cache-screen.json",
+      "timeout": 3600,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "stage-A-and-B-frozen-evidence; c01/c02 pilot evidence",
+      "hypothesis": "Same exact 4-turn tokens at C8 under none/session/shared namespaces, reversed treatment order across two seeds; C1/C6 real six-task control; independently fix numeric tool-schema interface before rankings.",
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_agent_sessions.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/session-tp4-cache-screen.json",
+        "--plan",
+        "research/dsv4-flash0731/experiments/scenarios/workloads/sessions/session-tp4-cache-screen.json"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 0,
+          "archive_member": "research/dsv4-flash0731/scenarios-20261105/workloads/phase-c/series-matched-screen.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "sessions/process1-pilot"
+      ]
+    },
+    {
+      "id": "session-tp4-noapc-screen",
+      "legacy_id": "c04-tp4-noapc-screen",
+      "topic": "sessions",
+      "process": "process2",
+      "stage": "matched-screen",
+      "process_key": "sessions/process2-matched-screen",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/session-tp4-noapc-screen.json",
+      "plan": "research/dsv4-flash0731/experiments/scenarios/workloads/sessions/session-tp4-noapc-screen.json",
+      "timeout": 3600,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "stage-A-and-B-frozen-evidence; c01/c02 pilot evidence",
+      "hypothesis": "Full APC-off deployment reference matched to TP4 on tokens/task plans; distinguishes no-hit namespace from no cache implementation.",
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_agent_sessions.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/session-tp4-noapc-screen.json",
+        "--plan",
+        "research/dsv4-flash0731/experiments/scenarios/workloads/sessions/session-tp4-noapc-screen.json"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 1,
+          "archive_member": "research/dsv4-flash0731/scenarios-20261105/workloads/phase-c/series-matched-screen.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "sessions/process1-pilot"
+      ]
+    },
+    {
+      "id": "session-tp2pp2-agent-screen",
+      "legacy_id": "c05-tp2pp2-agent-screen",
+      "topic": "sessions",
+      "process": "process2",
+      "stage": "matched-screen",
+      "process_key": "sessions/process2-matched-screen",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/session-tp2pp2-agent-screen.json",
+      "plan": "research/dsv4-flash0731/experiments/scenarios/workloads/sessions/session-tp2pp2-agent-screen.json",
+      "timeout": 3600,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "stage-A-and-B-frozen-evidence; c01/c02 pilot evidence",
+      "hypothesis": "Matched replay C1/C8 and real agent C1/C6 with two high-concurrency seeds; keep task grades and dynamic workloads separate; no capacity claim from closed concurrency.",
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_agent_sessions.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/session-tp2pp2-agent-screen.json",
+        "--plan",
+        "research/dsv4-flash0731/experiments/scenarios/workloads/sessions/session-tp2pp2-agent-screen.json"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 2,
+          "archive_member": "research/dsv4-flash0731/scenarios-20261105/workloads/phase-c/series-matched-screen.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "sessions/process1-pilot"
+      ]
+    },
+    {
+      "id": "session-dspark3-agent-screen",
+      "legacy_id": "c06-dspark3-agent-screen",
+      "topic": "sessions",
+      "process": "process2",
+      "stage": "matched-screen",
+      "process_key": "sessions/process2-matched-screen",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/session-dspark3-agent-screen.json",
+      "plan": "research/dsv4-flash0731/experiments/scenarios/workloads/sessions/session-dspark3-agent-screen.json",
+      "timeout": 3600,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "stage-A-and-B-frozen-evidence; c01/c02 pilot evidence",
+      "hypothesis": "Matched replay C1/C8 and real agent C1/C6 with two high-concurrency seeds; keep task grades and dynamic workloads separate; no capacity claim from closed concurrency.",
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_agent_sessions.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/session-dspark3-agent-screen.json",
+        "--plan",
+        "research/dsv4-flash0731/experiments/scenarios/workloads/sessions/session-dspark3-agent-screen.json"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 3,
+          "archive_member": "research/dsv4-flash0731/scenarios-20261105/workloads/phase-c/series-matched-screen.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "sessions/process1-pilot"
+      ]
+    },
+    {
+      "id": "session-dp4ep-affinity-screen",
+      "legacy_id": "c07-dp4ep-affinity-screen",
+      "topic": "sessions",
+      "process": "process2",
+      "stage": "matched-screen",
+      "process_key": "sessions/process2-matched-screen",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/session-dp4ep-affinity-screen.json",
+      "plan": "research/dsv4-flash0731/experiments/scenarios/workloads/sessions/session-dp4ep-affinity-screen.json",
+      "timeout": 3600,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "stage-A-and-B-frozen-evidence; c01/c02 pilot evidence",
+      "hypothesis": "Explicitly test default versus session rank affinity with identical replay/real-task plans; 24 replay sessions and12 agent sessions balance task types over4 ranks; same scopes and output budgets.",
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_agent_sessions.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/session-dp4ep-affinity-screen.json",
+        "--plan",
+        "research/dsv4-flash0731/experiments/scenarios/workloads/sessions/session-dp4ep-affinity-screen.json"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 4,
+          "archive_member": "research/dsv4-flash0731/scenarios-20261105/workloads/phase-c/series-matched-screen.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "sessions/process1-pilot"
+      ]
+    },
+    {
+      "id": "session-tp4-replay-open",
+      "legacy_id": "c08-tp4-replay-open",
+      "topic": "sessions",
+      "process": "process3",
+      "stage": "open-screen",
+      "process_key": "sessions/process3-open-screen",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/session-tp4-replay-open.json",
+      "plan": "research/dsv4-flash0731/experiments/scenarios/workloads/sessions/session-tp4-replay-open.json",
+      "timeout": 3600,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "decision open-screen-r1 sha256 039960c032c7b8ba7c8d394c9e26b1396e31db0a4c67d17ed7fe4690a157589b; sessions/summary/session-tp4-cache-screen-terminal-r1.json, sessions/summary/session-tp4-noapc-screen-terminal-r1.json, sessions/summary/session-tp2pp2-agent-screen-terminal-r1.json, sessions/summary/session-dspark3-agent-screen-terminal-r1.json, sessions/summary/session-dp4ep-affinity-screen-terminal-r1.json, sessions/logs/audit-session-dp4ep-affinity-screen-r1.json, sessions/logs/cache-resources-c03-c06-r1.json, sessions/finite-session-v1.md",
+      "hypothesis": "After all c03-c07 terminal audits PASS, retain TP4 APC session as the internal reference and select DSpark3 as the informative competitor: matched replay C8 is .37472/.38124 versus TP4 .29774/.30257 session/s; matched Agent C6 strict successes are 4/12 twice, quality-qualified throughput .10860/.10591 versus TP4 .06505/.04156 task/s. PP replay is near TP4; DP sticky improves replay to .26841/.26991 but real task throughput has no consistent affinity benefit. This is a scenario-specific next experiment, not a global winner or quality-equivalence claim. For each workload, preregister .15/.30/.60 session/s at 120 seconds and one seed: a low-load latency point, a rate around the observed closed-concurrency range, and a bounded upper probe. Closed throughput is only rate-selection evidence. Screen windows cannot certify capacity. Keep exact arrivals and assigned tasks/replay tokens matched across candidates; actual dynamic calls/output/grades remain measured outcomes. Warm up three replay shapes or all six real tool tasks according to the measured kind, excluded from measurements; reset APC at each phase boundary. No runtime, tool, fixture, grader, GPU scope, global protocol or SLO changes. All outcomes including timeout, budget, censoring or growing queues must be retained. Later confirmation rates/durations will be chosen from terminal open evidence under frozen finite-session-v1, without replacing unfavorable seeds.",
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_agent_sessions.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/session-tp4-replay-open.json",
+        "--plan",
+        "research/dsv4-flash0731/experiments/scenarios/workloads/sessions/session-tp4-replay-open.json"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 0,
+          "archive_member": "research/dsv4-flash0731/scenarios-20261105/workloads/phase-c/series-open-screen-r1.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "sessions/process2-matched-screen"
+      ]
+    },
+    {
+      "id": "session-dspark3-replay-open",
+      "legacy_id": "c09-dspark3-replay-open",
+      "topic": "sessions",
+      "process": "process3",
+      "stage": "open-screen",
+      "process_key": "sessions/process3-open-screen",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/session-dspark3-replay-open.json",
+      "plan": "research/dsv4-flash0731/experiments/scenarios/workloads/sessions/session-dspark3-replay-open.json",
+      "timeout": 3600,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "decision open-screen-r1 sha256 039960c032c7b8ba7c8d394c9e26b1396e31db0a4c67d17ed7fe4690a157589b; sessions/summary/session-tp4-cache-screen-terminal-r1.json, sessions/summary/session-tp4-noapc-screen-terminal-r1.json, sessions/summary/session-tp2pp2-agent-screen-terminal-r1.json, sessions/summary/session-dspark3-agent-screen-terminal-r1.json, sessions/summary/session-dp4ep-affinity-screen-terminal-r1.json, sessions/logs/audit-session-dp4ep-affinity-screen-r1.json, sessions/logs/cache-resources-c03-c06-r1.json, sessions/finite-session-v1.md",
+      "hypothesis": "After all c03-c07 terminal audits PASS, retain TP4 APC session as the internal reference and select DSpark3 as the informative competitor: matched replay C8 is .37472/.38124 versus TP4 .29774/.30257 session/s; matched Agent C6 strict successes are 4/12 twice, quality-qualified throughput .10860/.10591 versus TP4 .06505/.04156 task/s. PP replay is near TP4; DP sticky improves replay to .26841/.26991 but real task throughput has no consistent affinity benefit. This is a scenario-specific next experiment, not a global winner or quality-equivalence claim. For each workload, preregister .15/.30/.60 session/s at 120 seconds and one seed: a low-load latency point, a rate around the observed closed-concurrency range, and a bounded upper probe. Closed throughput is only rate-selection evidence. Screen windows cannot certify capacity. Keep exact arrivals and assigned tasks/replay tokens matched across candidates; actual dynamic calls/output/grades remain measured outcomes. Warm up three replay shapes or all six real tool tasks according to the measured kind, excluded from measurements; reset APC at each phase boundary. No runtime, tool, fixture, grader, GPU scope, global protocol or SLO changes. All outcomes including timeout, budget, censoring or growing queues must be retained. Later confirmation rates/durations will be chosen from terminal open evidence under frozen finite-session-v1, without replacing unfavorable seeds.",
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_agent_sessions.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/session-dspark3-replay-open.json",
+        "--plan",
+        "research/dsv4-flash0731/experiments/scenarios/workloads/sessions/session-dspark3-replay-open.json"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 1,
+          "archive_member": "research/dsv4-flash0731/scenarios-20261105/workloads/phase-c/series-open-screen-r1.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "sessions/process2-matched-screen"
+      ]
+    },
+    {
+      "id": "session-tp4-agent-open",
+      "legacy_id": "c10-tp4-agent-open",
+      "topic": "sessions",
+      "process": "process3",
+      "stage": "open-screen",
+      "process_key": "sessions/process3-open-screen",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/session-tp4-agent-open.json",
+      "plan": "research/dsv4-flash0731/experiments/scenarios/workloads/sessions/session-tp4-agent-open.json",
+      "timeout": 3600,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "decision open-screen-r1 sha256 039960c032c7b8ba7c8d394c9e26b1396e31db0a4c67d17ed7fe4690a157589b; sessions/summary/session-tp4-cache-screen-terminal-r1.json, sessions/summary/session-tp4-noapc-screen-terminal-r1.json, sessions/summary/session-tp2pp2-agent-screen-terminal-r1.json, sessions/summary/session-dspark3-agent-screen-terminal-r1.json, sessions/summary/session-dp4ep-affinity-screen-terminal-r1.json, sessions/logs/audit-session-dp4ep-affinity-screen-r1.json, sessions/logs/cache-resources-c03-c06-r1.json, sessions/finite-session-v1.md",
+      "hypothesis": "After all c03-c07 terminal audits PASS, retain TP4 APC session as the internal reference and select DSpark3 as the informative competitor: matched replay C8 is .37472/.38124 versus TP4 .29774/.30257 session/s; matched Agent C6 strict successes are 4/12 twice, quality-qualified throughput .10860/.10591 versus TP4 .06505/.04156 task/s. PP replay is near TP4; DP sticky improves replay to .26841/.26991 but real task throughput has no consistent affinity benefit. This is a scenario-specific next experiment, not a global winner or quality-equivalence claim. For each workload, preregister .15/.30/.60 session/s at 120 seconds and one seed: a low-load latency point, a rate around the observed closed-concurrency range, and a bounded upper probe. Closed throughput is only rate-selection evidence. Screen windows cannot certify capacity. Keep exact arrivals and assigned tasks/replay tokens matched across candidates; actual dynamic calls/output/grades remain measured outcomes. Warm up three replay shapes or all six real tool tasks according to the measured kind, excluded from measurements; reset APC at each phase boundary. No runtime, tool, fixture, grader, GPU scope, global protocol or SLO changes. All outcomes including timeout, budget, censoring or growing queues must be retained. Later confirmation rates/durations will be chosen from terminal open evidence under frozen finite-session-v1, without replacing unfavorable seeds.",
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_agent_sessions.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/session-tp4-agent-open.json",
+        "--plan",
+        "research/dsv4-flash0731/experiments/scenarios/workloads/sessions/session-tp4-agent-open.json"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 2,
+          "archive_member": "research/dsv4-flash0731/scenarios-20261105/workloads/phase-c/series-open-screen-r1.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "sessions/process2-matched-screen"
+      ]
+    },
+    {
+      "id": "session-dspark3-agent-open",
+      "legacy_id": "c11-dspark3-agent-open",
+      "topic": "sessions",
+      "process": "process3",
+      "stage": "open-screen",
+      "process_key": "sessions/process3-open-screen",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/session-dspark3-agent-open.json",
+      "plan": "research/dsv4-flash0731/experiments/scenarios/workloads/sessions/session-dspark3-agent-open.json",
+      "timeout": 3600,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "decision open-screen-r1 sha256 039960c032c7b8ba7c8d394c9e26b1396e31db0a4c67d17ed7fe4690a157589b; sessions/summary/session-tp4-cache-screen-terminal-r1.json, sessions/summary/session-tp4-noapc-screen-terminal-r1.json, sessions/summary/session-tp2pp2-agent-screen-terminal-r1.json, sessions/summary/session-dspark3-agent-screen-terminal-r1.json, sessions/summary/session-dp4ep-affinity-screen-terminal-r1.json, sessions/logs/audit-session-dp4ep-affinity-screen-r1.json, sessions/logs/cache-resources-c03-c06-r1.json, sessions/finite-session-v1.md",
+      "hypothesis": "After all c03-c07 terminal audits PASS, retain TP4 APC session as the internal reference and select DSpark3 as the informative competitor: matched replay C8 is .37472/.38124 versus TP4 .29774/.30257 session/s; matched Agent C6 strict successes are 4/12 twice, quality-qualified throughput .10860/.10591 versus TP4 .06505/.04156 task/s. PP replay is near TP4; DP sticky improves replay to .26841/.26991 but real task throughput has no consistent affinity benefit. This is a scenario-specific next experiment, not a global winner or quality-equivalence claim. For each workload, preregister .15/.30/.60 session/s at 120 seconds and one seed: a low-load latency point, a rate around the observed closed-concurrency range, and a bounded upper probe. Closed throughput is only rate-selection evidence. Screen windows cannot certify capacity. Keep exact arrivals and assigned tasks/replay tokens matched across candidates; actual dynamic calls/output/grades remain measured outcomes. Warm up three replay shapes or all six real tool tasks according to the measured kind, excluded from measurements; reset APC at each phase boundary. No runtime, tool, fixture, grader, GPU scope, global protocol or SLO changes. All outcomes including timeout, budget, censoring or growing queues must be retained. Later confirmation rates/durations will be chosen from terminal open evidence under frozen finite-session-v1, without replacing unfavorable seeds.",
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_agent_sessions.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/session-dspark3-agent-open.json",
+        "--plan",
+        "research/dsv4-flash0731/experiments/scenarios/workloads/sessions/session-dspark3-agent-open.json"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 3,
+          "archive_member": "research/dsv4-flash0731/scenarios-20261105/workloads/phase-c/series-open-screen-r1.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "sessions/process2-matched-screen"
+      ]
+    },
+    {
+      "id": "session-tp4-replay-confirm",
+      "legacy_id": "c12-tp4-replay-confirm",
+      "topic": "sessions",
+      "process": "process4",
+      "stage": "confirm",
+      "process_key": "sessions/process4-confirm",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/session-tp4-replay-confirm.json",
+      "plan": "research/dsv4-flash0731/experiments/scenarios/workloads/sessions/session-tp4-replay-confirm.json",
+      "timeout": 3600,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "decision replay-confirm-r1 sha256 4ef9d36183a302149d2cd0996a02ece5c2b6f3dc10fe1ace9c4c127e9f040411; sessions/summary/session-tp4-replay-open-terminal-r2.json, sessions/summary/session-dspark3-replay-open-terminal-r1.json, sessions/logs/audit-session-tp4-replay-open-r1.json, sessions/logs/audit-session-dspark3-replay-open-r1.json, sessions/finite-session-v1.md, sessions/decisions/open-screen-r1.json",
+      "hypothesis": "Both matched 120-second replay screens are terminal and independently audited. At .30/.60 session/s both TP4 and DSpark show GROWING_BACKLOG trend under the frozen rule, despite DSpark's lower P95 and shorter drains. TP4 .30 has A/C=26/23 and outstanding increase4.328; DSpark .30 has26/21 and increase4.754. At .60 these are50/13 and21.638 versus50/24 and19.372. A single burst-sensitive short trace does not establish long-term capacity. Preregister .20 and .30 session/s,300 seconds,two different seeds202611640/641 for both unchanged deployments: .20 is a conservative candidate below the observed growth point; .30 tests whether the boundary signal persists with a longer and independently sampled arrival window. All started confirmation windows must count under finite-session-v1, including inconclusive/unhealthy ones; do not replace seeds or modify thresholds. This pair answers a concrete lower-point versus boundary hypothesis, not a broad parameter grid. Cache scope, exact replay construction, three-profile mix, warmup, timeouts180/600,admission64,hardware and client remain frozen. No Session latency SLO is invented. Even if a point passes, report highest tested finite-confirmed rate and unresolved boundary, not mathematical maximum or production SLA. This decision covers replay only; real Agent confirmation selection waits for its terminal open screens. GPU execution must wait for the existing c08-c11 serial queue to finish and release resources.",
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_agent_sessions.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/session-tp4-replay-confirm.json",
+        "--plan",
+        "research/dsv4-flash0731/experiments/scenarios/workloads/sessions/session-tp4-replay-confirm.json"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 0,
+          "archive_member": "research/dsv4-flash0731/scenarios-20261105/workloads/phase-c/series-replay-confirm-r1.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "sessions/process3-open-screen"
+      ]
+    },
+    {
+      "id": "session-dspark3-replay-confirm",
+      "legacy_id": "c13-dspark3-replay-confirm",
+      "topic": "sessions",
+      "process": "process4",
+      "stage": "confirm",
+      "process_key": "sessions/process4-confirm",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/session-dspark3-replay-confirm.json",
+      "plan": "research/dsv4-flash0731/experiments/scenarios/workloads/sessions/session-dspark3-replay-confirm.json",
+      "timeout": 3600,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "decision replay-confirm-r1 sha256 4ef9d36183a302149d2cd0996a02ece5c2b6f3dc10fe1ace9c4c127e9f040411; sessions/summary/session-tp4-replay-open-terminal-r2.json, sessions/summary/session-dspark3-replay-open-terminal-r1.json, sessions/logs/audit-session-tp4-replay-open-r1.json, sessions/logs/audit-session-dspark3-replay-open-r1.json, sessions/finite-session-v1.md, sessions/decisions/open-screen-r1.json",
+      "hypothesis": "Both matched 120-second replay screens are terminal and independently audited. At .30/.60 session/s both TP4 and DSpark show GROWING_BACKLOG trend under the frozen rule, despite DSpark's lower P95 and shorter drains. TP4 .30 has A/C=26/23 and outstanding increase4.328; DSpark .30 has26/21 and increase4.754. At .60 these are50/13 and21.638 versus50/24 and19.372. A single burst-sensitive short trace does not establish long-term capacity. Preregister .20 and .30 session/s,300 seconds,two different seeds202611640/641 for both unchanged deployments: .20 is a conservative candidate below the observed growth point; .30 tests whether the boundary signal persists with a longer and independently sampled arrival window. All started confirmation windows must count under finite-session-v1, including inconclusive/unhealthy ones; do not replace seeds or modify thresholds. This pair answers a concrete lower-point versus boundary hypothesis, not a broad parameter grid. Cache scope, exact replay construction, three-profile mix, warmup, timeouts180/600,admission64,hardware and client remain frozen. No Session latency SLO is invented. Even if a point passes, report highest tested finite-confirmed rate and unresolved boundary, not mathematical maximum or production SLA. This decision covers replay only; real Agent confirmation selection waits for its terminal open screens. GPU execution must wait for the existing c08-c11 serial queue to finish and release resources.",
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_agent_sessions.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/session-dspark3-replay-confirm.json",
+        "--plan",
+        "research/dsv4-flash0731/experiments/scenarios/workloads/sessions/session-dspark3-replay-confirm.json"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 1,
+          "archive_member": "research/dsv4-flash0731/scenarios-20261105/workloads/phase-c/series-replay-confirm-r1.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "sessions/process3-open-screen"
+      ]
+    },
+    {
+      "id": "session-tp4-agent-confirm",
+      "legacy_id": "c14-tp4-agent-confirm",
+      "topic": "sessions",
+      "process": "process4",
+      "stage": "confirm",
+      "process_key": "sessions/process4-confirm",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/session-tp4-agent-confirm.json",
+      "plan": "research/dsv4-flash0731/experiments/scenarios/workloads/sessions/session-tp4-agent-confirm.json",
+      "timeout": 3600,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "decision agent-confirm-r1 sha256 fdb27f4d03360e240db387d9905ace25413f0ab5d0feb5c93d5d671926628925; sessions/summary/session-tp4-agent-open-terminal-r1.json, sessions/summary/session-dspark3-agent-open-terminal-r1.json, sessions/logs/audit-session-tp4-agent-open-r1.json, sessions/logs/audit-session-dspark3-agent-open-r1.json, sessions/finite-session-v1.md, sessions/decisions/open-screen-r1.json",
+      "hypothesis": "Use terminal audited c10/c11 real Agent screens, not replay capacity or closed concurrency. At .30/.60 session/s TP4 has INCONCLUSIVE trends (A/C26/20 and50/34; outstanding increase3.771/7.885 but not strict three-bin monotonic growth), while DSpark has GROWING_BACKLOG at.30 (26/23,increase3.244) and INCONCLUSIVE at.60 (50/44,increase-.653). These short-window outcomes are nonmonotonic and cannot certify capacity. DSpark nevertheless has lower user-visible P95 at matched .30/.60:22.118/36.717s versus TP452.80/81.64s, shorter drains8.442/19.268s versus37.599/55.388s, and the same strict12/35 and22/65 successes in these specific cohorts. Preregister TP4 .20/.30 and DSpark .30/.60 at300 seconds with independent seeds202611642/643: .30 is the common exact task-assignment/arrival comparison, .20 is the TP4 conservative point, and .60 tests whether DSpark's higher-load capability persists beyond a short transient. This is a targeted capacity check, not a universal ranking or pure kernel comparison; dynamic calls/tokens/outputs and grades remain outcomes. Keep unchanged tasks, hidden strict grader, max12 turns/32tools/4096output, session cache scope,6-task C1 warmup,180/600timeouts and64-session protection. c11 showed a TopK warmup warning inside its lowest-rate formal phase; preserve that data and observe warmup/JIT in confirmations, without claiming all shapes warmed or removing slow samples. Request and Session SLO definitions stay unchanged. Include every started confirmation seed/window and all failed attempts in costs; no seed replacement, no automatic promotion to production SLA or exact global maximum. GPU execution follows the already registered c12-c13 replay queue and must retain exclusive GPU0-3 ownership.",
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_agent_sessions.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/session-tp4-agent-confirm.json",
+        "--plan",
+        "research/dsv4-flash0731/experiments/scenarios/workloads/sessions/session-tp4-agent-confirm.json"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 0,
+          "archive_member": "research/dsv4-flash0731/scenarios-20261105/workloads/phase-c/series-agent-confirm-r1.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "sessions/process3-open-screen"
+      ]
+    },
+    {
+      "id": "session-dspark3-agent-confirm",
+      "legacy_id": "c15-dspark3-agent-confirm",
+      "topic": "sessions",
+      "process": "process4",
+      "stage": "confirm",
+      "process_key": "sessions/process4-confirm",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/session-dspark3-agent-confirm.json",
+      "plan": "research/dsv4-flash0731/experiments/scenarios/workloads/sessions/session-dspark3-agent-confirm.json",
+      "timeout": 3600,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "decision agent-confirm-r1 sha256 fdb27f4d03360e240db387d9905ace25413f0ab5d0feb5c93d5d671926628925; sessions/summary/session-tp4-agent-open-terminal-r1.json, sessions/summary/session-dspark3-agent-open-terminal-r1.json, sessions/logs/audit-session-tp4-agent-open-r1.json, sessions/logs/audit-session-dspark3-agent-open-r1.json, sessions/finite-session-v1.md, sessions/decisions/open-screen-r1.json",
+      "hypothesis": "Use terminal audited c10/c11 real Agent screens, not replay capacity or closed concurrency. At .30/.60 session/s TP4 has INCONCLUSIVE trends (A/C26/20 and50/34; outstanding increase3.771/7.885 but not strict three-bin monotonic growth), while DSpark has GROWING_BACKLOG at.30 (26/23,increase3.244) and INCONCLUSIVE at.60 (50/44,increase-.653). These short-window outcomes are nonmonotonic and cannot certify capacity. DSpark nevertheless has lower user-visible P95 at matched .30/.60:22.118/36.717s versus TP452.80/81.64s, shorter drains8.442/19.268s versus37.599/55.388s, and the same strict12/35 and22/65 successes in these specific cohorts. Preregister TP4 .20/.30 and DSpark .30/.60 at300 seconds with independent seeds202611642/643: .30 is the common exact task-assignment/arrival comparison, .20 is the TP4 conservative point, and .60 tests whether DSpark's higher-load capability persists beyond a short transient. This is a targeted capacity check, not a universal ranking or pure kernel comparison; dynamic calls/tokens/outputs and grades remain outcomes. Keep unchanged tasks, hidden strict grader, max12 turns/32tools/4096output, session cache scope,6-task C1 warmup,180/600timeouts and64-session protection. c11 showed a TopK warmup warning inside its lowest-rate formal phase; preserve that data and observe warmup/JIT in confirmations, without claiming all shapes warmed or removing slow samples. Request and Session SLO definitions stay unchanged. Include every started confirmation seed/window and all failed attempts in costs; no seed replacement, no automatic promotion to production SLA or exact global maximum. GPU execution follows the already registered c12-c13 replay queue and must retain exclusive GPU0-3 ownership.",
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_agent_sessions.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/session-dspark3-agent-confirm.json",
+        "--plan",
+        "research/dsv4-flash0731/experiments/scenarios/workloads/sessions/session-dspark3-agent-confirm.json"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 1,
+          "archive_member": "research/dsv4-flash0731/scenarios-20261105/workloads/phase-c/series-agent-confirm-r1.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "sessions/process3-open-screen"
+      ]
+    },
+    {
+      "id": "session-dspark3-agent-confirm-tail",
+      "legacy_id": "c16-dspark3-agent-confirm-tail",
+      "topic": "sessions",
+      "process": "process5",
+      "stage": "continuation",
+      "process_key": "sessions/process5-continuation",
+      "config": "research/dsv4-flash0731/experiments/scenarios/configs/session-dspark3-agent-confirm-tail.json",
+      "plan": "research/dsv4-flash0731/experiments/scenarios/workloads/sessions/session-dspark3-agent-confirm-tail.json",
+      "timeout": 2400,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "decision agent-confirm-continuation-r1 sha256 1002f20dd8ea4c631bc8eff2970e2b624ab8872b1e92403e70a0cd8b8e48e0c5; sessions/decisions/agent-confirm-r1.json, sessions/logs/c15-failure-checkpoint-r1.json, scenarios/results/session-dspark3-agent-confirm/status.json, scenarios/results/session-dspark3-agent-confirm/session-plan.json, sessions/finite-session-v1.md",
+      "hypothesis": "Complete only the originally preregistered but unexecuted DSpark Agent .60 Session/s seed202611643 window. c15 failed at .60 seed202611642 session138 reservation_book turn2: full HTTP/DONE usage4096 output tokens but finish_reason length and unfinished tool deltas, so the frozen client returned request_error and skipped the final planned phase. Preserve c15 FAILED and all started .30/.60 windows, including complete .30 windows; do not retry any started seed, discard failures, increase output/tool budgets, alter client/grader/finite-session-v1 or reinterpret whole-run health. New c16 uses the same config, task assignments, arrival offsets, session cache isolation, six-task C1 warmup, service protocol and original seed643. Phase IDs may differ but normalized workload/arrivals must match the unexecuted original phase. This is explicit continuation for coverage/reliability, not a way to obtain a passing capacity point: c15 still blocks matching confirmations and the frozen global unresolved-audit behavior remains. Run only after failed c15 has stopped and GPU0-3/port8260 are verified idle. No Stage D or extra parameter sweep.",
+      "runner": "research/dsv4-flash0731/scenarios/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scenarios/scripts/serve_agent_sessions.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scenarios/configs/session-dspark3-agent-confirm-tail.json",
+        "--plan",
+        "research/dsv4-flash0731/experiments/scenarios/workloads/sessions/session-dspark3-agent-confirm-tail.json"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 0,
+          "archive_member": "research/dsv4-flash0731/scenarios-20261105/workloads/phase-c/series-agent-confirm-continuation-r1.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "sessions/process4-confirm"
+      ]
+    },
+    {
+      "id": "scheduler-tp4-observe-dense-profile",
+      "legacy_id": "d01-tp4-observe-dense-profile",
+      "topic": "scheduler",
+      "process": "process1",
+      "stage": "profile",
+      "process_key": "scheduler/process1-profile",
+      "config": "research/dsv4-flash0731/experiments/scheduler/configs/scheduler-tp4-observe-dense-profile.json",
+      "plan": "research/dsv4-flash0731/experiments/scheduler/workloads/scheduler-tp4-observe-dense-profile.json",
+      "timeout": 1800,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "context-tp4-th2048-cad8-profile",
+      "hypothesis": "Matched two-long six-short scheduling diagnostic",
+      "runner": "research/dsv4-flash0731/scheduler/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scheduler/scripts/serve_study.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scheduler/configs/scheduler-tp4-observe-dense-profile.json",
+        "--plan",
+        "research/dsv4-flash0731/experiments/scheduler/workloads/scheduler-tp4-observe-dense-profile.json"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": 1063,
+          "job_index": null,
+          "archive_member": "WORKSPACE_REPRODUCTION.md",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "sessions/process4-confirm"
+      ]
+    },
+    {
+      "id": "scheduler-tp4-fairshare-dense-profile",
+      "legacy_id": "d02-tp4-fairshare-dense-profile",
+      "topic": "scheduler",
+      "process": "process1",
+      "stage": "profile",
+      "process_key": "scheduler/process1-profile",
+      "config": "research/dsv4-flash0731/experiments/scheduler/configs/scheduler-tp4-fairshare-dense-profile.json",
+      "plan": "research/dsv4-flash0731/experiments/scheduler/workloads/scheduler-tp4-fairshare-dense-profile.json",
+      "timeout": null,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "none-exploratory",
+      "hypothesis": null,
+      "runner": "research/dsv4-flash0731/scheduler/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scheduler/scripts/serve_study.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scheduler/configs/scheduler-tp4-fairshare-dense-profile.json",
+        "--plan",
+        "research/dsv4-flash0731/experiments/scheduler/workloads/scheduler-tp4-fairshare-dense-profile.json"
+      ],
+      "environment": {},
+      "executable_definition": false,
+      "historical_only": true,
+      "note": "Existing failure inputs preserved. Original supervisor timeout/command absent from copied guide and series; do not invent or automatically rerun.",
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": null,
+          "archive_member": "research/dsv4-flash0731/phase-d-20261107/workloads/d02-tp4-fairshare-dense-profile.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": true,
+      "requires_success": [],
+      "depends_on": [
+        "sessions/process4-confirm"
+      ]
+    },
+    {
+      "id": "scheduler-tp4-fairshare-dense-profile-retry",
+      "legacy_id": "d02r2-tp4-fairshare-dense-profile",
+      "topic": "scheduler",
+      "process": "process1",
+      "stage": "profile",
+      "process_key": "scheduler/process1-profile",
+      "config": "research/dsv4-flash0731/experiments/scheduler/configs/scheduler-tp4-fairshare-dense-profile-retry.json",
+      "plan": "research/dsv4-flash0731/experiments/scheduler/workloads/scheduler-tp4-fairshare-dense-profile-retry.json",
+      "timeout": 1800,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "context-tp4-th2048-cad8-profile",
+      "hypothesis": "Matched two-long six-short scheduling diagnostic",
+      "runner": "research/dsv4-flash0731/scheduler/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scheduler/scripts/serve_study.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scheduler/configs/scheduler-tp4-fairshare-dense-profile-retry.json",
+        "--plan",
+        "research/dsv4-flash0731/experiments/scheduler/workloads/scheduler-tp4-fairshare-dense-profile-retry.json"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": 1073,
+          "job_index": null,
+          "archive_member": "WORKSPACE_REPRODUCTION.md",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "sessions/process4-confirm"
+      ]
+    },
+    {
+      "id": "scheduler-tp4-observe-matched-670",
+      "legacy_id": "d03-tp4-observe-matched-670",
+      "topic": "scheduler",
+      "process": "process2",
+      "stage": "matched-performance",
+      "process_key": "scheduler/process2-matched-performance",
+      "config": "research/dsv4-flash0731/experiments/scheduler/configs/scheduler-tp4-observe-matched-670.json",
+      "plan": "research/dsv4-flash0731/experiments/scheduler/workloads/scheduler-tp4-observe-matched-670.json",
+      "timeout": 2100,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "scheduler-tp4-observe-dense-profile",
+      "hypothesis": "Unprofiled matched scheduler comparison with Poisson context mix, dense diagnostic and eight-long boundary; quality evaluated separately.",
+      "runner": "research/dsv4-flash0731/scheduler/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scheduler/scripts/serve_study.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scheduler/configs/scheduler-tp4-observe-matched-670.json",
+        "--plan",
+        "research/dsv4-flash0731/experiments/scheduler/workloads/scheduler-tp4-observe-matched-670.json"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 0,
+          "archive_member": "research/dsv4-flash0731/phase-d-20261107/workloads/series-matched-performance-r1.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "scheduler/process1-profile"
+      ]
+    },
+    {
+      "id": "scheduler-tp4-fairshare-matched-670",
+      "legacy_id": "d04-tp4-fairshare-matched-670",
+      "topic": "scheduler",
+      "process": "process2",
+      "stage": "matched-performance",
+      "process_key": "scheduler/process2-matched-performance",
+      "config": "research/dsv4-flash0731/experiments/scheduler/configs/scheduler-tp4-fairshare-matched-670.json",
+      "plan": "research/dsv4-flash0731/experiments/scheduler/workloads/scheduler-tp4-fairshare-matched-670.json",
+      "timeout": 2100,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "scheduler-tp4-observe-dense-profile",
+      "hypothesis": "Unprofiled matched scheduler comparison with Poisson context mix, dense diagnostic and eight-long boundary; quality evaluated separately.",
+      "runner": "research/dsv4-flash0731/scheduler/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scheduler/scripts/serve_study.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scheduler/configs/scheduler-tp4-fairshare-matched-670.json",
+        "--plan",
+        "research/dsv4-flash0731/experiments/scheduler/workloads/scheduler-tp4-fairshare-matched-670.json"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 1,
+          "archive_member": "research/dsv4-flash0731/phase-d-20261107/workloads/series-matched-performance-r1.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "scheduler/process1-profile"
+      ]
+    },
+    {
+      "id": "scheduler-tp4-fairshare-matched-671",
+      "legacy_id": "d05-tp4-fairshare-matched-671",
+      "topic": "scheduler",
+      "process": "process2",
+      "stage": "matched-performance",
+      "process_key": "scheduler/process2-matched-performance",
+      "config": "research/dsv4-flash0731/experiments/scheduler/configs/scheduler-tp4-fairshare-matched-671.json",
+      "plan": "research/dsv4-flash0731/experiments/scheduler/workloads/scheduler-tp4-fairshare-matched-671.json",
+      "timeout": 2100,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "scheduler-tp4-observe-dense-profile",
+      "hypothesis": "Unprofiled matched scheduler comparison with Poisson context mix, dense diagnostic and eight-long boundary; quality evaluated separately.",
+      "runner": "research/dsv4-flash0731/scheduler/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scheduler/scripts/serve_study.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scheduler/configs/scheduler-tp4-fairshare-matched-671.json",
+        "--plan",
+        "research/dsv4-flash0731/experiments/scheduler/workloads/scheduler-tp4-fairshare-matched-671.json"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 2,
+          "archive_member": "research/dsv4-flash0731/phase-d-20261107/workloads/series-matched-performance-r1.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "scheduler/process1-profile"
+      ]
+    },
+    {
+      "id": "scheduler-tp4-observe-matched-671",
+      "legacy_id": "d06-tp4-observe-matched-671",
+      "topic": "scheduler",
+      "process": "process2",
+      "stage": "matched-performance",
+      "process_key": "scheduler/process2-matched-performance",
+      "config": "research/dsv4-flash0731/experiments/scheduler/configs/scheduler-tp4-observe-matched-671.json",
+      "plan": "research/dsv4-flash0731/experiments/scheduler/workloads/scheduler-tp4-observe-matched-671.json",
+      "timeout": 2100,
+      "suite": null,
+      "rounds": null,
+      "gpus": "0,1,2,3",
+      "reference": "scheduler-tp4-observe-dense-profile",
+      "hypothesis": "Unprofiled matched scheduler comparison with Poisson context mix, dense diagnostic and eight-long boundary; quality evaluated separately.",
+      "runner": "research/dsv4-flash0731/scheduler/scripts/run_logged.py",
+      "child_argv": [
+        ".venv-vllm/bin/python",
+        "research/dsv4-flash0731/scheduler/scripts/serve_study.py",
+        "--config",
+        "research/dsv4-flash0731/experiments/scheduler/configs/scheduler-tp4-observe-matched-671.json",
+        "--plan",
+        "research/dsv4-flash0731/experiments/scheduler/workloads/scheduler-tp4-observe-matched-671.json"
+      ],
+      "environment": {},
+      "executable_definition": true,
+      "historical_only": false,
+      "source_locations": [
+        {
+          "line": null,
+          "job_index": 3,
+          "archive_member": "research/dsv4-flash0731/phase-d-20261107/workloads/series-matched-performance-r1.json",
+          "archive": "archive/initial-project.tar.gz"
+        }
+      ],
+      "optional": false,
+      "requires_success": [],
+      "depends_on": [
+        "scheduler/process1-profile"
+      ]
+    }
+  ],
+  "stages": [
+    {
+      "id": "architecture/process1-smoke",
+      "topic": "architecture",
+      "order": 1,
+      "depends_on": [],
+      "experiments": [
+        "architecture-comm4",
+        "architecture-comm4-p2p-sys",
+        "architecture-tp4-marlin-smoke-review"
+      ],
+      "optional_experiments": [],
+      "completion_rule": "All scheduled attempts have terminal evidence; failed attempts remain failures. Dependent architecture candidates additionally require a successful screening/full run."
+    },
+    {
+      "id": "architecture/process2-screen",
+      "topic": "architecture",
+      "order": 2,
+      "depends_on": [
+        "architecture/process1-smoke"
+      ],
+      "experiments": [
+        "architecture-dp2-pp2-ep-marlin-screen",
+        "architecture-dp2-pp2-tensor-moe-marlin-screen",
+        "architecture-dp4-ep-marlin-screen",
+        "architecture-dp4-tensor-moe-marlin-screen",
+        "architecture-pp4-marlin-screen",
+        "architecture-replicas2-pp2-marlin-screen",
+        "architecture-replicas2-tp2-marlin-screen",
+        "architecture-tp2-dp2-ep-marlin-screen",
+        "architecture-tp2-dp2-tensor-moe-marlin-screen",
+        "architecture-tp2-pp2-ep-marlin-screen",
+        "architecture-tp2-pp2-marlin-screen",
+        "architecture-tp4-deepgemm-screen",
+        "architecture-tp4-ep-marlin-screen",
+        "architecture-tp4-marlin-dspark3-screen",
+        "architecture-tp4-marlin-dspark5-screen",
+        "architecture-tp4-marlin-dspark7-screen",
+        "architecture-tp4-marlin-graph-screen"
+      ],
+      "optional_experiments": [],
+      "completion_rule": "All scheduled attempts have terminal evidence; failed attempts remain failures. Dependent architecture candidates additionally require a successful screening/full run."
+    },
+    {
+      "id": "architecture/process3-full",
+      "topic": "architecture",
+      "order": 3,
+      "depends_on": [
+        "architecture/process2-screen"
+      ],
+      "experiments": [
+        "architecture-dp4-ep-marlin-full-fresh",
+        "architecture-dp4-tensor-moe-marlin-full-fresh",
+        "architecture-replicas2-tp2-marlin-full-fresh",
+        "architecture-tp2-pp2-marlin-full-fresh",
+        "architecture-tp4-marlin-dspark3-full-fresh",
+        "architecture-tp4-marlin-full-fresh"
+      ],
+      "optional_experiments": [],
+      "completion_rule": "All scheduled attempts have terminal evidence; failed attempts remain failures. Dependent architecture candidates additionally require a successful screening/full run."
+    },
+    {
+      "id": "architecture/process4-long",
+      "topic": "architecture",
+      "order": 4,
+      "depends_on": [
+        "architecture/process3-full"
+      ],
+      "experiments": [
+        "architecture-dp4-ep-marlin-long-fresh",
+        "architecture-tp2-pp2-marlin-long-fresh",
+        "architecture-tp4-marlin-dspark3-long-fresh",
+        "architecture-tp4-marlin-long-fresh"
+      ],
+      "optional_experiments": [],
+      "completion_rule": "All scheduled attempts have terminal evidence; failed attempts remain failures. Dependent architecture candidates additionally require a successful screening/full run."
+    },
+    {
+      "id": "scenarios/process1-scenarios",
+      "topic": "scenarios",
+      "order": 1,
+      "depends_on": [
+        "architecture/process4-long"
+      ],
+      "experiments": [
+        "scenarios-tp4-nocache",
+        "scenarios-tp4-apc",
+        "scenarios-tp4-dspark3-retry2",
+        "scenarios-tp2pp2",
+        "scenarios-tp4-agent-nocache"
+      ],
+      "optional_experiments": [],
+      "completion_rule": "All scheduled attempts have terminal evidence; failed attempts remain failures. Dependent architecture candidates additionally require a successful screening/full run."
+    },
+    {
+      "id": "scenarios/process2-profile",
+      "topic": "scenarios",
+      "order": 2,
+      "depends_on": [
+        "scenarios/process1-scenarios"
+      ],
+      "experiments": [
+        "scenarios-tp4-profile"
+      ],
+      "optional_experiments": [],
+      "completion_rule": "All scheduled attempts have terminal evidence; failed attempts remain failures. Dependent architecture candidates additionally require a successful screening/full run."
+    },
+    {
+      "id": "scenarios/process3-optimization",
+      "topic": "scenarios",
+      "order": 3,
+      "depends_on": [
+        "scenarios/process2-profile"
+      ],
+      "experiments": [
+        "scenarios-tp4-b1024",
+        "scenarios-dp4ep",
+        "scenarios-tp4-b8192",
+        "scenarios-tp4-dspark-apc"
+      ],
+      "optional_experiments": [],
+      "completion_rule": "All scheduled attempts have terminal evidence; failed attempts remain failures. Dependent architecture candidates additionally require a successful screening/full run."
+    },
+    {
+      "id": "capacity/process1-screen",
+      "topic": "capacity",
+      "order": 1,
+      "depends_on": [
+        "scenarios/process3-optimization"
+      ],
+      "experiments": [
+        "capacity-tp4-screen",
+        "capacity-dspark3-screen",
+        "capacity-tp2pp2-screen",
+        "capacity-dp4ep-screen"
+      ],
+      "optional_experiments": [],
+      "completion_rule": "All scheduled attempts have terminal evidence; failed attempts remain failures. Dependent architecture candidates additionally require a successful screening/full run."
+    },
+    {
+      "id": "capacity/process2-boundary-confirm",
+      "topic": "capacity",
+      "order": 2,
+      "depends_on": [
+        "capacity/process1-screen"
+      ],
+      "experiments": [
+        "capacity-tp4-boundary",
+        "capacity-dspark3-boundary",
+        "capacity-tp2pp2-boundary",
+        "capacity-dp4ep-boundary"
+      ],
+      "optional_experiments": [],
+      "completion_rule": "All scheduled attempts have terminal evidence; failed attempts remain failures. Dependent architecture candidates additionally require a successful screening/full run."
+    },
+    {
+      "id": "capacity/process3-lower-bound-confirm",
+      "topic": "capacity",
+      "order": 3,
+      "depends_on": [
+        "capacity/process2-boundary-confirm"
+      ],
+      "experiments": [],
+      "optional_experiments": [
+        "capacity-tp4-lower-bound",
+        "capacity-dspark3-prefill-bound"
+      ],
+      "completion_rule": "All scheduled attempts have terminal evidence; failed attempts remain failures. Dependent architecture candidates additionally require a successful screening/full run."
+    },
+    {
+      "id": "long-context/process1-screen",
+      "topic": "long-context",
+      "order": 1,
+      "depends_on": [
+        "capacity/process2-boundary-confirm"
+      ],
+      "experiments": [
+        "context-tp4-screen",
+        "context-tp2pp2-screen",
+        "context-dspark3-screen",
+        "context-dp4ep-screen",
+        "context-tp4-th2048-screen"
+      ],
+      "optional_experiments": [],
+      "completion_rule": "All scheduled attempts have terminal evidence; failed attempts remain failures. Dependent architecture candidates additionally require a successful screening/full run."
+    },
+    {
+      "id": "long-context/process2-cadence-screen",
+      "topic": "long-context",
+      "order": 2,
+      "depends_on": [
+        "long-context/process1-screen"
+      ],
+      "experiments": [
+        "context-tp4-th2048-cad8-screen"
+      ],
+      "optional_experiments": [],
+      "completion_rule": "All scheduled attempts have terminal evidence; failed attempts remain failures. Dependent architecture candidates additionally require a successful screening/full run."
+    },
+    {
+      "id": "long-context/process3-profile",
+      "topic": "long-context",
+      "order": 3,
+      "depends_on": [
+        "long-context/process2-cadence-screen"
+      ],
+      "experiments": [
+        "context-tp4-profile",
+        "context-tp4-th2048-profile",
+        "context-tp4-th2048-cad8-profile"
+      ],
+      "optional_experiments": [],
+      "completion_rule": "All scheduled attempts have terminal evidence; failed attempts remain failures. Dependent architecture candidates additionally require a successful screening/full run."
+    },
+    {
+      "id": "long-context/process4-confirm",
+      "topic": "long-context",
+      "order": 4,
+      "depends_on": [
+        "long-context/process3-profile"
+      ],
+      "experiments": [
+        "context-tp2pp2-confirm",
+        "context-tp4-th2048-cad8-confirm"
+      ],
+      "optional_experiments": [],
+      "completion_rule": "All scheduled attempts have terminal evidence; failed attempts remain failures. Dependent architecture candidates additionally require a successful screening/full run."
+    },
+    {
+      "id": "sessions/process1-pilot",
+      "topic": "sessions",
+      "order": 1,
+      "depends_on": [
+        "long-context/process4-confirm"
+      ],
+      "experiments": [
+        "session-tp4-apc-pilot",
+        "session-tp4-agent-pilot2"
+      ],
+      "optional_experiments": [],
+      "completion_rule": "All scheduled attempts have terminal evidence; failed attempts remain failures. Dependent architecture candidates additionally require a successful screening/full run."
+    },
+    {
+      "id": "sessions/process2-matched-screen",
+      "topic": "sessions",
+      "order": 2,
+      "depends_on": [
+        "sessions/process1-pilot"
+      ],
+      "experiments": [
+        "session-tp4-cache-screen",
+        "session-tp4-noapc-screen",
+        "session-tp2pp2-agent-screen",
+        "session-dspark3-agent-screen",
+        "session-dp4ep-affinity-screen"
+      ],
+      "optional_experiments": [],
+      "completion_rule": "All scheduled attempts have terminal evidence; failed attempts remain failures. Dependent architecture candidates additionally require a successful screening/full run."
+    },
+    {
+      "id": "sessions/process3-open-screen",
+      "topic": "sessions",
+      "order": 3,
+      "depends_on": [
+        "sessions/process2-matched-screen"
+      ],
+      "experiments": [
+        "session-tp4-replay-open",
+        "session-dspark3-replay-open",
+        "session-tp4-agent-open",
+        "session-dspark3-agent-open"
+      ],
+      "optional_experiments": [],
+      "completion_rule": "All scheduled attempts have terminal evidence; failed attempts remain failures. Dependent architecture candidates additionally require a successful screening/full run."
+    },
+    {
+      "id": "sessions/process4-confirm",
+      "topic": "sessions",
+      "order": 4,
+      "depends_on": [
+        "sessions/process3-open-screen"
+      ],
+      "experiments": [
+        "session-tp4-replay-confirm",
+        "session-dspark3-replay-confirm",
+        "session-tp4-agent-confirm",
+        "session-dspark3-agent-confirm"
+      ],
+      "optional_experiments": [],
+      "completion_rule": "All scheduled attempts have terminal evidence; failed attempts remain failures. Dependent architecture candidates additionally require a successful screening/full run."
+    },
+    {
+      "id": "sessions/process5-continuation",
+      "topic": "sessions",
+      "order": 5,
+      "depends_on": [
+        "sessions/process4-confirm"
+      ],
+      "experiments": [
+        "session-dspark3-agent-confirm-tail"
+      ],
+      "optional_experiments": [],
+      "completion_rule": "All scheduled attempts have terminal evidence; failed attempts remain failures. Dependent architecture candidates additionally require a successful screening/full run."
+    },
+    {
+      "id": "scheduler/process1-profile",
+      "topic": "scheduler",
+      "order": 1,
+      "depends_on": [
+        "sessions/process4-confirm"
+      ],
+      "experiments": [
+        "scheduler-tp4-observe-dense-profile",
+        "scheduler-tp4-fairshare-dense-profile-retry"
+      ],
+      "optional_experiments": [
+        "scheduler-tp4-fairshare-dense-profile"
+      ],
+      "completion_rule": "All scheduled attempts have terminal evidence; failed attempts remain failures. Dependent architecture candidates additionally require a successful screening/full run."
+    },
+    {
+      "id": "scheduler/process2-matched-performance",
+      "topic": "scheduler",
+      "order": 2,
+      "depends_on": [
+        "scheduler/process1-profile"
+      ],
+      "experiments": [
+        "scheduler-tp4-observe-matched-670",
+        "scheduler-tp4-fairshare-matched-670",
+        "scheduler-tp4-fairshare-matched-671",
+        "scheduler-tp4-observe-matched-671"
+      ],
+      "optional_experiments": [],
+      "completion_rule": "All scheduled attempts have terminal evidence; failed attempts remain failures. Dependent architecture candidates additionally require a successful screening/full run."
+    }
+  ],
+  "coverage": {
+    "direct_document_commands": 37,
+    "series_files": 19,
+    "series_jobs": 48,
+    "merged_duplicate_definitions": 2,
+    "unique_executable_experiments": 83,
+    "total_entries": 84,
+    "registered_without_launch": [
+      "d02-tp4-fairshare-dense-profile"
+    ],
+    "topics": {
+      "architecture": 30,
+      "scenarios": 10,
+      "capacity": 10,
+      "long-context": 11,
+      "sessions": 16,
+      "scheduler": 7
+    },
+    "descriptive_id_collisions": {}
+  }
+}

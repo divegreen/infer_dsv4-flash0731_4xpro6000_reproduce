@@ -1,0 +1,386 @@
+{
+  "schema_version": 1,
+  "experiment_id": "scheduler-tp4-fairshare-matched-671",
+  "model": "dsv4",
+  "base_url": "http://127.0.0.1:8260",
+  "tokenizer_path": "~/models/dsv4-flash0731",
+  "seed": 20261106,
+  "timeout_s": 180,
+  "max_inflight": 128,
+  "metrics_interval_s": 1,
+  "phases": [
+    {
+      "id": "warm-p512",
+      "mode": "closed-loop",
+      "role": "warmup",
+      "requests": 1,
+      "concurrency": 1,
+      "seed": 202611610,
+      "shape_mix": [
+        {
+          "name": "p512_o128",
+          "input_tokens": 512,
+          "output_tokens": 128,
+          "weight": 60
+        }
+      ]
+    },
+    {
+      "id": "warm-p16384",
+      "mode": "closed-loop",
+      "role": "warmup",
+      "requests": 1,
+      "concurrency": 1,
+      "seed": 202611611,
+      "shape_mix": [
+        {
+          "name": "p16384_o128",
+          "input_tokens": 16384,
+          "output_tokens": 128,
+          "weight": 15
+        }
+      ]
+    },
+    {
+      "id": "warm-p32768",
+      "mode": "closed-loop",
+      "role": "warmup",
+      "requests": 1,
+      "concurrency": 1,
+      "seed": 202611612,
+      "shape_mix": [
+        {
+          "name": "p32768_o128",
+          "input_tokens": 32768,
+          "output_tokens": 128,
+          "weight": 15
+        }
+      ]
+    },
+    {
+      "id": "warm-p65536",
+      "mode": "closed-loop",
+      "role": "warmup",
+      "requests": 1,
+      "concurrency": 1,
+      "seed": 202611613,
+      "shape_mix": [
+        {
+          "name": "p65536_o128",
+          "input_tokens": 65536,
+          "output_tokens": 128,
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "id": "warm-c8",
+      "mode": "closed-loop",
+      "role": "warmup",
+      "requests": 8,
+      "concurrency": 8,
+      "seed": 202611620,
+      "shape_mix": [
+        {
+          "name": "p512_o128",
+          "input_tokens": 512,
+          "output_tokens": 128,
+          "weight": 60
+        },
+        {
+          "name": "p16384_o128",
+          "input_tokens": 16384,
+          "output_tokens": 128,
+          "weight": 15
+        },
+        {
+          "name": "p32768_o128",
+          "input_tokens": 32768,
+          "output_tokens": 128,
+          "weight": 15
+        },
+        {
+          "name": "p65536_o128",
+          "input_tokens": 65536,
+          "output_tokens": 128,
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "id": "warm_interference64",
+      "mode": "trace",
+      "role": "warmup",
+      "duration_s": 4,
+      "seed": 202611751,
+      "shape_mix": [
+        {
+          "name": "p512_o128",
+          "input_tokens": 512,
+          "output_tokens": 128,
+          "weight": 60
+        },
+        {
+          "name": "p65536_o128",
+          "input_tokens": 65536,
+          "output_tokens": 128,
+          "weight": 10
+        }
+      ],
+      "arrivals": [
+        {
+          "offset_s": 0.0,
+          "shape_name": "p65536_o128"
+        },
+        {
+          "offset_s": 0.0,
+          "shape_name": "p65536_o128"
+        },
+        {
+          "offset_s": 0.25,
+          "shape_name": "p512_o128"
+        },
+        {
+          "offset_s": 0.75,
+          "shape_name": "p512_o128"
+        },
+        {
+          "offset_s": 1.25,
+          "shape_name": "p512_o128"
+        },
+        {
+          "offset_s": 1.75,
+          "shape_name": "p512_o128"
+        },
+        {
+          "offset_s": 2.25,
+          "shape_name": "p512_o128"
+        },
+        {
+          "offset_s": 2.75,
+          "shape_name": "p512_o128"
+        }
+      ]
+    },
+    {
+      "id": "dense64-normal",
+      "mode": "trace",
+      "role": "interference",
+      "duration_s": 4,
+      "seed": 202611752,
+      "shape_mix": [
+        {
+          "name": "p512_o128",
+          "input_tokens": 512,
+          "output_tokens": 128,
+          "weight": 60
+        },
+        {
+          "name": "p65536_o128",
+          "input_tokens": 65536,
+          "output_tokens": 128,
+          "weight": 10
+        }
+      ],
+      "arrivals": [
+        {
+          "offset_s": 0.0,
+          "shape_name": "p65536_o128"
+        },
+        {
+          "offset_s": 0.0,
+          "shape_name": "p65536_o128"
+        },
+        {
+          "offset_s": 0.25,
+          "shape_name": "p512_o128"
+        },
+        {
+          "offset_s": 0.75,
+          "shape_name": "p512_o128"
+        },
+        {
+          "offset_s": 1.25,
+          "shape_name": "p512_o128"
+        },
+        {
+          "offset_s": 1.75,
+          "shape_name": "p512_o128"
+        },
+        {
+          "offset_s": 2.25,
+          "shape_name": "p512_o128"
+        },
+        {
+          "offset_s": 2.75,
+          "shape_name": "p512_o128"
+        }
+      ]
+    },
+    {
+      "id": "context_mix-r0p5-confirm-2",
+      "mode": "poisson",
+      "role": "confirm",
+      "rate": 0.5,
+      "duration_s": 450,
+      "seed": 202611671,
+      "shape_mix": [
+        {
+          "name": "p512_o128",
+          "input_tokens": 512,
+          "output_tokens": 128,
+          "weight": 60
+        },
+        {
+          "name": "p16384_o128",
+          "input_tokens": 16384,
+          "output_tokens": 128,
+          "weight": 15
+        },
+        {
+          "name": "p32768_o128",
+          "input_tokens": 32768,
+          "output_tokens": 128,
+          "weight": 15
+        },
+        {
+          "name": "p65536_o128",
+          "input_tokens": 65536,
+          "output_tokens": 128,
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "id": "kv_residency-c8long",
+      "mode": "trace",
+      "role": "stress",
+      "duration_s": 12,
+      "seed": 202611640,
+      "arrivals": [
+        {
+          "offset_s": 0.0,
+          "shape_name": "p65536_o128"
+        },
+        {
+          "offset_s": 0.0,
+          "shape_name": "p65536_o128"
+        },
+        {
+          "offset_s": 0.0,
+          "shape_name": "p65536_o128"
+        },
+        {
+          "offset_s": 0.0,
+          "shape_name": "p65536_o128"
+        },
+        {
+          "offset_s": 0.0,
+          "shape_name": "p65536_o128"
+        },
+        {
+          "offset_s": 0.0,
+          "shape_name": "p65536_o128"
+        },
+        {
+          "offset_s": 0.0,
+          "shape_name": "p65536_o128"
+        },
+        {
+          "offset_s": 0.0,
+          "shape_name": "p65536_o128"
+        },
+        {
+          "offset_s": 0.5,
+          "shape_name": "p512_o128"
+        },
+        {
+          "offset_s": 1.0,
+          "shape_name": "p512_o128"
+        },
+        {
+          "offset_s": 1.5,
+          "shape_name": "p512_o128"
+        },
+        {
+          "offset_s": 2.0,
+          "shape_name": "p512_o128"
+        },
+        {
+          "offset_s": 2.5,
+          "shape_name": "p512_o128"
+        },
+        {
+          "offset_s": 3.0,
+          "shape_name": "p512_o128"
+        },
+        {
+          "offset_s": 3.5,
+          "shape_name": "p512_o128"
+        },
+        {
+          "offset_s": 4.0,
+          "shape_name": "p512_o128"
+        },
+        {
+          "offset_s": 4.5,
+          "shape_name": "p512_o128"
+        },
+        {
+          "offset_s": 5.0,
+          "shape_name": "p512_o128"
+        },
+        {
+          "offset_s": 5.5,
+          "shape_name": "p512_o128"
+        },
+        {
+          "offset_s": 6.0,
+          "shape_name": "p512_o128"
+        },
+        {
+          "offset_s": 6.5,
+          "shape_name": "p512_o128"
+        },
+        {
+          "offset_s": 7.0,
+          "shape_name": "p512_o128"
+        },
+        {
+          "offset_s": 7.5,
+          "shape_name": "p512_o128"
+        },
+        {
+          "offset_s": 8.0,
+          "shape_name": "p512_o128"
+        }
+      ],
+      "shape_mix": [
+        {
+          "name": "p512_o128",
+          "input_tokens": 512,
+          "output_tokens": 128,
+          "weight": 60
+        },
+        {
+          "name": "p16384_o128",
+          "input_tokens": 16384,
+          "output_tokens": 128,
+          "weight": 15
+        },
+        {
+          "name": "p32768_o128",
+          "input_tokens": 32768,
+          "output_tokens": 128,
+          "weight": 15
+        },
+        {
+          "name": "p65536_o128",
+          "input_tokens": 65536,
+          "output_tokens": 128,
+          "weight": 10
+        }
+      ]
+    }
+  ]
+}

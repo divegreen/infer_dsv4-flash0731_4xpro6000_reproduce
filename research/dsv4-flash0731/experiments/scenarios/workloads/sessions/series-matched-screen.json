@@ -1,0 +1,44 @@
+{
+  "jobs": [
+    {
+      "id": "session-tp4-cache-screen",
+      "config": "session-tp4-cache-screen.json",
+      "session_plan": "sessions/session-tp4-cache-screen.json",
+      "timeout": 3600,
+      "reference": "stage-A-and-B-frozen-evidence; c01/c02 pilot evidence",
+      "hypothesis": "Same exact 4-turn tokens at C8 under none/session/shared namespaces, reversed treatment order across two seeds; C1/C6 real six-task control; independently fix numeric tool-schema interface before rankings."
+    },
+    {
+      "id": "session-tp4-noapc-screen",
+      "config": "session-tp4-noapc-screen.json",
+      "session_plan": "sessions/session-tp4-noapc-screen.json",
+      "timeout": 3600,
+      "reference": "stage-A-and-B-frozen-evidence; c01/c02 pilot evidence",
+      "hypothesis": "Full APC-off deployment reference matched to TP4 on tokens/task plans; distinguishes no-hit namespace from no cache implementation."
+    },
+    {
+      "id": "session-tp2pp2-agent-screen",
+      "config": "session-tp2pp2-agent-screen.json",
+      "session_plan": "sessions/session-tp2pp2-agent-screen.json",
+      "timeout": 3600,
+      "reference": "stage-A-and-B-frozen-evidence; c01/c02 pilot evidence",
+      "hypothesis": "Matched replay C1/C8 and real agent C1/C6 with two high-concurrency seeds; keep task grades and dynamic workloads separate; no capacity claim from closed concurrency."
+    },
+    {
+      "id": "session-dspark3-agent-screen",
+      "config": "session-dspark3-agent-screen.json",
+      "session_plan": "sessions/session-dspark3-agent-screen.json",
+      "timeout": 3600,
+      "reference": "stage-A-and-B-frozen-evidence; c01/c02 pilot evidence",
+      "hypothesis": "Matched replay C1/C8 and real agent C1/C6 with two high-concurrency seeds; keep task grades and dynamic workloads separate; no capacity claim from closed concurrency."
+    },
+    {
+      "id": "session-dp4ep-affinity-screen",
+      "config": "session-dp4ep-affinity-screen.json",
+      "session_plan": "sessions/session-dp4ep-affinity-screen.json",
+      "timeout": 3600,
+      "reference": "stage-A-and-B-frozen-evidence; c01/c02 pilot evidence",
+      "hypothesis": "Explicitly test default versus session rank affinity with identical replay/real-task plans; 24 replay sessions and12 agent sessions balance task types over4 ranks; same scopes and output budgets."
+    }
+  ]
+}

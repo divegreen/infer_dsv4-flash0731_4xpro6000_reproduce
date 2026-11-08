@@ -1,0 +1,20 @@
+{
+  "jobs": [
+    {
+      "id": "context-tp2pp2-confirm",
+      "config": "context-tp2pp2-screen.json",
+      "capacity_plan": "long-context/context-tp2pp2-confirm.json",
+      "timeout": 3000,
+      "reference": "b02-and-b08-matched-screen",
+      "hypothesis": "Two predeclared 450-second Poisson windows at .5 req/s; compare default PP prefill candidate and TP4 cap+cadence on mixed16/32/64K service, retaining finite stability and per-shape tails."
+    },
+    {
+      "id": "context-tp4-th2048-cad8-confirm",
+      "config": "context-tp4-th2048-cad8-screen.json",
+      "capacity_plan": "long-context/context-tp4-th2048-cad8-confirm.json",
+      "timeout": 3000,
+      "reference": "b02-and-b08-matched-screen",
+      "hypothesis": "Two predeclared 450-second Poisson windows at .5 req/s; compare default PP prefill candidate and TP4 cap+cadence on mixed16/32/64K service, retaining finite stability and per-shape tails."
+    }
+  ]
+}

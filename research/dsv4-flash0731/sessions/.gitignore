@@ -1,0 +1,11 @@
+__pycache__/
+summary/*.json
+evidence/*.tar.gz
+logs/*-prepared.json
+
+# Raw CPU protocol fixtures retained for final evidence archive, not Git.
+logs/agent-session-client-fixtures*/
+logs/*-fixtures*/
+
+# Detailed per-request cache ledgers stay in the immutable evidence package.
+logs/*-cache-screen-r*.json

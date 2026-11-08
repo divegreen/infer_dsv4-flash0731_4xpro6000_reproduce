@@ -1,0 +1,76 @@
+{
+  "provenance": "Synthetic short natural-stop quality probes; 8 narrow tasks, not a general coding-quality benchmark.",
+  "cases": [
+    {
+      "id": "integer_product",
+      "prompt": "Calculate 17 * 23. Reply only with the integer.",
+      "kind": "exact",
+      "expected": "391"
+    },
+    {
+      "id": "chinese_arithmetic",
+      "prompt": "19加23等于多少？仅输出阿拉伯数字。",
+      "kind": "exact",
+      "expected": "42"
+    },
+    {
+      "id": "json_transform",
+      "prompt": "For [2, 4, 6], return only a JSON object with keys count and total. No markdown.",
+      "kind": "json",
+      "expected": {
+        "count": 3,
+        "total": 12
+      }
+    },
+    {
+      "id": "sorted_unique",
+      "prompt": "Sort and deduplicate [4, 1, 4, 2, 1]. Reply only with a JSON array.",
+      "kind": "json",
+      "expected": [
+        1,
+        2,
+        4
+      ]
+    },
+    {
+      "id": "code_trace",
+      "prompt": "What is the JSON value of [x*x for x in range(4) if x % 2 == 1]? Return only the JSON array.",
+      "kind": "json",
+      "expected": [
+        1,
+        9
+      ]
+    },
+    {
+      "id": "evidence_boundary",
+      "prompt": "A report says a service passed 4 tests. Does this prove it will pass all possible tests? Reply only yes or no.",
+      "kind": "exact",
+      "expected": "no"
+    },
+    {
+      "id": "history_recall",
+      "messages": [
+        {
+          "role": "user",
+          "content": "The project code is 37. Remember it."
+        },
+        {
+          "role": "assistant",
+          "content": "The project code is 37."
+        },
+        {
+          "role": "user",
+          "content": "What is the project code plus 5? Reply only with the integer."
+        }
+      ],
+      "kind": "exact",
+      "expected": "42"
+    },
+    {
+      "id": "window_count",
+      "prompt": "How many complete consecutive windows of width 3 exist in a list of 8 elements, with stride 1 and no padding? Reply only with the integer.",
+      "kind": "exact",
+      "expected": "6"
+    }
+  ]
+}

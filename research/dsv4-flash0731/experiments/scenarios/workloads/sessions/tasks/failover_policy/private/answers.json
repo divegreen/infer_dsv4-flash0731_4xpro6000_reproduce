@@ -1,0 +1,74 @@
+{
+  "cobalt_interactive_1129": {
+    "value": [
+      "west",
+      "north"
+    ],
+    "support": [
+      [
+        "override-signed.md",
+        3,
+        5
+      ],
+      [
+        "residency.md",
+        3,
+        4
+      ]
+    ]
+  },
+  "cobalt_interactive_1130": {
+    "value": [
+      "east",
+      "west"
+    ],
+    "support": [
+      [
+        "routing-v4.md",
+        4,
+        4
+      ],
+      [
+        "override-signed.md",
+        3,
+        3
+      ]
+    ]
+  },
+  "cobalt_batch_1100": {
+    "value": [
+      "west",
+      "east"
+    ],
+    "support": [
+      [
+        "routing-v4.md",
+        5,
+        5
+      ],
+      [
+        "override-signed.md",
+        6,
+        6
+      ]
+    ]
+  },
+  "jade_interactive_1100": {
+    "value": [
+      "east",
+      "west"
+    ],
+    "support": [
+      [
+        "routing-v4.md",
+        4,
+        4
+      ],
+      [
+        "override-signed.md",
+        4,
+        6
+      ]
+    ]
+  }
+}

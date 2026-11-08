@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "decision_id": "agent-confirm-r1",
+  "rationale": "Use terminal audited c10/c11 real Agent screens, not replay capacity or closed concurrency. At .30/.60 session/s TP4 has INCONCLUSIVE trends (A/C26/20 and50/34; outstanding increase3.771/7.885 but not strict three-bin monotonic growth), while DSpark has GROWING_BACKLOG at.30 (26/23,increase3.244) and INCONCLUSIVE at.60 (50/44,increase-.653). These short-window outcomes are nonmonotonic and cannot certify capacity. DSpark nevertheless has lower user-visible P95 at matched .30/.60:22.118/36.717s versus TP452.80/81.64s, shorter drains8.442/19.268s versus37.599/55.388s, and the same strict12/35 and22/65 successes in these specific cohorts. Preregister TP4 .20/.30 and DSpark .30/.60 at300 seconds with independent seeds202611642/643: .30 is the common exact task-assignment/arrival comparison, .20 is the TP4 conservative point, and .60 tests whether DSpark's higher-load capability persists beyond a short transient. This is a targeted capacity check, not a universal ranking or pure kernel comparison; dynamic calls/tokens/outputs and grades remain outcomes. Keep unchanged tasks, hidden strict grader, max12 turns/32tools/4096output, session cache scope,6-task C1 warmup,180/600timeouts and64-session protection. c11 showed a TopK warmup warning inside its lowest-rate formal phase; preserve that data and observe warmup/JIT in confirmations, without claiming all shapes warmed or removing slow samples. Request and Session SLO definitions stay unchanged. Include every started confirmation seed/window and all failed attempts in costs; no seed replacement, no automatic promotion to production SLA or exact global maximum. GPU execution follows the already registered c12-c13 replay queue and must retain exclusive GPU0-3 ownership.",
+  "evidence_references": [
+    "sessions/summary/session-tp4-agent-open-terminal-r1.json",
+    "sessions/summary/session-dspark3-agent-open-terminal-r1.json",
+    "sessions/logs/audit-session-tp4-agent-open-r1.json",
+    "sessions/logs/audit-session-dspark3-agent-open-r1.json",
+    "sessions/finite-session-v1.md",
+    "sessions/decisions/open-screen-r1.json"
+  ],
+  "service_protocol": {"timeout_s": 180, "session_timeout_s": 600, "max_active_sessions": 64},
+  "warmup_seed": 202611609,
+  "supervisor_timeout_s": 3600,
+  "selections": [
+    {
+      "selection_id": "tp4-agent-confirmation",
+      "kind": "agent",
+      "rates": [0.20, 0.30],
+      "duration_s": 300,
+      "seeds": [202611642, 202611643],
+      "role": "confirm",
+      "cache_scope": "session",
+      "candidates": [
+        {"experiment_id": "session-tp4-agent-confirm", "candidate": "tp4-apc", "config_ref": "session-tp4-agent-open.json", "dp_routing": "none"}
+      ]
+    },
+    {
+      "selection_id": "dspark-agent-confirmation",
+      "kind": "agent",
+      "rates": [0.30, 0.60],
+      "duration_s": 300,
+      "seeds": [202611642, 202611643],
+      "role": "confirm",
+      "cache_scope": "session",
+      "candidates": [
+        {"experiment_id": "session-dspark3-agent-confirm", "candidate": "dspark3-apc", "config_ref": "session-dspark3-agent-open.json", "dp_routing": "none"}
+      ]
+    }
+  ]
+}

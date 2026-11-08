@@ -1,0 +1,42 @@
+{
+  "name": "session-tp4-agent-open",
+  "port": 8260,
+  "startup_timeout": 1200,
+  "args": [
+    "--tensor-parallel-size",
+    "4",
+    "--distributed-executor-backend",
+    "mp",
+    "--max-model-len",
+    "131072",
+    "--max-num-seqs",
+    "64",
+    "--max-num-batched-tokens",
+    "4096",
+    "--gpu-memory-utilization",
+    "0.90",
+    "--kv-cache-dtype",
+    "fp8_ds_mla",
+    "--block-size",
+    "256",
+    "--attention-backend",
+    "FLASHINFER_MLA_SPARSE_DSV4",
+    "--moe-backend",
+    "marlin",
+    "--seed",
+    "20261105",
+    "--reasoning-parser",
+    "deepseek_v4",
+    "--enable-auto-tool-choice",
+    "--tool-call-parser",
+    "deepseek_v4",
+    "--enable-chunked-prefill",
+    "--long-prefill-token-threshold",
+    "0",
+    "--enable-prefix-caching"
+  ],
+  "env": {
+    "NCCL_DEBUG": "WARN",
+    "VLLM_SERVER_DEV_MODE": "1"
+  }
+}

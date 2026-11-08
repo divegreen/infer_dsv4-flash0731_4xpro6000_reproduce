@@ -1,0 +1,20 @@
+{
+  "jobs": [
+    {
+      "id": "capacity-tp2pp2-boundary",
+      "config": "tp2-pp2-marlin-nocache-128k.json",
+      "capacity_plan": "capacity/capacity-tp2pp2-boundary.json",
+      "timeout": 4200,
+      "reference": "capacity-tp2pp2-screen; internal exploratory reference, not accepted baseline",
+      "hypothesis": "Confirm short-mixed rate1 SLO and rate4 service throughput; generation rate3 between passing2 and failing4."
+    },
+    {
+      "id": "capacity-dp4ep-boundary",
+      "config": "dp4-ep-marlin-nocache-128k.json",
+      "capacity_plan": "capacity/capacity-dp4ep-boundary.json",
+      "timeout": 4200,
+      "reference": "capacity-dp4ep-screen; internal exploratory reference, not accepted baseline",
+      "hypothesis": "Confirm short-mixed rate1 SLO and rate3 service throughput; generation rate3 between passing2 and failing4."
+    }
+  ]
+}

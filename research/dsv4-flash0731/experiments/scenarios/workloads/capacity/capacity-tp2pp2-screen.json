@@ -1,0 +1,167 @@
+{
+  "schema_version": 1,
+  "experiment_id": "capacity-tp2pp2-screen",
+  "model": "dsv4",
+  "base_url": "http://127.0.0.1:8260",
+  "tokenizer_path": "~/models/dsv4-flash0731",
+  "seed": 20261106,
+  "timeout_s": 300,
+  "max_inflight": 256,
+  "metrics_interval_s": 1,
+  "phases": [
+    {
+      "id": "warm-shape-0",
+      "mode": "closed-loop",
+      "role": "warmup",
+      "requests": 2,
+      "concurrency": 1,
+      "seed": 202611060,
+      "shape_mix": [
+        {
+          "name": "p512_o128",
+          "input_tokens": 512,
+          "output_tokens": 128,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "warm-shape-1",
+      "mode": "closed-loop",
+      "role": "warmup",
+      "requests": 2,
+      "concurrency": 1,
+      "seed": 202611061,
+      "shape_mix": [
+        {
+          "name": "p4096_o256",
+          "input_tokens": 4096,
+          "output_tokens": 256,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "warm-shape-2",
+      "mode": "closed-loop",
+      "role": "warmup",
+      "requests": 2,
+      "concurrency": 1,
+      "seed": 202611062,
+      "shape_mix": [
+        {
+          "name": "p16384_o128",
+          "input_tokens": 16384,
+          "output_tokens": 128,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "warm-shape-3",
+      "mode": "closed-loop",
+      "role": "warmup",
+      "requests": 2,
+      "concurrency": 1,
+      "seed": 202611063,
+      "shape_mix": [
+        {
+          "name": "p1024_o1024",
+          "input_tokens": 1024,
+          "output_tokens": 1024,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "warm-batch-short_mixed",
+      "mode": "closed-loop",
+      "role": "warmup",
+      "requests": 8,
+      "concurrency": 8,
+      "seed": 202611070,
+      "shape_mix": "short_mixed"
+    },
+    {
+      "id": "short_mixed-r0p5-screen",
+      "mode": "poisson",
+      "role": "screen",
+      "rate": 0.5,
+      "duration_s": 60,
+      "shape_mix": "short_mixed",
+      "seed": 202611100
+    },
+    {
+      "id": "short_mixed-r1-screen",
+      "mode": "poisson",
+      "role": "screen",
+      "rate": 1,
+      "duration_s": 60,
+      "shape_mix": "short_mixed",
+      "seed": 202611101
+    },
+    {
+      "id": "short_mixed-r2-screen",
+      "mode": "poisson",
+      "role": "screen",
+      "rate": 2,
+      "duration_s": 60,
+      "shape_mix": "short_mixed",
+      "seed": 202611102
+    },
+    {
+      "id": "short_mixed-r4-screen",
+      "mode": "poisson",
+      "role": "screen",
+      "rate": 4,
+      "duration_s": 60,
+      "shape_mix": "short_mixed",
+      "seed": 202611103
+    },
+    {
+      "id": "warm-batch-long_generation",
+      "mode": "closed-loop",
+      "role": "warmup",
+      "requests": 8,
+      "concurrency": 8,
+      "seed": 202611070,
+      "shape_mix": "long_generation"
+    },
+    {
+      "id": "long_generation-r0p5-screen",
+      "mode": "poisson",
+      "role": "screen",
+      "rate": 0.5,
+      "duration_s": 60,
+      "shape_mix": "long_generation",
+      "seed": 202611100
+    },
+    {
+      "id": "long_generation-r1-screen",
+      "mode": "poisson",
+      "role": "screen",
+      "rate": 1,
+      "duration_s": 60,
+      "shape_mix": "long_generation",
+      "seed": 202611101
+    },
+    {
+      "id": "long_generation-r2-screen",
+      "mode": "poisson",
+      "role": "screen",
+      "rate": 2,
+      "duration_s": 60,
+      "shape_mix": "long_generation",
+      "seed": 202611102
+    },
+    {
+      "id": "long_generation-r4-screen",
+      "mode": "poisson",
+      "role": "screen",
+      "rate": 4,
+      "duration_s": 60,
+      "shape_mix": "long_generation",
+      "seed": 202611103
+    }
+  ]
+}

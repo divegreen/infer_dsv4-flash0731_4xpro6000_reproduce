@@ -1,0 +1,12 @@
+{
+  "jobs": [
+    {
+      "id": "session-tp4-agent-pilot2",
+      "config": "session-tp4-agent-pilot2.json",
+      "session_plan": "sessions/session-tp4-agent-pilot2.json",
+      "timeout": 2400,
+      "reference": "stage-A-and-B-frozen-evidence; c01 failed agent pilot",
+      "hypothesis": "Remove pilot harness clipping (5-6 observed tool calls and output length1024); preserve tasks/grading/seed, allow8 tools per round and4096 output tokens, natural EOS. No repeated formal replay."
+    }
+  ]
+}

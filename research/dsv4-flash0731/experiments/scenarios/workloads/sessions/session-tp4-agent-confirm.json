@@ -1,0 +1,302 @@
+{
+  "schema_version": 1,
+  "experiment_id": "session-tp4-agent-confirm",
+  "base_url": "http://127.0.0.1:8260",
+  "model": "dsv4",
+  "timeout_s": 180,
+  "session_timeout_s": 600,
+  "max_active_sessions": 64,
+  "phases": [
+    {
+      "id": "warm-agent",
+      "arrival": "closed",
+      "role": "warmup",
+      "sessions": 6,
+      "concurrency": 1,
+      "kind": "agent",
+      "seed": 202611609,
+      "cache_scope": "session",
+      "dp_routing": "none",
+      "tasks": [
+        "reservation_book",
+        "invoice_adjustments",
+        "release_gate",
+        "failover_policy",
+        "sales_net",
+        "service_latency"
+      ],
+      "max_turns": 12,
+      "max_tools": 32,
+      "max_output_tokens": 4096
+    },
+    {
+      "id": "agent-open-r01-s01",
+      "arrival": "poisson",
+      "role": "confirm",
+      "rate": 0.2,
+      "duration_s": 300,
+      "kind": "agent",
+      "seed": 202611642,
+      "cache_scope": "session",
+      "dp_routing": "none",
+      "tasks": [
+        "reservation_book",
+        "invoice_adjustments",
+        "release_gate",
+        "failover_policy",
+        "sales_net",
+        "service_latency"
+      ],
+      "max_turns": 12,
+      "max_tools": 32,
+      "max_output_tokens": 4096
+    },
+    {
+      "id": "agent-open-r01-s02",
+      "arrival": "poisson",
+      "role": "confirm",
+      "rate": 0.2,
+      "duration_s": 300,
+      "kind": "agent",
+      "seed": 202611643,
+      "cache_scope": "session",
+      "dp_routing": "none",
+      "tasks": [
+        "reservation_book",
+        "invoice_adjustments",
+        "release_gate",
+        "failover_policy",
+        "sales_net",
+        "service_latency"
+      ],
+      "max_turns": 12,
+      "max_tools": 32,
+      "max_output_tokens": 4096
+    },
+    {
+      "id": "agent-open-r02-s01",
+      "arrival": "poisson",
+      "role": "confirm",
+      "rate": 0.3,
+      "duration_s": 300,
+      "kind": "agent",
+      "seed": 202611642,
+      "cache_scope": "session",
+      "dp_routing": "none",
+      "tasks": [
+        "reservation_book",
+        "invoice_adjustments",
+        "release_gate",
+        "failover_policy",
+        "sales_net",
+        "service_latency"
+      ],
+      "max_turns": 12,
+      "max_tools": 32,
+      "max_output_tokens": 4096
+    },
+    {
+      "id": "agent-open-r02-s02",
+      "arrival": "poisson",
+      "role": "confirm",
+      "rate": 0.3,
+      "duration_s": 300,
+      "kind": "agent",
+      "seed": 202611643,
+      "cache_scope": "session",
+      "dp_routing": "none",
+      "tasks": [
+        "reservation_book",
+        "invoice_adjustments",
+        "release_gate",
+        "failover_policy",
+        "sales_net",
+        "service_latency"
+      ],
+      "max_turns": 12,
+      "max_tools": 32,
+      "max_output_tokens": 4096
+    }
+  ],
+  "tokenizer_path": "~/models/dsv4-flash0731",
+  "decision_provenance": {
+    "decision_id": "agent-confirm-r1",
+    "decision_source": "sessions/decisions/agent-confirm-r1.json",
+    "decision_sha256": "fdb27f4d03360e240db387d9905ace25413f0ab5d0feb5c93d5d671926628925",
+    "rationale": "Use terminal audited c10/c11 real Agent screens, not replay capacity or closed concurrency. At .30/.60 session/s TP4 has INCONCLUSIVE trends (A/C26/20 and50/34; outstanding increase3.771/7.885 but not strict three-bin monotonic growth), while DSpark has GROWING_BACKLOG at.30 (26/23,increase3.244) and INCONCLUSIVE at.60 (50/44,increase-.653). These short-window outcomes are nonmonotonic and cannot certify capacity. DSpark nevertheless has lower user-visible P95 at matched .30/.60:22.118/36.717s versus TP452.80/81.64s, shorter drains8.442/19.268s versus37.599/55.388s, and the same strict12/35 and22/65 successes in these specific cohorts. Preregister TP4 .20/.30 and DSpark .30/.60 at300 seconds with independent seeds202611642/643: .30 is the common exact task-assignment/arrival comparison, .20 is the TP4 conservative point, and .60 tests whether DSpark's higher-load capability persists beyond a short transient. This is a targeted capacity check, not a universal ranking or pure kernel comparison; dynamic calls/tokens/outputs and grades remain outcomes. Keep unchanged tasks, hidden strict grader, max12 turns/32tools/4096output, session cache scope,6-task C1 warmup,180/600timeouts and64-session protection. c11 showed a TopK warmup warning inside its lowest-rate formal phase; preserve that data and observe warmup/JIT in confirmations, without claiming all shapes warmed or removing slow samples. Request and Session SLO definitions stay unchanged. Include every started confirmation seed/window and all failed attempts in costs; no seed replacement, no automatic promotion to production SLA or exact global maximum. GPU execution follows the already registered c12-c13 replay queue and must retain exclusive GPU0-3 ownership.",
+    "evidence_references": [
+      {
+        "path": "sessions/summary/session-tp4-agent-open-terminal-r1.json",
+        "sha256": "f3cb59a43363b6d27157fe2d62f0f551f842da3b5bfa2b4854d04b6c69441cde",
+        "bytes": 425928
+      },
+      {
+        "path": "sessions/summary/session-dspark3-agent-open-terminal-r1.json",
+        "sha256": "813e23f68e7044c261c0d7510a041b6fec28eddab1d15c99ddc641336455b9cf",
+        "bytes": 407326
+      },
+      {
+        "path": "sessions/logs/audit-session-tp4-agent-open-r1.json",
+        "sha256": "c2e68f59f74477619723e9a4af5df0a0253b46f78c099ed4ca6eb30eeddb513f",
+        "bytes": 224212
+      },
+      {
+        "path": "sessions/logs/audit-session-dspark3-agent-open-r1.json",
+        "sha256": "fd03e5326618581940e27ed3013fa627f00df035aa0b30825c49e35d4f5bddd8",
+        "bytes": 194930
+      },
+      {
+        "path": "sessions/finite-session-v1.md",
+        "sha256": "9f48277f1e0cbfa75a0abb742f1a3bdbf6e7224d9b39324f0056881986faf68e",
+        "bytes": 6559
+      },
+      {
+        "path": "sessions/decisions/open-screen-r1.json",
+        "sha256": "039960c032c7b8ba7c8d394c9e26b1396e31db0a4c67d17ed7fe4690a157589b",
+        "bytes": 3354
+      }
+    ],
+    "generator_source_sha256": "4e8a80cf2410f54b79f5d977d7a4238e13a7b95c91cd2151e1cd0fc78d49ea83",
+    "runtime_source_sha256": {
+      "sessions/finite-session-v1.md": "9f48277f1e0cbfa75a0abb742f1a3bdbf6e7224d9b39324f0056881986faf68e",
+      "sessions/scripts/build_open_session_plans.py": "4e8a80cf2410f54b79f5d977d7a4238e13a7b95c91cd2151e1cd0fc78d49ea83",
+      "scenarios/scripts/agent_session_client.py": "9b7889dade2b7b2499b898f887b6e33720bca630068f35759a106b8bf98b3183",
+      "scenarios/scripts/agent_session_tasks.py": "4dbbb7ad921bfb4e3c84b943b66bdfebe30d3af5099045df78f20a119a297594",
+      "scenarios/scripts/capacity_client.py": "2a563a68cf660472b5c4b6ff8451949391af999ebcc43c2cb67fcdfcc01753bf",
+      "scenarios/scripts/run_agent_series.py": "516c8092c88564ecae431415717db598a05eaadcd0a802cf522e0e8bd9477bed",
+      "scenarios/scripts/run_logged.py": "470d1ddfce935e2cd41a9bf249280c00b35d5be374b14dc8aab4ab246ad6064b",
+      "scenarios/scripts/serve_agent_sessions.py": "e8ce69e7c2039d89fe7c537105e6d5580c9fe327e12cdec9ed85888d4da7c528",
+      "scenarios/workloads/sessions/tasks/catalog.json": "da8089737e2064bc352fbeffa4fdb343192ba75e9e4984d688c86fd2e4c5f0ca",
+      "scenarios/workloads/sessions/tasks/failover_policy/private/answers.json": "2a296acdf6c3b626e24fe661cd0d5a8b125090c116c6858fb232534bdf627a41",
+      "scenarios/workloads/sessions/tasks/failover_policy/public/README.md": "390508a6e43a23f608b57b20b691cbb9cd6ffe5353eb903d7e531b8a9162af33",
+      "scenarios/workloads/sessions/tasks/failover_policy/public/docs/incident-notes.md": "422d32e5a0b58dc574450c7042f7dcacd50cef89cc2f3d86781bf3a2aae1551c",
+      "scenarios/workloads/sessions/tasks/failover_policy/public/docs/override-draft.md": "2ec5364a10db92a511f043da32e0dce9135b2f4b74517b500609a77f16fc12fd",
+      "scenarios/workloads/sessions/tasks/failover_policy/public/docs/override-signed.md": "d961acb2eaed67e0ed8ce502fae66457c54bf6b75b44b0c73681e0761d4490d8",
+      "scenarios/workloads/sessions/tasks/failover_policy/public/docs/residency.md": "5f2e1a344fcfc33816ec65aba76ed7394d6447690ee0f2325fd84286b7d57269",
+      "scenarios/workloads/sessions/tasks/failover_policy/public/docs/routing-v3.md": "a307a278d683383a1cc6cac4109aab18e924f0d5fbdb3398808af8701c6768c6",
+      "scenarios/workloads/sessions/tasks/failover_policy/public/docs/routing-v4.md": "d0e61bf47285659078823851e0111e683e7ad983479292cef9e240e558406786",
+      "scenarios/workloads/sessions/tasks/invoice_adjustments/private/grading_cases.json": "6650d652828b180fc9675659d8f7347284ee0ac7d8f79be41a9abf091c7dfb82",
+      "scenarios/workloads/sessions/tasks/invoice_adjustments/private/reference.json": "0b2473067c5eaad1061da15c80f1e4e735adb2e5edd289c2b25698005d884399",
+      "scenarios/workloads/sessions/tasks/invoice_adjustments/public/README.md": "8e2010a12fa62d928047e9070bea4f9fa6563de1a84aed4130daeca99a98c20d",
+      "scenarios/workloads/sessions/tasks/invoice_adjustments/public/billing/adjustments.py": "f5758289bced8f4d7fa3578cfd05f158f78a8e43e119a9e517343b13e53fbdf0",
+      "scenarios/workloads/sessions/tasks/invoice_adjustments/public/billing/invoice.py": "6a6012db5af413e565687157261aba1e21aeebe4542dd2d528d8ec1ee902ff15",
+      "scenarios/workloads/sessions/tasks/invoice_adjustments/public/billing/money.py": "d64a00ede999327697d82c64857f0a19f6dff0128059879e0fd3e0d486d607f4",
+      "scenarios/workloads/sessions/tasks/invoice_adjustments/public/tests/public_cases.json": "96b5ff86c6587a2293c47d8786dbb608c25aeef4922355caedd825a68eaadc83",
+      "scenarios/workloads/sessions/tasks/release_gate/private/answers.json": "6549b664878ca397a8c3ba037b947cb6eb4b07e13f35e3c5f1690412bd12ddc2",
+      "scenarios/workloads/sessions/tasks/release_gate/public/README.md": "c62b0d360c853f8574faf54d8d3a8dd5039abc0660ac77bfa3f7d152d20d14b2",
+      "scenarios/workloads/sessions/tasks/release_gate/public/docs/candidate-summary.md": "13283350b5062e0e85ecb53842a25fb9b31ffbfab80af41740018196c06d75d8",
+      "scenarios/workloads/sessions/tasks/release_gate/public/docs/exception-draft.md": "436651e48454dfed606fd4aae0189894010a1bcd056eebe605359ee8c53fbf71",
+      "scenarios/workloads/sessions/tasks/release_gate/public/docs/exception-signed.md": "4d383062fe0ad52165f8ea55f6f8a8d2359e23210c634fafc130d6f40ddb30b7",
+      "scenarios/workloads/sessions/tasks/release_gate/public/docs/late-note.md": "0151ea36ef1fb415b080ef1b3c92b76dc6cdf73eef842de9ea6d06fa21e5a857",
+      "scenarios/workloads/sessions/tasks/release_gate/public/docs/policy-current.md": "ac974e99572151bf45ee9d0252c981fa0ea28a589492fcf938a6f600f617c2ca",
+      "scenarios/workloads/sessions/tasks/release_gate/public/docs/policy-obsolete.md": "0b14230f83d869bc8d6160636bca02c6def5a291eca2cb510d05f6cdc4ae2712",
+      "scenarios/workloads/sessions/tasks/reservation_book/private/grading_cases.json": "1db863a1d3391a911a8588f49bbb5a6d92bd027a00c262893385170bc9cf0ad1",
+      "scenarios/workloads/sessions/tasks/reservation_book/private/reference.json": "f64dd9d6ca0d50475381f68e7b355d336c2c81d39f1668c67549854f34262ba8",
+      "scenarios/workloads/sessions/tasks/reservation_book/public/README.md": "f4b24a23f3e3e10cff7b5eb842ba88d86b5e03851f67174d7e3d51312d5964a0",
+      "scenarios/workloads/sessions/tasks/reservation_book/public/stockflow/engine.py": "0f03715b734ab6d1b0cb9c2870b63baf77162fbfd10958b86b82b7e2ed4af6f7",
+      "scenarios/workloads/sessions/tasks/reservation_book/public/stockflow/ledger.py": "ab4ca659d2b5399cd43e251a1078734b338a063f94b3fc878b53abd3bbc5113a",
+      "scenarios/workloads/sessions/tasks/reservation_book/public/stockflow/normalize.py": "2ddb9007489b26468c9b67755f656a4a82d9cf6d6f6c9165343509cb2785b526",
+      "scenarios/workloads/sessions/tasks/reservation_book/public/tests/public_cases.json": "4a6d9d5d18220d0ab3a008e7ada4017d919e37845892f768c794c6302c71df28",
+      "scenarios/workloads/sessions/tasks/sales_net/private/answers.json": "64b11ca7befa0d6c8f6428f442b5eebf408b0d1a79c7d84dce92577f2e20c69a",
+      "scenarios/workloads/sessions/tasks/sales_net/public/README.md": "d36302015bcd50cbba3e75012cae7c6345b61da9d3e8189d69844519e9fe3aef",
+      "scenarios/workloads/sessions/tasks/sales_net/public/tables/ledger.csv": "57189a1d81cd80fea484467d8f134a2556f4465720f7cf33a90ba3863f9d17f6",
+      "scenarios/workloads/sessions/tasks/service_latency/private/answers.json": "fd7822dee720110138676830378ed04c80efde4b5e3473f81698875cd6706f92",
+      "scenarios/workloads/sessions/tasks/service_latency/public/README.md": "09506fbd7bc240a7d0afb8fa9eb68ffd538d6ea04c5c539b935104658b7f6723",
+      "scenarios/workloads/sessions/tasks/service_latency/public/tables/requests.csv": "6220963a618620b3b58da0c4b6377f694c813e7d5578c6dd9593c07d78d1e162",
+      "scripts/benchmark_client.py": "0ab6e173dd9cbbad85611fb408feceff81e1846cd94edb811894ca24e79abfa1"
+    },
+    "status": "GENERATED_NOT_EXECUTED",
+    "selection_id": "tp4-agent-confirmation",
+    "candidate": "tp4-apc",
+    "config_reference": "session-tp4-agent-open.json",
+    "config_reference_sha256": "5f9adba835fad3fa970f81fe2ba276475a2af7509d86984e35fa3eefdae62797",
+    "planned_windows": [
+      {
+        "phase_id": "agent-open-r01-s01",
+        "rate": 0.2,
+        "seed": 202611642,
+        "expected_analysis_arrivals": 45.0,
+        "planned_sessions": 63,
+        "planned_analysis_arrivals": 51,
+        "planned_analysis_arrivals_at_least20": true,
+        "planned_schedule_sha256": "15fbd8e0ecb76445cdcc5640b23a4bf094c96ad5b1f7e45737cfe2e2a7d6d0dd",
+        "arrival_offsets_sha256": "cce918b2379151c6a03bf8a872e55458170787f7ef7697bc859b050ddc8cb9e8",
+        "sample_caveat": "Expected/planned counts are not executed samples; all planned arrivals must later be audited. Never regenerate a seed to select a passing count."
+      },
+      {
+        "phase_id": "agent-open-r01-s02",
+        "rate": 0.2,
+        "seed": 202611643,
+        "expected_analysis_arrivals": 45.0,
+        "planned_sessions": 67,
+        "planned_analysis_arrivals": 43,
+        "planned_analysis_arrivals_at_least20": true,
+        "planned_schedule_sha256": "e960b74b22d7c854860e352f8b41cc5df0c25561d186d52469e54d5588b48035",
+        "arrival_offsets_sha256": "a39503c1de227a257d6a4aebed467e50ff139089bda092daf0f7c9a72e7734e4",
+        "sample_caveat": "Expected/planned counts are not executed samples; all planned arrivals must later be audited. Never regenerate a seed to select a passing count."
+      },
+      {
+        "phase_id": "agent-open-r02-s01",
+        "rate": 0.3,
+        "seed": 202611642,
+        "expected_analysis_arrivals": 67.5,
+        "planned_sessions": 89,
+        "planned_analysis_arrivals": 64,
+        "planned_analysis_arrivals_at_least20": true,
+        "planned_schedule_sha256": "0934642da46c74c23b51f0771ef7807ca5d2ee01f15a8d518a445faf88662ddb",
+        "arrival_offsets_sha256": "89b221d3a8ef7040d11b05e0535d97910e8d14f8af051d6a2d54a6d4dad37d97",
+        "sample_caveat": "Expected/planned counts are not executed samples; all planned arrivals must later be audited. Never regenerate a seed to select a passing count."
+      },
+      {
+        "phase_id": "agent-open-r02-s02",
+        "rate": 0.3,
+        "seed": 202611643,
+        "expected_analysis_arrivals": 67.5,
+        "planned_sessions": 99,
+        "planned_analysis_arrivals": 71,
+        "planned_analysis_arrivals_at_least20": true,
+        "planned_schedule_sha256": "efca7e1672bcced17d449e5e10f4fecb6178384fe2a5148fa59bc293d5cf7f2f",
+        "arrival_offsets_sha256": "e0f3a70177317ebae14b34b7536c81622b31fa548e52c05b91cd4116f3975338",
+        "sample_caveat": "Expected/planned counts are not executed samples; all planned arrivals must later be audited. Never regenerate a seed to select a passing count."
+      }
+    ],
+    "tokenizer_preflight": {
+      "status": "CPU_PREPARED_ONLY",
+      "tokenizer_sha256": "8f9f37ca37fdc4f5fd36d5cf4d3b0e8392edb4e894fd10cc0d70b4957c8633cf",
+      "phases": [
+        {
+          "phase_id": "warm-agent",
+          "seed": 202611609,
+          "planned_sessions": 6,
+          "prepared_input_sha256": "29554f9bafa8265579ba91eb702fb4aa85c9225c8eb1e36140c37ef45ee703b2"
+        },
+        {
+          "phase_id": "agent-open-r01-s01",
+          "seed": 202611642,
+          "planned_sessions": 63,
+          "prepared_input_sha256": "09e2629506399cf0b74b937b5697232514f1bc592e81c2e8eabbdfe22b8b74ac"
+        },
+        {
+          "phase_id": "agent-open-r01-s02",
+          "seed": 202611643,
+          "planned_sessions": 67,
+          "prepared_input_sha256": "e14f9fd5827357e7730e18a3976bff136dae24ec8847df695c29f97a7c7a1dcd"
+        },
+        {
+          "phase_id": "agent-open-r02-s01",
+          "seed": 202611642,
+          "planned_sessions": 89,
+          "prepared_input_sha256": "e5dab5c873d42769b3a4d4a8bcc582432943af1be5234c51b868d16b744b6586"
+        },
+        {
+          "phase_id": "agent-open-r02-s02",
+          "seed": 202611643,
+          "planned_sessions": 99,
+          "prepared_input_sha256": "eed29f61258d1d7b664a55cf82b6177cdaed3deb0e6cb2b363abf792cb9d3f85"
+        }
+      ],
+      "caveat": "Actual frozen tokenizer and exact replay input tokens; Agent initial task assignments only, not dynamic model output identity or execution."
+    },
+    "comparison_caveat": "Replay token construction uses identical frozen code/seed/profile; dynamic Agent inputs/outputs are measured outcomes, not promised token-identical."
+  }
+}

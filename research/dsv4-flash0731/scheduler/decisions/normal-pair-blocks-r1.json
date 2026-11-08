@@ -1,0 +1,31 @@
+{
+  "status": "PREREGISTERED_NOT_EXECUTED",
+  "utc": "2026-11-07T06:29:50.746521+00:00",
+  "groups": [
+    {
+      "block": "trial670",
+      "experiments": [
+        "scheduler-tp4-observe-matched-670",
+        "scheduler-tp4-fairshare-matched-670"
+      ]
+    },
+    {
+      "block": "trial671",
+      "experiments": [
+        "scheduler-tp4-fairshare-matched-671",
+        "scheduler-tp4-observe-matched-671"
+      ]
+    }
+  ],
+  "input_sha256": {
+    "research/dsv4-flash0731/scheduler/configs/scheduler-tp4-observe-matched-670.json": "773ac41f8d957502a3055a00ff969a223ce804651593698392026f53f8a517d1",
+    "research/dsv4-flash0731/scheduler/workloads/scheduler-tp4-observe-matched-670.json": "a50a62259582861e4468ff79d79d47a1cd4f32ab68192f2a2773fe8b9f25fd60",
+    "research/dsv4-flash0731/scheduler/configs/scheduler-tp4-fairshare-matched-670.json": "0db6048127bbad9f398c3067e9b90ec71e244b15e7026c35e1067dd0326ab533",
+    "research/dsv4-flash0731/scheduler/workloads/scheduler-tp4-fairshare-matched-670.json": "195d69ded72529813683a69ef3b9c9e07a04d4b911930910068acac200062759",
+    "research/dsv4-flash0731/scheduler/configs/scheduler-tp4-fairshare-matched-671.json": "ea9d401bcb64271722d90e83128cc49eaa529331efea66e8ce4dd8a0c47f8287",
+    "research/dsv4-flash0731/scheduler/workloads/scheduler-tp4-fairshare-matched-671.json": "8f7df879c23a367095c899b1d999c431acd00a7e9588dff0ae1c6041fb2d2410",
+    "research/dsv4-flash0731/scheduler/configs/scheduler-tp4-observe-matched-671.json": "cffef01ef463ac6947d697c1e5534efb8f415b273409e590224bdd7909e82bba",
+    "research/dsv4-flash0731/scheduler/workloads/scheduler-tp4-observe-matched-671.json": "c80b875349439d924186b6c9613375f4f6432b60a1306b45252de78b7a953b64"
+  },
+  "rule": "Pair all formal phases within registered independent restart blocks. The burst seed640 remains identical in all four runs; do not merge four members into an ambiguous pair or select only the fastest pair."
+}

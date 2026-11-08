@@ -1,0 +1,35 @@
+{
+  "provenance": "Locally authored synthetic pure-Python bug fixtures; not SWE-bench or a public issue trace.",
+  "tasks": [
+    {
+      "id": "chunk_tail",
+      "title": "Preserve the final partial chunk",
+      "description": "Fix chunked(values, size). Return consecutive non-overlapping lists with at most size elements, preserving a final partial chunk. Empty input returns []. Reject a non-positive size with ValueError. Do not mutate values.",
+      "source_path": "tinyfix/__init__.py",
+      "reference_patch": {
+        "old": "range(0, len(values) - size + 1, size)",
+        "new": "range(0, len(values), size)"
+      }
+    },
+    {
+      "id": "merge_union",
+      "title": "Keep keys from both count dictionaries",
+      "description": "Fix merge_counts(left, right). Return a new dictionary containing the union of keys and the sum of each key's integer counts. Missing keys contribute zero. Negative and zero counts are valid; preserve their keys. Do not mutate either argument.",
+      "source_path": "tinyfix/__init__.py",
+      "reference_patch": {
+        "old": "for key in left",
+        "new": "for key in set(left) | set(right)"
+      }
+    },
+    {
+      "id": "window_endpoint",
+      "title": "Include the final complete moving-average window",
+      "description": "Fix moving_average(values, width). Return arithmetic means of every consecutive complete window of width elements, including the last possible window. Return [] when values is shorter than width. Reject non-positive width with ValueError. Do not pad partial windows or mutate input.",
+      "source_path": "tinyfix/__init__.py",
+      "reference_patch": {
+        "old": "range(len(values) - width)",
+        "new": "range(len(values) - width + 1)"
+      }
+    }
+  ]
+}

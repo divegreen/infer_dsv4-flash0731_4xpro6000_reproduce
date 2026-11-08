@@ -1,0 +1,36 @@
+{
+  "jobs": [
+    {
+      "id": "scheduler-tp4-observe-matched-670",
+      "config": "scheduler-tp4-observe-matched-670.json",
+      "capacity_plan": "scheduler-tp4-observe-matched-670.json",
+      "timeout": 2100,
+      "reference": "scheduler-tp4-observe-dense-profile",
+      "hypothesis": "Unprofiled matched scheduler comparison with Poisson context mix, dense diagnostic and eight-long boundary; quality evaluated separately."
+    },
+    {
+      "id": "scheduler-tp4-fairshare-matched-670",
+      "config": "scheduler-tp4-fairshare-matched-670.json",
+      "capacity_plan": "scheduler-tp4-fairshare-matched-670.json",
+      "timeout": 2100,
+      "reference": "scheduler-tp4-observe-dense-profile",
+      "hypothesis": "Unprofiled matched scheduler comparison with Poisson context mix, dense diagnostic and eight-long boundary; quality evaluated separately."
+    },
+    {
+      "id": "scheduler-tp4-fairshare-matched-671",
+      "config": "scheduler-tp4-fairshare-matched-671.json",
+      "capacity_plan": "scheduler-tp4-fairshare-matched-671.json",
+      "timeout": 2100,
+      "reference": "scheduler-tp4-observe-dense-profile",
+      "hypothesis": "Unprofiled matched scheduler comparison with Poisson context mix, dense diagnostic and eight-long boundary; quality evaluated separately."
+    },
+    {
+      "id": "scheduler-tp4-observe-matched-671",
+      "config": "scheduler-tp4-observe-matched-671.json",
+      "capacity_plan": "scheduler-tp4-observe-matched-671.json",
+      "timeout": 2100,
+      "reference": "scheduler-tp4-observe-dense-profile",
+      "hypothesis": "Unprofiled matched scheduler comparison with Poisson context mix, dense diagnostic and eight-long boundary; quality evaluated separately."
+    }
+  ]
+}

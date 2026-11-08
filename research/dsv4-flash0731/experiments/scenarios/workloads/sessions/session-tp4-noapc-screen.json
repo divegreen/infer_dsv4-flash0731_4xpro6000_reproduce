@@ -1,0 +1,119 @@
+{
+  "schema_version": 1,
+  "experiment_id": "session-tp4-noapc-screen",
+  "base_url": "http://127.0.0.1:8260",
+  "model": "dsv4",
+  "timeout_s": 180,
+  "session_timeout_s": 600,
+  "max_active_sessions": 64,
+  "phases": [
+    {
+      "id": "warm-replay-shapes",
+      "kind": "replay",
+      "arrival": "closed",
+      "role": "warmup",
+      "sessions": 3,
+      "concurrency": 1,
+      "profiles": [
+        "coding",
+        "research",
+        "data"
+      ],
+      "seed": 202611609,
+      "cache_scope": "session",
+      "dp_routing": "none"
+    },
+    {
+      "id": "replay-c1-session",
+      "kind": "replay",
+      "arrival": "closed",
+      "role": "screen",
+      "sessions": 6,
+      "concurrency": 1,
+      "profiles": [
+        "coding",
+        "research",
+        "data"
+      ],
+      "seed": 202611610,
+      "cache_scope": "session",
+      "dp_routing": "none"
+    },
+    {
+      "id": "replay-c8-session-r1",
+      "kind": "replay",
+      "arrival": "closed",
+      "role": "screen",
+      "sessions": 24,
+      "concurrency": 8,
+      "profiles": [
+        "coding",
+        "research",
+        "data"
+      ],
+      "seed": 202611611,
+      "cache_scope": "session",
+      "dp_routing": "none"
+    },
+    {
+      "id": "replay-c8-session-r2",
+      "kind": "replay",
+      "arrival": "closed",
+      "role": "screen",
+      "sessions": 24,
+      "concurrency": 8,
+      "profiles": [
+        "coding",
+        "research",
+        "data"
+      ],
+      "seed": 202611612,
+      "cache_scope": "session",
+      "dp_routing": "none"
+    },
+    {
+      "id": "agent-c6-session-r1",
+      "kind": "agent",
+      "arrival": "closed",
+      "role": "screen",
+      "sessions": 12,
+      "concurrency": 6,
+      "tasks": [
+        "reservation_book",
+        "invoice_adjustments",
+        "release_gate",
+        "failover_policy",
+        "sales_net",
+        "service_latency"
+      ],
+      "seed": 202611621,
+      "cache_scope": "session",
+      "dp_routing": "none",
+      "max_turns": 12,
+      "max_tools": 32,
+      "max_output_tokens": 4096
+    },
+    {
+      "id": "agent-c6-session-r2",
+      "kind": "agent",
+      "arrival": "closed",
+      "role": "screen",
+      "sessions": 12,
+      "concurrency": 6,
+      "tasks": [
+        "reservation_book",
+        "invoice_adjustments",
+        "release_gate",
+        "failover_policy",
+        "sales_net",
+        "service_latency"
+      ],
+      "seed": 202611622,
+      "cache_scope": "session",
+      "dp_routing": "none",
+      "max_turns": 12,
+      "max_tools": 32,
+      "max_output_tokens": 4096
+    }
+  ]
+}

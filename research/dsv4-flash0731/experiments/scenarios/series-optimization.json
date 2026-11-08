@@ -1,0 +1,34 @@
+{
+  "description": "Profile-backed adaptive experiments after s06; no full-factorial sweep",
+  "jobs": [
+    {
+      "id": "scenarios-tp4-b1024",
+      "config": "tp4-marlin-b1024-nocache-128k.json",
+      "suites": "context,arrival",
+      "reference": "scenarios-tp4-nocache",
+      "hypothesis": "Single factor smaller prefill budget after CUDA evidence: trade iteration latency against extra steps/communication"
+    },
+    {
+      "id": "scenarios-dp4ep",
+      "config": "dp4-ep-marlin-nocache-128k.json",
+      "suites": "context,arrival",
+      "reference": "scenarios-tp4-nocache;scenarios-tp2pp2",
+      "hypothesis": "Attention DP with EP replaces TP collectives under mixed and actual64K load; native per-engine token budgets explicitly differ in aggregate"
+    },
+    {
+      "id": "scenarios-tp4-b8192",
+      "config": "tp4-marlin-b8192-nocache-128k.json",
+      "suites": "context,arrival",
+      "reference": "scenarios-tp4-nocache;scenarios-tp4-b1024",
+      "hypothesis": "Single factor larger prefill budget may amortize observed communication and kernel costs, with possible latency tradeoff"
+    },
+    {
+      "id": "scenarios-tp4-dspark-apc",
+      "config": "tp4-marlin-dspark3-apc-128k.json",
+      "suites": "cache",
+      "agent_modes": "replay,closed-loop,quality",
+      "reference": "scenarios-tp4-apc;scenarios-tp4-dspark3-retry2;scenarios-tp4-agent-nocache",
+      "hypothesis": "Validate combined APC and DSpark3 for cached history and natural-EOS agents; do not multiply individual speedups"
+    }
+  ]
+}

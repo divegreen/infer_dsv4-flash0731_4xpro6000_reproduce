@@ -1,0 +1,16 @@
+{
+  "answers": {
+    "eligible_requests": 17,
+    "successful_requests": 14,
+    "success_rate": 0.8235294117647058,
+    "successful_output_tokens": 1664,
+    "alpha_mean_ttft_ms": 431.42857142857144,
+    "beta_mean_ttft_ms": 475.7142857142857
+  },
+  "method": {
+    "deduplicate_by": "request_id",
+    "latest_by": "revision",
+    "max_input_tokens": 1024,
+    "exclude_status": "cancelled"
+  }
+}

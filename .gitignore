@@ -1,0 +1,38 @@
+# Machine-local environments and caches
+.venv*/
+.cache/
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+*.pyc
+*.pyo
+.DS_Store
+
+# Rebuildable run output, packages, and local synchronization
+/results/
+/logs/
+/reports/
+/build/
+/dist/
+*.log
+*.tmp
+.research-gpu.lock
+.reproduction.lock
+
+# Historical backup/report artifacts are kept outside the published project
+/archive/
+/orders_history
+/doc/history/
+/doc/validation/
+/doc/validation.json
+/doc/migration-map.json
+/doc/review.md
+/research/**/doc/history/
+/research/dsv4-flash0731/doc/framework-capabilities.md
+/research/dsv4-flash0731/doc/model-analysis.md
+/research/dsv4-flash0731/doc/roadmap.md
+
+# Generated process views: prepare rebuilds these from the native catalog
+/research/dsv4-flash0731/experiments/*/process*/

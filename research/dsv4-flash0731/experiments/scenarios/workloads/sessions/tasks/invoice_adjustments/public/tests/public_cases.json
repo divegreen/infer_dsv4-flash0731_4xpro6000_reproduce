@@ -1,0 +1,35 @@
+[
+  {
+    "id": "half_cent",
+    "target": "billing.money.discounted_line",
+    "args": [
+      101,
+      1,
+      5000
+    ],
+    "expected": 51
+  },
+  {
+    "id": "net_refund",
+    "target": "billing.adjustments.settle",
+    "args": [
+      [
+        {
+          "unit_cents": 100,
+          "quantity": 2
+        }
+      ],
+      [
+        {
+          "id": "r",
+          "amount_cents": 30
+        }
+      ]
+    ],
+    "expected": {
+      "gross_cents": 200,
+      "refunded_cents": 30,
+      "net_cents": 170
+    }
+  }
+]

@@ -1,0 +1,325 @@
+{
+  "status": "DESIGN_PENDING_PROFILE_ACCEPTANCE",
+  "reference": "B b11 exact .5req/s450s seeds202611670/671; same8long trace seed640 repeat",
+  "order": "Observe670, FairShare670, FairShare671, Observe671; each fresh service and matched warmups",
+  "jobs": [
+    {
+      "id": "scheduler-tp4-observe-matched-670",
+      "scheduler": "ObserveResearchScheduler",
+      "phases": [
+        {
+          "id": "warm-p512",
+          "mode": "closed-loop",
+          "role": "warmup",
+          "seed": 202611610,
+          "duration_s": null,
+          "planned_trace_requests": null
+        },
+        {
+          "id": "warm-p16384",
+          "mode": "closed-loop",
+          "role": "warmup",
+          "seed": 202611611,
+          "duration_s": null,
+          "planned_trace_requests": null
+        },
+        {
+          "id": "warm-p32768",
+          "mode": "closed-loop",
+          "role": "warmup",
+          "seed": 202611612,
+          "duration_s": null,
+          "planned_trace_requests": null
+        },
+        {
+          "id": "warm-p65536",
+          "mode": "closed-loop",
+          "role": "warmup",
+          "seed": 202611613,
+          "duration_s": null,
+          "planned_trace_requests": null
+        },
+        {
+          "id": "warm-c8",
+          "mode": "closed-loop",
+          "role": "warmup",
+          "seed": 202611620,
+          "duration_s": null,
+          "planned_trace_requests": null
+        },
+        {
+          "id": "warm_interference64",
+          "mode": "trace",
+          "role": "warmup",
+          "seed": 202611751,
+          "duration_s": 4,
+          "planned_trace_requests": 8
+        },
+        {
+          "id": "dense64-normal",
+          "mode": "trace",
+          "role": "interference",
+          "seed": 202611750,
+          "duration_s": 4,
+          "planned_trace_requests": 8
+        },
+        {
+          "id": "context_mix-r0p5-confirm-1",
+          "mode": "poisson",
+          "role": "confirm",
+          "seed": 202611670,
+          "duration_s": 450,
+          "planned_trace_requests": null
+        },
+        {
+          "id": "kv_residency-c8long",
+          "mode": "trace",
+          "role": "stress",
+          "seed": 202611640,
+          "duration_s": 12,
+          "planned_trace_requests": 24
+        }
+      ]
+    },
+    {
+      "id": "scheduler-tp4-fairshare-matched-670",
+      "scheduler": "FairShareResearchScheduler",
+      "phases": [
+        {
+          "id": "warm-p512",
+          "mode": "closed-loop",
+          "role": "warmup",
+          "seed": 202611610,
+          "duration_s": null,
+          "planned_trace_requests": null
+        },
+        {
+          "id": "warm-p16384",
+          "mode": "closed-loop",
+          "role": "warmup",
+          "seed": 202611611,
+          "duration_s": null,
+          "planned_trace_requests": null
+        },
+        {
+          "id": "warm-p32768",
+          "mode": "closed-loop",
+          "role": "warmup",
+          "seed": 202611612,
+          "duration_s": null,
+          "planned_trace_requests": null
+        },
+        {
+          "id": "warm-p65536",
+          "mode": "closed-loop",
+          "role": "warmup",
+          "seed": 202611613,
+          "duration_s": null,
+          "planned_trace_requests": null
+        },
+        {
+          "id": "warm-c8",
+          "mode": "closed-loop",
+          "role": "warmup",
+          "seed": 202611620,
+          "duration_s": null,
+          "planned_trace_requests": null
+        },
+        {
+          "id": "warm_interference64",
+          "mode": "trace",
+          "role": "warmup",
+          "seed": 202611751,
+          "duration_s": 4,
+          "planned_trace_requests": 8
+        },
+        {
+          "id": "dense64-normal",
+          "mode": "trace",
+          "role": "interference",
+          "seed": 202611750,
+          "duration_s": 4,
+          "planned_trace_requests": 8
+        },
+        {
+          "id": "context_mix-r0p5-confirm-1",
+          "mode": "poisson",
+          "role": "confirm",
+          "seed": 202611670,
+          "duration_s": 450,
+          "planned_trace_requests": null
+        },
+        {
+          "id": "kv_residency-c8long",
+          "mode": "trace",
+          "role": "stress",
+          "seed": 202611640,
+          "duration_s": 12,
+          "planned_trace_requests": 24
+        }
+      ]
+    },
+    {
+      "id": "scheduler-tp4-fairshare-matched-671",
+      "scheduler": "FairShareResearchScheduler",
+      "phases": [
+        {
+          "id": "warm-p512",
+          "mode": "closed-loop",
+          "role": "warmup",
+          "seed": 202611610,
+          "duration_s": null,
+          "planned_trace_requests": null
+        },
+        {
+          "id": "warm-p16384",
+          "mode": "closed-loop",
+          "role": "warmup",
+          "seed": 202611611,
+          "duration_s": null,
+          "planned_trace_requests": null
+        },
+        {
+          "id": "warm-p32768",
+          "mode": "closed-loop",
+          "role": "warmup",
+          "seed": 202611612,
+          "duration_s": null,
+          "planned_trace_requests": null
+        },
+        {
+          "id": "warm-p65536",
+          "mode": "closed-loop",
+          "role": "warmup",
+          "seed": 202611613,
+          "duration_s": null,
+          "planned_trace_requests": null
+        },
+        {
+          "id": "warm-c8",
+          "mode": "closed-loop",
+          "role": "warmup",
+          "seed": 202611620,
+          "duration_s": null,
+          "planned_trace_requests": null
+        },
+        {
+          "id": "warm_interference64",
+          "mode": "trace",
+          "role": "warmup",
+          "seed": 202611751,
+          "duration_s": 4,
+          "planned_trace_requests": 8
+        },
+        {
+          "id": "dense64-normal",
+          "mode": "trace",
+          "role": "interference",
+          "seed": 202611752,
+          "duration_s": 4,
+          "planned_trace_requests": 8
+        },
+        {
+          "id": "context_mix-r0p5-confirm-2",
+          "mode": "poisson",
+          "role": "confirm",
+          "seed": 202611671,
+          "duration_s": 450,
+          "planned_trace_requests": null
+        },
+        {
+          "id": "kv_residency-c8long",
+          "mode": "trace",
+          "role": "stress",
+          "seed": 202611640,
+          "duration_s": 12,
+          "planned_trace_requests": 24
+        }
+      ]
+    },
+    {
+      "id": "scheduler-tp4-observe-matched-671",
+      "scheduler": "ObserveResearchScheduler",
+      "phases": [
+        {
+          "id": "warm-p512",
+          "mode": "closed-loop",
+          "role": "warmup",
+          "seed": 202611610,
+          "duration_s": null,
+          "planned_trace_requests": null
+        },
+        {
+          "id": "warm-p16384",
+          "mode": "closed-loop",
+          "role": "warmup",
+          "seed": 202611611,
+          "duration_s": null,
+          "planned_trace_requests": null
+        },
+        {
+          "id": "warm-p32768",
+          "mode": "closed-loop",
+          "role": "warmup",
+          "seed": 202611612,
+          "duration_s": null,
+          "planned_trace_requests": null
+        },
+        {
+          "id": "warm-p65536",
+          "mode": "closed-loop",
+          "role": "warmup",
+          "seed": 202611613,
+          "duration_s": null,
+          "planned_trace_requests": null
+        },
+        {
+          "id": "warm-c8",
+          "mode": "closed-loop",
+          "role": "warmup",
+          "seed": 202611620,
+          "duration_s": null,
+          "planned_trace_requests": null
+        },
+        {
+          "id": "warm_interference64",
+          "mode": "trace",
+          "role": "warmup",
+          "seed": 202611751,
+          "duration_s": 4,
+          "planned_trace_requests": 8
+        },
+        {
+          "id": "dense64-normal",
+          "mode": "trace",
+          "role": "interference",
+          "seed": 202611752,
+          "duration_s": 4,
+          "planned_trace_requests": 8
+        },
+        {
+          "id": "context_mix-r0p5-confirm-2",
+          "mode": "poisson",
+          "role": "confirm",
+          "seed": 202611671,
+          "duration_s": 450,
+          "planned_trace_requests": null
+        },
+        {
+          "id": "kv_residency-c8long",
+          "mode": "trace",
+          "role": "stress",
+          "seed": 202611640,
+          "duration_s": 12,
+          "planned_trace_requests": 24
+        }
+      ]
+    }
+  ],
+  "quality": "8 narrow naturalEOS probes x2 rounds after performance, independent strict grade; not general Agent quality",
+  "fixed": "GPU0-3, model0731/vLLM0.33.0/TP4/APCoff/4096budget/cap2048/cadence8/freshTCP/noretry/ignoreEOS128",
+  "controlled_difference": "scheduler class only within each new matched pair; normal runs noProfiler/noiterationlogging/no steptrace",
+  "historical_difference": "D client adds wire/SSE request identity; request deadline180 instead of B300; new source snapshots and host-time conditions disclosed",
+  "qualification": "Single prespecified .5rate at two seeds, no maximum-capacity claim; >16K joint SLO undefined; burst not open capacity",
+  "planned_resources": "4serial runs bounded2100s each; twoidle checks plus sharedGPUlock; noGPU4-7 use"
+}

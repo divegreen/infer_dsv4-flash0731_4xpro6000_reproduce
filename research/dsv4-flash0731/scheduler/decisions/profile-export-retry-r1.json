@@ -1,0 +1,23 @@
+{
+  "utc": "2026-11-07T06:13:19.514132+00:00",
+  "status": "PREREGISTERED_NOT_EXECUTED",
+  "failed_run": "scheduler-tp4-fairshare-dense-profile",
+  "retry": "scheduler-tp4-fairshare-dense-profile-retry",
+  "failure": "28 requests completed; /stop_profile export exceeded120s, experiment FAILED",
+  "controlled_change": {
+    "profile_control_timeout_s": {
+      "before": 120,
+      "after": 600
+    }
+  },
+  "unchanged": [
+    "request timeout180",
+    "all warmup/profile prompts and seeds",
+    "GPU0-3",
+    "TP4/APCoff/cap2048/cadence8",
+    "FairShare source and constants",
+    "sampling metric definitions"
+  ],
+  "harness_sha256": "40f54805c5294f4a6a4153306244a8e1cbf458eb4ec4d4da1041e6d8217ff974",
+  "limits": "Export waiting deadline only; original failed ID remains excluded from accepted Profile pair; d01 has unchanged default120 and source revision is disclosed."
+}

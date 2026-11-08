@@ -1,0 +1,36 @@
+{
+  "jobs": [
+    {
+      "id": "capacity-tp4-screen",
+      "config": "tp4-marlin-nocache-128k.json",
+      "capacity_plan": "capacity/capacity-tp4-screen.json",
+      "timeout": 3600,
+      "reference": "scenarios-tp4-nocache; exploratory reference not accepted project baseline",
+      "hypothesis": "Matched finite open-arrival mixed-prefill and mixed-decode capacity screening; independent SLO and stability evidence, not a long-term SLA."
+    },
+    {
+      "id": "capacity-dspark3-screen",
+      "config": "tp4-marlin-dspark3-nocache-128k.json",
+      "capacity_plan": "capacity/capacity-dspark3-screen.json",
+      "timeout": 3600,
+      "reference": "scenarios-tp4-nocache; exploratory reference not accepted project baseline",
+      "hypothesis": "Matched finite open-arrival mixed-prefill and mixed-decode capacity screening; independent SLO and stability evidence, not a long-term SLA."
+    },
+    {
+      "id": "capacity-tp2pp2-screen",
+      "config": "tp2-pp2-marlin-nocache-128k.json",
+      "capacity_plan": "capacity/capacity-tp2pp2-screen.json",
+      "timeout": 3600,
+      "reference": "scenarios-tp4-nocache; exploratory reference not accepted project baseline",
+      "hypothesis": "Matched finite open-arrival mixed-prefill and mixed-decode capacity screening; independent SLO and stability evidence, not a long-term SLA."
+    },
+    {
+      "id": "capacity-dp4ep-screen",
+      "config": "dp4-ep-marlin-nocache-128k.json",
+      "capacity_plan": "capacity/capacity-dp4ep-screen.json",
+      "timeout": 3600,
+      "reference": "scenarios-tp4-nocache; exploratory reference not accepted project baseline",
+      "hypothesis": "Matched finite open-arrival mixed-prefill and mixed-decode capacity screening; independent SLO and stability evidence, not a long-term SLA."
+    }
+  ]
+}

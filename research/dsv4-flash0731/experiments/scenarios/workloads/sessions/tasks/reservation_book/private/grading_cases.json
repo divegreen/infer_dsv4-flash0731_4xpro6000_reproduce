@@ -1,0 +1,252 @@
+[
+  {
+    "id": "idempotency",
+    "target": "stockflow.engine.replay",
+    "args": [
+      {
+        "a": 10
+      },
+      [
+        {
+          "id": " r1 ",
+          "kind": "reserve",
+          "items": [
+            {
+              "sku": " A ",
+              "qty": 2
+            },
+            {
+              "sku": "a",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "r1",
+          "kind": "reserve",
+          "items": [
+            {
+              "sku": "a",
+              "qty": 3
+            }
+          ]
+        }
+      ]
+    ],
+    "expected": {
+      "available": {
+        "a": 7
+      },
+      "held": {
+        "r1": {
+          "a": 3
+        }
+      }
+    }
+  },
+  {
+    "id": "conflicting_id",
+    "target": "stockflow.ledger.apply_event",
+    "args": [
+      {
+        "a": 7
+      },
+      {
+        "r": {
+          "a": 3
+        }
+      },
+      {
+        "id": "r",
+        "kind": "reserve",
+        "items": [
+          {
+            "sku": "a",
+            "qty": 2
+          }
+        ]
+      }
+    ],
+    "error": "ValueError"
+  },
+  {
+    "id": "atomic_insufficient",
+    "target": "stockflow.ledger.apply_event",
+    "args": [
+      {
+        "a": 4,
+        "b": 1
+      },
+      {},
+      {
+        "id": "x",
+        "kind": "reserve",
+        "items": [
+          {
+            "sku": "a",
+            "qty": 2
+          },
+          {
+            "sku": "b",
+            "qty": 2
+          }
+        ]
+      }
+    ],
+    "error": "ValueError"
+  },
+  {
+    "id": "missing_stock",
+    "target": "stockflow.ledger.apply_event",
+    "args": [
+      {},
+      {},
+      {
+        "id": "x",
+        "kind": "reserve",
+        "items": [
+          {
+            "sku": "missing",
+            "qty": 1
+          }
+        ]
+      }
+    ],
+    "error": "ValueError"
+  },
+  {
+    "id": "re_reserve",
+    "target": "stockflow.engine.replay",
+    "args": [
+      {
+        "a": 8
+      },
+      [
+        {
+          "id": "x",
+          "kind": "reserve",
+          "items": [
+            {
+              "sku": "a",
+              "qty": 3
+            }
+          ]
+        },
+        {
+          "id": "x",
+          "kind": "release"
+        },
+        {
+          "id": "x",
+          "kind": "reserve",
+          "items": [
+            {
+              "sku": "a",
+              "qty": 2
+            }
+          ]
+        }
+      ]
+    ],
+    "expected": {
+      "available": {
+        "a": 6
+      },
+      "held": {
+        "x": {
+          "a": 2
+        }
+      }
+    }
+  },
+  {
+    "id": "unknown_release",
+    "target": "stockflow.ledger.apply_event",
+    "args": [
+      {
+        "a": 3
+      },
+      {},
+      {
+        "id": "missing",
+        "kind": "release"
+      }
+    ],
+    "expected": [
+      {
+        "a": 3
+      },
+      {}
+    ]
+  },
+  {
+    "id": "bool_quantity",
+    "target": "stockflow.normalize.normalize_items",
+    "args": [
+      [
+        {
+          "sku": "a",
+          "qty": true
+        }
+      ]
+    ],
+    "error": "ValueError"
+  },
+  {
+    "id": "blank_sku",
+    "target": "stockflow.normalize.normalize_items",
+    "args": [
+      [
+        {
+          "sku": "  ",
+          "qty": 2
+        }
+      ]
+    ],
+    "error": "ValueError"
+  },
+  {
+    "id": "case_sensitive_id",
+    "target": "stockflow.engine.replay",
+    "args": [
+      {
+        "a": 5
+      },
+      [
+        {
+          "id": "X",
+          "kind": "reserve",
+          "items": [
+            {
+              "sku": "a",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "x",
+          "kind": "reserve",
+          "items": [
+            {
+              "sku": "a",
+              "qty": 2
+            }
+          ]
+        }
+      ]
+    ],
+    "expected": {
+      "available": {
+        "a": 2
+      },
+      "held": {
+        "X": {
+          "a": 1
+        },
+        "x": {
+          "a": 2
+        }
+      }
+    }
+  }
+]

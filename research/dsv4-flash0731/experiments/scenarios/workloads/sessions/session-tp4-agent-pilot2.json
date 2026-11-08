@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "experiment_id": "session-tp4-agent-pilot2",
+  "base_url": "http://127.0.0.1:8260",
+  "model": "dsv4",
+  "timeout_s": 180,
+  "session_timeout_s": 600,
+  "max_active_sessions": 64,
+  "phases": [
+    {
+      "id": "pilot-agent-c1-budget4096",
+      "kind": "agent",
+      "arrival": "closed",
+      "role": "pilot",
+      "sessions": 6,
+      "concurrency": 1,
+      "tasks": [
+        "reservation_book",
+        "invoice_adjustments",
+        "release_gate",
+        "failover_policy",
+        "sales_net",
+        "service_latency"
+      ],
+      "seed": 202611603,
+      "cache_scope": "session",
+      "max_turns": 12,
+      "max_tools": 32,
+      "max_output_tokens": 4096
+    }
+  ]
+}

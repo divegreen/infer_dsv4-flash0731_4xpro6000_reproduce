@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "decision_id": "replay-confirm-r1",
+  "rationale": "Both matched 120-second replay screens are terminal and independently audited. At .30/.60 session/s both TP4 and DSpark show GROWING_BACKLOG trend under the frozen rule, despite DSpark's lower P95 and shorter drains. TP4 .30 has A/C=26/23 and outstanding increase4.328; DSpark .30 has26/21 and increase4.754. At .60 these are50/13 and21.638 versus50/24 and19.372. A single burst-sensitive short trace does not establish long-term capacity. Preregister .20 and .30 session/s,300 seconds,two different seeds202611640/641 for both unchanged deployments: .20 is a conservative candidate below the observed growth point; .30 tests whether the boundary signal persists with a longer and independently sampled arrival window. All started confirmation windows must count under finite-session-v1, including inconclusive/unhealthy ones; do not replace seeds or modify thresholds. This pair answers a concrete lower-point versus boundary hypothesis, not a broad parameter grid. Cache scope, exact replay construction, three-profile mix, warmup, timeouts180/600,admission64,hardware and client remain frozen. No Session latency SLO is invented. Even if a point passes, report highest tested finite-confirmed rate and unresolved boundary, not mathematical maximum or production SLA. This decision covers replay only; real Agent confirmation selection waits for its terminal open screens. GPU execution must wait for the existing c08-c11 serial queue to finish and release resources.",
+  "evidence_references": [
+    "sessions/summary/session-tp4-replay-open-terminal-r2.json",
+    "sessions/summary/session-dspark3-replay-open-terminal-r1.json",
+    "sessions/logs/audit-session-tp4-replay-open-r1.json",
+    "sessions/logs/audit-session-dspark3-replay-open-r1.json",
+    "sessions/finite-session-v1.md",
+    "sessions/decisions/open-screen-r1.json"
+  ],
+  "service_protocol": {"timeout_s": 180, "session_timeout_s": 600, "max_active_sessions": 64},
+  "warmup_seed": 202611609,
+  "supervisor_timeout_s": 3600,
+  "selections": [
+    {
+      "selection_id": "replay-confirmation",
+      "kind": "replay",
+      "rates": [0.20, 0.30],
+      "duration_s": 300,
+      "seeds": [202611640, 202611641],
+      "role": "confirm",
+      "cache_scope": "session",
+      "candidates": [
+        {"experiment_id": "session-tp4-replay-confirm", "candidate": "tp4-apc", "config_ref": "session-tp4-replay-open.json", "dp_routing": "none"},
+        {"experiment_id": "session-dspark3-replay-confirm", "candidate": "dspark3-apc", "config_ref": "session-dspark3-replay-open.json", "dp_routing": "none"}
+      ]
+    }
+  ]
+}

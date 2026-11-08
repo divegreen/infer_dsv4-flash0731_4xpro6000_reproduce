@@ -1,0 +1,15 @@
+{
+  "answers": {
+    "east_net_cents": 20800,
+    "west_net_cents": 19250,
+    "total_net_cents": 40050,
+    "posted_event_count": 14,
+    "refund_cents_absolute": 3950
+  },
+  "method": {
+    "deduplicate_by": "event_id",
+    "latest_by": "revision",
+    "date_start": "2026-10-01",
+    "date_end_exclusive": "2026-11-01"
+  }
+}

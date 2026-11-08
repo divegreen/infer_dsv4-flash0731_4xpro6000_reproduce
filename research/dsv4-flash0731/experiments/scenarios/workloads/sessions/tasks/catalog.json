@@ -1,0 +1,151 @@
+{
+  "schema_version": 1,
+  "provenance": "Locally authored synthetic task fixture with real model-driven tool interaction; not SWE-bench, internet research, or production customer data.",
+  "tasks": [
+    {
+      "id": "reservation_book",
+      "kind": "coding",
+      "title": "Repair idempotent inventory reservations",
+      "provenance": "Locally authored synthetic task fixture with real model-driven tool interaction; not SWE-bench, internet research, or production customer data.",
+      "prompt": "Repair the stockflow reservation package. It has bugs across multiple files. Public cases are examples, not the full specification.\nnormalize_items(items) strips whitespace and lowercases SKU strings, sums quantities for duplicate normalized SKUs, accepts only positive non-bool integers, and rejects empty SKUs or invalid quantities with ValueError.\napply_event(stock, held, event) returns (new_available, new_held), never mutating any input, including nested items. Stock keys are already normalized. Reservation IDs strip surrounding whitespace but are case-sensitive. reserve normalizes the basket and checks all stock before allocating; insufficient or missing stock raises ValueError. Replaying an active reservation with an identical normalized basket is an idempotent no-op; the same ID with a different basket raises ValueError. release restores quantities by addition, removes the reservation, and is a no-op if the ID is unknown. Unknown event kind or empty ID raises ValueError. An ID may be reserved again after release. replay applies events in order and returns {available, held}.\nRead files, edit only the three stockflow Python files and run immutable public cases if useful. Finish with a concise natural-language explanation. The objective grade runs additional hidden cases after you finish, not through tools.",
+      "readable": [
+        "README.md",
+        "tests/public_cases.json",
+        "stockflow/normalize.py",
+        "stockflow/ledger.py",
+        "stockflow/engine.py"
+      ],
+      "writable": [
+        "stockflow/normalize.py",
+        "stockflow/ledger.py",
+        "stockflow/engine.py"
+      ],
+      "modules": {
+        "stockflow.normalize": "stockflow/normalize.py",
+        "stockflow.ledger": "stockflow/ledger.py",
+        "stockflow.engine": "stockflow/engine.py"
+      },
+      "tables": {}
+    },
+    {
+      "id": "invoice_adjustments",
+      "kind": "coding",
+      "title": "Repair invoice rounding and idempotent refunds",
+      "provenance": "Locally authored synthetic task fixture with real model-driven tool interaction; not SWE-bench, internet research, or production customer data.",
+      "prompt": "Repair the billing package using integer arithmetic only. discounted_line(unit_cents, quantity, discount_bps) calculates unit_cents * quantity * (10000 - discount_bps) / 10000 rounded to nearest integer cents, with exact halves rounded upward. Round each invoice line independently before summing. Inputs must be non-bool integers; unit_cents >= 0, quantity > 0, and 0 <= discount_bps <= 10000; otherwise raise ValueError. Empty invoice total is zero.\nsettle(lines, refunds) returns gross_cents, refunded_cents, net_cents. Refund ID strings strip outer whitespace, stay case-sensitive, and cannot be empty. amount_cents is a nonnegative non-bool integer. Repeated refund ID with equal amount is idempotent; the same ID with different amount raises ValueError. Total unique refunds exceeding the invoice raises ValueError. Net is gross minus refunded. No function may mutate any input, including nested dictionaries. Bugs span the money and adjustment logic; public cases are incomplete examples.\nEdit only the three billing Python files. Public cases are immutable. Finish with a concise natural-language explanation; additional hidden cases are scored only after final completion.",
+      "readable": [
+        "README.md",
+        "tests/public_cases.json",
+        "billing/money.py",
+        "billing/invoice.py",
+        "billing/adjustments.py"
+      ],
+      "writable": [
+        "billing/money.py",
+        "billing/invoice.py",
+        "billing/adjustments.py"
+      ],
+      "modules": {
+        "billing.money": "billing/money.py",
+        "billing.invoice": "billing/invoice.py",
+        "billing.adjustments": "billing/adjustments.py"
+      },
+      "tables": {}
+    },
+    {
+      "id": "release_gate",
+      "kind": "research",
+      "title": "Audit a release gate from versioned local evidence",
+      "provenance": "Locally authored synthetic task fixture with real model-driven tool interaction; not SWE-bench, internet research, or production customer data.",
+      "prompt": "Using the local document corpus, determine which candidates are eligible for production expansion at the specified cutoff. Apply the effective policy, signed candidate summary and approved candidate-specific exceptions; distinguish superseded, draft and late material.\nReturn only a JSON object {\"answers\": {\"eligible_candidates\": {\"value\": [candidate names sorted alphabetically], \"citations\": [...]}, \"binding_latency_ms\": {\"value\": integer, \"citations\": [...]}, \"policy_version\": {\"value\": integer, \"citations\": [...]}, \"excluded_candidate\": {\"value\": candidate name, \"citations\": [...]}}}. Each citation is {\"doc_id\":\"file.md\",\"start_line\":integer,\"end_line\":integer}. Cite all required evidence, including the signed exception when it changes eligibility. Use search_docs/read_doc freely; do not invent external sources.",
+      "readable": [
+        "README.md",
+        "docs/policy-current.md",
+        "docs/policy-obsolete.md",
+        "docs/candidate-summary.md",
+        "docs/exception-signed.md",
+        "docs/exception-draft.md",
+        "docs/late-note.md"
+      ],
+      "writable": [],
+      "modules": {},
+      "tables": {}
+    },
+    {
+      "id": "failover_policy",
+      "kind": "research",
+      "title": "Resolve routing policy precedence from local evidence",
+      "provenance": "Locally authored synthetic task fixture with real model-driven tool interaction; not SWE-bench, internet research, or production customer data.",
+      "prompt": "Determine routes using the effective policy and approved scoped override. Return only {\"answers\": {\"cobalt_interactive_1129\":{\"value\":[primary,fallback],\"citations\":[...]},\"cobalt_interactive_1130\":{\"value\":[primary,fallback],\"citations\":[...]},\"cobalt_batch_1100\":{\"value\":[primary,fallback],\"citations\":[...]},\"jade_interactive_1100\":{\"value\":[primary,fallback],\"citations\":[...]}}}. All times are UTC on 2026-10-12. Each citation is {\"doc_id\":\"file.md\",\"start_line\":integer,\"end_line\":integer}. Support temporal/scoping decisions with relevant policy and override lines; cite residency membership for the special north fallback. The corpus is fixed local evidence, not a request for internet search.",
+      "readable": [
+        "README.md",
+        "docs/routing-v4.md",
+        "docs/override-signed.md",
+        "docs/residency.md",
+        "docs/override-draft.md",
+        "docs/routing-v3.md",
+        "docs/incident-notes.md"
+      ],
+      "writable": [],
+      "modules": {},
+      "tables": {}
+    },
+    {
+      "id": "sales_net",
+      "kind": "data",
+      "title": "Reconcile latest-revision net sales",
+      "provenance": "Locally authored synthetic task fixture with real model-driven tool interaction; not SWE-bench, internet research, or production customer data.",
+      "prompt": "Analyze the local synthetic ledger CSV. First retain only the greatest revision for each event_id across the full table, then filter to status posted and the half-open date interval [2026-10-01, 2026-11-01). amount_cents is signed: sales positive, refunds negative. Voided latest revisions must not resurrect earlier posted rows. No currency conversion or floating-dollar rounding.\nReturn only {\"answers\":{\"east_net_cents\":integer,\"west_net_cents\":integer,\"total_net_cents\":integer,\"posted_event_count\":integer,\"refund_cents_absolute\":integer},\"method\":{\"deduplicate_by\":\"event_id\",\"latest_by\":\"revision\",\"date_start\":\"2026-10-01\",\"date_end_exclusive\":\"2026-11-01\"}}. Use the controlled table tools to inspect/query/group the fixed CSV; arbitrary Python or SQL is not provided.",
+      "readable": [
+        "README.md",
+        "tables/ledger.csv"
+      ],
+      "writable": [],
+      "modules": {},
+      "tables": {
+        "ledger": {
+          "path": "tables/ledger.csv",
+          "columns": {
+            "event_id": "string",
+            "revision": "integer",
+            "date": "string",
+            "region": "string",
+            "status": "string",
+            "kind": "string",
+            "amount_cents": "integer"
+          },
+          "description": "Signed integer cents, duplicate event IDs with revision corrections; dedup before filters."
+        }
+      }
+    },
+    {
+      "id": "service_latency",
+      "kind": "data",
+      "title": "Measure corrected request success and route latency",
+      "provenance": "Locally authored synthetic task fixture with real model-driven tool interaction; not SWE-bench, internet research, or production customer data.",
+      "prompt": "Analyze the synthetic request CSV. Keep the greatest revision per request_id before filtering. Restrict to input_tokens <= 1024 and exclude status cancelled entirely. Every remaining logical request is in the success-rate denominator; only status ok is successful. Sum actual output_tokens for successful requests. Compute per-route mean TTFT from successful requests only, ignoring missing values. These are descriptive request metrics, not online capacity or a service SLO certification.\nReturn only {\"answers\":{\"eligible_requests\":integer,\"successful_requests\":integer,\"success_rate\":number,\"successful_output_tokens\":integer,\"alpha_mean_ttft_ms\":number,\"beta_mean_ttft_ms\":number},\"method\":{\"deduplicate_by\":\"request_id\",\"latest_by\":\"revision\",\"max_input_tokens\":1024,\"exclude_status\":\"cancelled\"}}. Success rate is a fraction 0..1, not a percentage. Numeric tolerance is 1e-6. Use controlled table tools; no arbitrary code or SQL.",
+      "readable": [
+        "README.md",
+        "tables/requests.csv"
+      ],
+      "writable": [],
+      "modules": {},
+      "tables": {
+        "requests": {
+          "path": "tables/requests.csv",
+          "columns": {
+            "request_id": "string",
+            "revision": "integer",
+            "route": "string",
+            "status": "string",
+            "input_tokens": "integer",
+            "output_tokens": "integer",
+            "ttft_ms": "integer",
+            "e2e_ms": "integer"
+          },
+          "description": "Missing TTFT is null; status ok/timeout/error/cancelled; logical requests can have later correction revisions."
+        }
+      }
+    }
+  ]
+}

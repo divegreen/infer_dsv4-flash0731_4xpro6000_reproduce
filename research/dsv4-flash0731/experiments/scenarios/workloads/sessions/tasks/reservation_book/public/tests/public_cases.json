@@ -1,0 +1,52 @@
+[
+  {
+    "id": "normalize_merge",
+    "target": "stockflow.normalize.normalize_items",
+    "args": [
+      [
+        {
+          "sku": " A ",
+          "qty": 2
+        },
+        {
+          "sku": "a",
+          "qty": 3
+        }
+      ]
+    ],
+    "expected": {
+      "a": 5
+    }
+  },
+  {
+    "id": "release_adds",
+    "target": "stockflow.engine.replay",
+    "args": [
+      {
+        "a": 10
+      },
+      [
+        {
+          "id": "r1",
+          "kind": "reserve",
+          "items": [
+            {
+              "sku": "a",
+              "qty": 3
+            }
+          ]
+        },
+        {
+          "id": "r1",
+          "kind": "release"
+        }
+      ]
+    ],
+    "expected": {
+      "available": {
+        "a": 10
+      },
+      "held": {}
+    }
+  }
+]

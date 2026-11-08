@@ -1,0 +1,12 @@
+{
+  "jobs": [
+    {
+      "id": "context-tp4-th2048-cad8-screen",
+      "config": "context-tp4-th2048-cad8-screen.json",
+      "capacity_plan": "long-context/context-tp4-th2048-cad8-screen.json",
+      "timeout": 2400,
+      "reference": "context-tp4-th2048-screen",
+      "hypothesis": "Fixed threshold2048 and total budget4096; cadence8 may reduce observed 69-71ms short TPOT in sparse64K traces, with possible long-prefill latency and heavy-load tradeoffs."
+    }
+  ]
+}

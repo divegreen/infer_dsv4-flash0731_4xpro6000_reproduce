@@ -1,0 +1,12 @@
+{
+  "jobs": [
+    {
+      "id": "session-tp4-apc-pilot",
+      "config": "session-tp4-apc-pilot.json",
+      "session_plan": "sessions/session-tp4-apc-pilot.json",
+      "timeout": 2400,
+      "reference": "stage-A-and-B-frozen-evidence",
+      "hypothesis": "Validate exact multi-round replay, streaming tool-only responses, actual APC hits and six independently graded agent tasks before matched capacity study."
+    }
+  ]
+}

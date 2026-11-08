@@ -1,0 +1,21 @@
+/results/
+/logs/*.json
+/evidence/*.tar.gz
+/evidence/
+__pycache__/
+
+# Regenerable capacity snapshots stay local; lightweight reports/tables are tracked.
+/summary/capacity-a*.json
+/summary/capacity-a*.md
+/summary/capacity-three-screen.*
+/summary/capacity-screen-progress-*
+/summary/capacity-bottlenecks-a*
+
+# Detailed machine-readable capacity evidence is preserved in the archive.
+/summary/capacity-*-summary.json
+/capacity-*-bottlenecks.json
+/summary/capacity-final.json
+/summary/capacity-through-a*.json
+/summary/capacity-through-a*.md
+
+/capacity-bottlenecks-final.json

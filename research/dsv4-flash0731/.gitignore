@@ -1,0 +1,5 @@
+/results/
+/logs/*.json
+/evidence/*.tar.gz
+__pycache__/
+.research-gpu.lock

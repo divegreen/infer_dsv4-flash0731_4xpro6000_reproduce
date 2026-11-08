@@ -1,0 +1,8 @@
+__pycache__/
+logs/*-prepared*.json
+logs/*-workload.json
+evidence/*.tar.gz
+logs/analyzer-stagea-replay-*.json
+summary/*.json
+logs/*-checkpoint-*.json
+logs/stage-a-protected-files-final-r1.json

@@ -1,0 +1,44 @@
+{
+  "jobs": [
+    {
+      "id": "context-tp4-screen",
+      "config": "context-tp4-screen.json",
+      "capacity_plan": "long-context/context-tp4-screen.json",
+      "timeout": 2400,
+      "reference": "phase-a-final-7c09c61-and-b01-matched-workload",
+      "hypothesis": "Measure long-short interference and KV residency; matched lengths/arrivals; threshold=0"
+    },
+    {
+      "id": "context-tp2pp2-screen",
+      "config": "context-tp2pp2-screen.json",
+      "capacity_plan": "long-context/context-tp2pp2-screen.json",
+      "timeout": 2400,
+      "reference": "phase-a-final-7c09c61-and-b01-matched-workload",
+      "hypothesis": "Measure long-short interference and KV residency; matched lengths/arrivals; threshold=0"
+    },
+    {
+      "id": "context-dspark3-screen",
+      "config": "context-dspark3-screen.json",
+      "capacity_plan": "long-context/context-dspark3-screen.json",
+      "timeout": 2400,
+      "reference": "phase-a-final-7c09c61-and-b01-matched-workload",
+      "hypothesis": "Measure long-short interference and KV residency; matched lengths/arrivals; threshold=0"
+    },
+    {
+      "id": "context-dp4ep-screen",
+      "config": "context-dp4ep-screen.json",
+      "capacity_plan": "long-context/context-dp4ep-screen.json",
+      "timeout": 2400,
+      "reference": "phase-a-final-7c09c61-and-b01-matched-workload",
+      "hypothesis": "Measure long-short interference and KV residency; matched lengths/arrivals; threshold=0"
+    },
+    {
+      "id": "context-tp4-th2048-screen",
+      "config": "context-tp4-th2048-screen.json",
+      "capacity_plan": "long-context/context-tp4-th2048-screen.json",
+      "timeout": 2400,
+      "reference": "phase-a-final-7c09c61-and-b01-matched-workload",
+      "hypothesis": "Measure long-short interference and KV residency; matched lengths/arrivals; threshold=2048"
+    }
+  ]
+}

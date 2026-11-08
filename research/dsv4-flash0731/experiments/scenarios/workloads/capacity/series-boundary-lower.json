@@ -1,0 +1,20 @@
+{
+  "jobs": [
+    {
+      "id": "capacity-tp4-lower-bound",
+      "config": "tp4-marlin-nocache-128k.json",
+      "capacity_plan": "capacity/capacity-tp4-lower-bound.json",
+      "timeout": 4200,
+      "reference": "capacity-tp4-boundary; failed and inconclusive points retained",
+      "hypothesis": "Establish conservative short-mixed SLO point0.5 and service point2; generation2 below rate3 inconclusive, without relaxing frozen criteria or discarding prior attempts."
+    },
+    {
+      "id": "capacity-dspark3-prefill-bound",
+      "config": "tp4-marlin-dspark3-nocache-128k.json",
+      "capacity_plan": "capacity/capacity-dspark3-prefill-bound.json",
+      "timeout": 4200,
+      "reference": "capacity-dspark3-boundary; incomplete/SLO-failed points retained",
+      "hypothesis": "Confirm mixed-prefill SLO lower point0.5, individual Goodput point2 and stable service boundary3; after independently confirmed generation4 and growing screen6, refine generation midpoint5 with two matched long windows. Prior failures retained."
+    }
+  ]
+}

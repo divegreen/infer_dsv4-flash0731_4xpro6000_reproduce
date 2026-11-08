@@ -1,0 +1,12 @@
+{
+  "jobs": [
+    {
+      "id": "capacity-tp4-boundary",
+      "config": "tp4-marlin-nocache-128k.json",
+      "capacity_plan": "capacity/capacity-tp4-boundary.json",
+      "timeout": 4200,
+      "reference": "capacity-tp4-screen; exploratory reference not an accepted project baseline",
+      "hypothesis": "Confirm mixed-prefill latency boundary at rate1 and service point at rate3; mixed-generation rate3 between rate2 passing and rate4 growing screen; finite burst64 and post-burst recovery."
+    }
+  ]
+}

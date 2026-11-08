@@ -1,0 +1,60 @@
+{
+  "eligible_candidates": {
+    "value": [
+      "Aster",
+      "Cedar"
+    ],
+    "support": [
+      [
+        "policy-current.md",
+        5,
+        8
+      ],
+      [
+        "candidate-summary.md",
+        3,
+        5
+      ],
+      [
+        "exception-signed.md",
+        2,
+        4
+      ]
+    ]
+  },
+  "binding_latency_ms": {
+    "value": 2400,
+    "support": [
+      [
+        "policy-current.md",
+        6,
+        8
+      ]
+    ]
+  },
+  "policy_version": {
+    "value": 3,
+    "support": [
+      [
+        "policy-current.md",
+        3,
+        3
+      ]
+    ]
+  },
+  "excluded_candidate": {
+    "value": "Birch",
+    "support": [
+      [
+        "policy-current.md",
+        6,
+        6
+      ],
+      [
+        "candidate-summary.md",
+        4,
+        4
+      ]
+    ]
+  }
+}

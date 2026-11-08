@@ -1,0 +1,26 @@
+{
+  "status": "PREREGISTERED_NOT_EXECUTED",
+  "utc": "2026-11-07T05:51:11.855680+00:00",
+  "objective": "Test two simultaneous long prefills competing with short arrivals; original and FairShare scheduling with identical cap2048/cadence8.",
+  "reference_ids": [
+    "context-tp4-th2048-cad8-profile",
+    "context-tp4-th2048-cad8-confirm"
+  ],
+  "experiments": [
+    "scheduler-tp4-observe-dense-profile",
+    "scheduler-tp4-fairshare-dense-profile"
+  ],
+  "keep_fixed": [
+    "model",
+    "TP4",
+    "GPU0-3",
+    "vLLM0.33.0",
+    "APC off",
+    "4096 budget",
+    "cap2048",
+    "cadence8",
+    "precise phase seeds/arrivals/prompts/output budget"
+  ],
+  "not_capacity_or_quality_certification": true,
+  "next_decision": "Use terminal Profile evidence to choose limited unprofiled repeated workloads; do not infer benefit from code or profiler timings."
+}

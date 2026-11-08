@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "decision_id": "open-screen-r1",
+  "rationale": "After all c03-c07 terminal audits PASS, retain TP4 APC session as the internal reference and select DSpark3 as the informative competitor: matched replay C8 is .37472/.38124 versus TP4 .29774/.30257 session/s; matched Agent C6 strict successes are 4/12 twice, quality-qualified throughput .10860/.10591 versus TP4 .06505/.04156 task/s. PP replay is near TP4; DP sticky improves replay to .26841/.26991 but real task throughput has no consistent affinity benefit. This is a scenario-specific next experiment, not a global winner or quality-equivalence claim. For each workload, preregister .15/.30/.60 session/s at 120 seconds and one seed: a low-load latency point, a rate around the observed closed-concurrency range, and a bounded upper probe. Closed throughput is only rate-selection evidence. Screen windows cannot certify capacity. Keep exact arrivals and assigned tasks/replay tokens matched across candidates; actual dynamic calls/output/grades remain measured outcomes. Warm up three replay shapes or all six real tool tasks according to the measured kind, excluded from measurements; reset APC at each phase boundary. No runtime, tool, fixture, grader, GPU scope, global protocol or SLO changes. All outcomes including timeout, budget, censoring or growing queues must be retained. Later confirmation rates/durations will be chosen from terminal open evidence under frozen finite-session-v1, without replacing unfavorable seeds.",
+  "evidence_references": [
+    "sessions/summary/session-tp4-cache-screen-terminal-r1.json",
+    "sessions/summary/session-tp4-noapc-screen-terminal-r1.json",
+    "sessions/summary/session-tp2pp2-agent-screen-terminal-r1.json",
+    "sessions/summary/session-dspark3-agent-screen-terminal-r1.json",
+    "sessions/summary/session-dp4ep-affinity-screen-terminal-r1.json",
+    "sessions/logs/audit-session-dp4ep-affinity-screen-r1.json",
+    "sessions/logs/cache-resources-c03-c06-r1.json",
+    "sessions/finite-session-v1.md"
+  ],
+  "service_protocol": {
+    "timeout_s": 180,
+    "session_timeout_s": 600,
+    "max_active_sessions": 64
+  },
+  "warmup_seed": 202611609,
+  "supervisor_timeout_s": 3600,
+  "selections": [
+    {
+      "selection_id": "replay-session",
+      "kind": "replay",
+      "rates": [0.15, 0.30, 0.60],
+      "duration_s": 120,
+      "seeds": [202611630],
+      "role": "screen",
+      "cache_scope": "session",
+      "candidates": [
+        {"experiment_id": "session-tp4-replay-open", "candidate": "tp4-apc", "config_ref": "session-tp4-cache-screen.json", "dp_routing": "none"},
+        {"experiment_id": "session-dspark3-replay-open", "candidate": "dspark3-apc", "config_ref": "session-dspark3-agent-screen.json", "dp_routing": "none"}
+      ]
+    },
+    {
+      "selection_id": "agent-session",
+      "kind": "agent",
+      "rates": [0.15, 0.30, 0.60],
+      "duration_s": 120,
+      "seeds": [202611630],
+      "role": "screen",
+      "cache_scope": "session",
+      "candidates": [
+        {"experiment_id": "session-tp4-agent-open", "candidate": "tp4-apc", "config_ref": "session-tp4-cache-screen.json", "dp_routing": "none"},
+        {"experiment_id": "session-dspark3-agent-open", "candidate": "dspark3-apc", "config_ref": "session-dspark3-agent-screen.json", "dp_routing": "none"}
+      ]
+    }
+  ]
+}

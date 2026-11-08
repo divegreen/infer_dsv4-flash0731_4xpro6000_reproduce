@@ -1,0 +1,41 @@
+{
+  "description": "Resume after documented s03 preflight busy rejection; no model request occurred. Add bounded GPU-release wait.",
+  "jobs": [
+    {
+      "id": "scenarios-tp4-dspark3-retry2",
+      "config": "tp4-marlin-dspark3-nocache-128k.json",
+      "suites": "decode,arrival",
+      "agent_modes": "replay,closed-loop,quality",
+      "reference": "scenarios-tp4-nocache;scenarios-tp4-agent-nocache",
+      "hypothesis": "DSpark3 may improve long-output low-concurrency latency but lose on contention; natural-EOS quality is separate",
+      "timeout": 2400
+    },
+    {
+      "id": "scenarios-tp2pp2",
+      "config": "tp2-pp2-marlin-nocache-128k.json",
+      "suites": "context,arrival",
+      "reference": "scenarios-tp4-nocache",
+      "hypothesis": "Pipeline partitioning may improve long-prefill efficiency on PCIe; assess actual64K and mixed arrivals",
+      "timeout": 2400
+    },
+    {
+      "id": "scenarios-tp4-agent-nocache",
+      "config": "tp4-marlin-nocache-128k.json",
+      "suites": "",
+      "agent_modes": "replay,closed-loop,quality",
+      "reference": "scenarios-tp4-apc;scenarios-tp4-dspark3-retry2",
+      "hypothesis": "Matched no-APC no-speculative natural-EOS fixed replay, true tool loop and quality reference",
+      "timeout": 2400
+    },
+    {
+      "id": "scenarios-tp4-profile",
+      "config": "tp4-marlin-nocache-128k.json",
+      "suites": "profile",
+      "profile": true,
+      "rounds": 1,
+      "reference": "scenarios-tp4-nocache",
+      "hypothesis": "Bounded independent CUDA traces of prefill, decode and 64K mixed requests to identify actionable bottlenecks",
+      "timeout": 1800
+    }
+  ]
+}
